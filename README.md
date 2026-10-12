@@ -16,7 +16,7 @@ No build. No compile. No API key. Nothing leaves your machine.
 npx mobile-repo-map .
 ```
 
-[Quick start](#quick-start) · [What you get](#what-you-get) · [Use in CI](#use-in-ci) · [Ask AI](#ask-ai-optional) · [CLI](#cli-reference) · [How it works](#how-it-works) · [Demo report](docs/demo/flutter_shop/index.html)
+[Quick start](#quick-start) · [What you get](#what-you-get) · [Use in CI](#use-in-ci) · [Ask AI](#ask-ai-optional) · [CLI](#cli-reference) · [How it works](#how-it-works) · [Live demo report](https://ananya-kaul.github.io/mobile-repo-map/demo/flutter_shop/)
 
 <img src="docs/screenshot.png" alt="MobileRepoMap navigation map for a Flutter app" width="900">
 
