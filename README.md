@@ -42,11 +42,7 @@ cd my-flutter-or-ios-app
 npx mobile-repo-map . --open
 ```
 
-You need Node 18.17+. Git is optional (it powers the hotspot analysis). Until the npm package is published, run it straight from GitHub instead:
-
-```bash
-npx github:ananya-kaul/mobile-repo-map .
-```
+You need Node 18.17+. Git is optional (it powers the hotspot analysis).
 
 Every run writes one folder:
 
@@ -120,7 +116,7 @@ jobs:
           path: mobile-repo-map-report/
 ```
 
-`--fail-on-cycles` exits with code 1 if any import cycle is found. `--min-score <n>` exits with code 1 if the health score is below `n`. Until the npm package is published, use `npx -y github:ananya-kaul/mobile-repo-map` in the run step.
+`--fail-on-cycles` exits with code 1 if any import cycle is found. `--min-score <n>` exits with code 1 if the health score is below `n`.
 
 ## Commit ARCHITECTURE.md
 
