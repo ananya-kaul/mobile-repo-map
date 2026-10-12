@@ -1,0 +1,1684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="generator" content="MobileRepoMap">
+<title>NotesApp — MobileRepoMap</title>
+<script>try{var t=localStorage.getItem('mrm-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<style>
+/* ===================== Tokens ===================== */
+:root{
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --bg:#f6f6f8;--surface:#fff;--surface-2:#f3f3f6;--surface-3:#e8e8ee;
+  --border:#e4e4ea;--border-strong:#d0d0d9;
+  --text:#16161d;--text-2:#484855;--text-3:#696976;
+  --accent:#5b5bd6;--accent-hover:#4b4bc4;--accent-text:#4343b5;--accent-soft:rgba(91,91,214,.1);--on-accent:#fff;
+  --ok:#15803d;--warn:#b45309;--bad:#c02626;
+  --edge:#9d9dad;--dot:rgba(16,16,24,.075);
+  --shadow:0 1px 2px rgba(16,16,24,.05),0 8px 28px rgba(16,16,24,.09);
+  --r-screen:#6366f1;--r-widget:#0ea5e9;--r-state:#d946ef;--r-service:#eab308;--r-repository:#f97316;--r-model:#10b981;
+  --r-router:#f43f5e;--r-entry:#84cc16;--r-util:#64748b;--r-test:#94a3b8;--r-generated:#a8a29e;--r-other:#78716c;
+  --k-push:#5b5bd6;--k-go:#0d9488;--k-replace:#d97706;--k-modal:#c026d3;--k-segue:#2563eb;--k-root:#8a8a99;
+  --g-a:#16a34a;--g-b:#65a30d;--g-c:#d97706;--g-d:#ea580c;--g-f:#dc2626;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b0b0e;--surface:#131317;--surface-2:#1a1a20;--surface-3:#25252c;--border:#26262e;--border-strong:#383842;
+  --text:#ededf2;--text-2:#b4b4bf;--text-3:#8d8d99;
+  --accent:#8b8cf8;--accent-hover:#a2a3ff;--accent-text:#a9aaff;--accent-soft:rgba(139,140,248,.15);--on-accent:#0d0d1a;
+  --ok:#4ade80;--warn:#fbbf24;--bad:#f87171;--edge:#5c5c6b;--dot:rgba(255,255,255,.055);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.45);
+  --k-push:#8b8cf8;--k-go:#2dd4bf;--k-replace:#fbbf24;--k-modal:#e879f9;--k-segue:#60a5fa;--k-root:#8d8d99;
+  --g-a:#4ade80;--g-b:#a3e635;--g-c:#fbbf24;--g-d:#fb923c;--g-f:#f87171;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0b0b0e;--surface:#131317;--surface-2:#1a1a20;--surface-3:#25252c;--border:#26262e;--border-strong:#383842;
+  --text:#ededf2;--text-2:#b4b4bf;--text-3:#8d8d99;
+  --accent:#8b8cf8;--accent-hover:#a2a3ff;--accent-text:#a9aaff;--accent-soft:rgba(139,140,248,.15);--on-accent:#0d0d1a;
+  --ok:#4ade80;--warn:#fbbf24;--bad:#f87171;--edge:#5c5c6b;--dot:rgba(255,255,255,.055);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.45);
+  --k-push:#8b8cf8;--k-go:#2dd4bf;--k-replace:#fbbf24;--k-modal:#e879f9;--k-segue:#60a5fa;--k-root:#8d8d99;
+  --g-a:#4ade80;--g-b:#a3e635;--g-c:#fbbf24;--g-d:#fb923c;--g-f:#f87171;
+  color-scheme:dark;
+}
+
+/* ===================== Base ===================== */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+main{flex:1;width:100%}
+a{color:var(--accent-text);text-decoration:none}
+a:hover{text-decoration:underline}
+button,input,select{font:inherit;color:inherit}
+code{font-family:var(--mono);font-size:.9em;background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:1px 5px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.wrap{max-width:1400px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-size:.93em}
+.muted{color:var(--text-3)}
+.small{font-size:12px}
+.spacer{flex:1}
+.view{animation:fade .18s ease-out}
+@keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===================== Header & tabs ===================== */
+.hdr{background:var(--surface);border-bottom:1px solid var(--border)}
+.hdr-top{display:flex;align-items:flex-start;gap:20px;padding:20px 0 16px}
+.brand{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--text-3);margin-bottom:6px}
+.brand svg{color:var(--accent)}
+.proj{flex:1;min-width:0}
+.proj h1{margin:0;font-size:24px;line-height:1.25;letter-spacing:-.02em;font-weight:650;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.proj h1 .nm{overflow-wrap:anywhere;min-width:0}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px}
+.hdr-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.score{display:flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text)}
+.score:hover{text-decoration:none;border-color:var(--border-strong);background:var(--surface-2)}
+.grade{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;font-weight:750;font-size:18px;color:var(--on-accent);background:var(--gc)}
+.score b{display:block;font-size:15px;line-height:1.15;font-variant-numeric:tabular-nums}
+.score small{font-size:11px;color:var(--text-3)}
+.icon-btn{appearance:none;border:1px solid var(--border);background:var(--surface);border-radius:10px;width:36px;height:36px;display:grid;place-items:center;cursor:pointer;color:var(--text-2);flex-shrink:0}
+.icon-btn:hover{background:var(--surface-2);color:var(--text)}
+.icon-btn.sm{width:28px;height:28px;border-radius:7px;border-color:transparent}
+.tabs{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--surface) 86%,transparent);-webkit-backdrop-filter:saturate(1.6) blur(12px);backdrop-filter:saturate(1.6) blur(12px);border-bottom:1px solid var(--border)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{appearance:none;background:none;border:0;padding:13px 10px 12px;cursor:pointer;color:var(--text-3);font-weight:550;position:relative;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.tab:hover{color:var(--text)}
+.tab[aria-selected="true"]{color:var(--text)}
+.tab[aria-selected="true"]::after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;border-radius:2px;background:var(--accent)}
+.tab .n{font-size:11px;font-weight:600;color:var(--text-3);background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:0 6px;line-height:17px}
+main.wrap{padding-top:22px;padding-bottom:40px}
+footer{border-top:1px solid var(--border);background:var(--surface);color:var(--text-3);font-size:12.5px;padding:18px 0}
+
+/* ===================== Atoms ===================== */
+.badge{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:600;white-space:nowrap;color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 28%,transparent)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:999px;font-size:12px;background:var(--surface-2);border:1px solid var(--border);color:var(--text-2);white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.chip.mono{font-family:var(--mono);font-size:11.5px}
+button.chip{cursor:pointer}
+button.chip:hover{border-color:var(--border-strong);color:var(--text)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0;display:inline-block}
+.role{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text-2);white-space:nowrap}
+.tag{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:5px;font-size:11.5px;font-weight:550;background:var(--surface-2);color:var(--text-2);border:1px solid var(--border);white-space:nowrap}
+.tag.ok,.tag.warn,.tag.bad,.tag.accent{color:var(--c);background:color-mix(in srgb,var(--c) 10%,transparent);border-color:color-mix(in srgb,var(--c) 26%,transparent)}
+.tag.ok{--c:var(--ok)}.tag.warn{--c:var(--warn)}.tag.bad{--c:var(--bad)}.tag.accent{--c:var(--accent-text)}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.pill{display:inline-block;min-width:52px;text-align:center;font:650 10.5px/20px var(--mono);padding:0 6px;border-radius:5px;color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);letter-spacing:.02em;white-space:nowrap}
+.kpill{display:inline-block;font:600 11px/18px var(--sans);padding:0 7px;border-radius:999px;color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent)}
+.lnk{appearance:none;border:0;background:none;padding:0;color:var(--accent-text);cursor:pointer;text-align:left;font:inherit}
+.lnk:hover{text-decoration:underline}
+.path{font-family:var(--mono);font-size:12.5px;overflow-wrap:anywhere}
+.path .dir,.path .ln{color:var(--text-3)}
+.flist .fl{min-width:0;flex:0 1 auto}
+.flist .lnk.path{display:flex;min-width:0;white-space:nowrap}
+.flist .path .dir{direction:rtl;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:0 1 auto}
+.flist .path .dir bdi{direction:ltr;unicode-bidi:isolate}
+.flist .path .base,.flist .path .ln{flex-shrink:0}
+.lnk.path{color:var(--text)}
+.lnk.path:hover{text-decoration:none}
+.lnk.path:hover .base{color:var(--accent-text);text-decoration:underline}
+.fl{display:inline-flex;align-items:center;gap:2px;max-width:100%;min-width:0}
+.ed{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:5px;color:var(--text-3);flex-shrink:0}
+.ed:hover{background:var(--surface-3);color:var(--accent-text)}
+.btn{appearance:none;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 14px;border-radius:9px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-weight:550;font-size:13px;color:var(--text);white-space:nowrap}
+.btn:hover{background:var(--surface-2);text-decoration:none}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{background:var(--accent-hover)}
+.btn.sm{height:28px;padding:0 10px;font-size:12px;border-radius:7px}
+.bar{height:6px;border-radius:3px;background:var(--surface-3);overflow:hidden;min-width:48px;flex:1}
+.bar>i{display:block;height:100%;background:var(--c,var(--accent));border-radius:3px}
+.cx-hi{color:var(--bad);font-weight:600}.cx-mid{color:var(--warn);font-weight:600}
+.empty{text-align:center;padding:56px 20px;color:var(--text-3)}
+.empty svg{color:var(--text-3);opacity:.7}
+.empty h3{color:var(--text);margin:10px 0 4px;font-size:15px}
+.empty p{margin:0 auto;max-width:440px;font-size:13px}
+.ok-state{display:flex;align-items:center;gap:8px;color:var(--ok);font-size:13px;padding:12px 14px;border:1px dashed var(--border-strong);border-radius:12px;background:var(--surface)}
+
+/* ===================== Layout: cards & tiles ===================== */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.s4{grid-column:span 4}.s5{grid-column:span 5}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:1/-1}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;min-width:0}
+.card-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.card-h h2,.sec-h h2{margin:0;font-size:14px;font-weight:650}
+.sub{font-size:12px;color:var(--text-3)}
+.tiles{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.tile{display:block;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);transition:border-color .15s,transform .15s;min-width:0}
+a.tile:hover{text-decoration:none;border-color:var(--border-strong);transform:translateY(-1px)}
+.tile .l{font-size:12px;color:var(--text-3);font-weight:550}
+.tile .v{font-size:26px;font-weight:680;letter-spacing:-.025em;line-height:1.2;margin-top:4px;font-variant-numeric:tabular-nums}
+.tile .d{font-size:12px;color:var(--text-3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile.bad .v{color:var(--bad)}
+.health{display:flex;gap:18px;align-items:center}
+.ring{position:relative;width:104px;height:104px;flex-shrink:0}
+.ring svg{transform:rotate(-90deg);display:block}
+.ring .c{position:absolute;inset:0;display:grid;place-items:center;text-align:center;line-height:1}
+.ring .c b{display:block;font-size:30px;font-weight:750;color:var(--gc)}
+.ring .c small{font-size:11px;color:var(--text-3)}
+.hsum b{display:block;font-size:15px;margin-bottom:2px}
+.hsum span{font-size:13px;color:var(--text-3)}
+.bd{list-style:none;margin:16px 0 0;padding:0}
+.bd li{display:flex;gap:10px;align-items:baseline;padding:8px 0;border-top:1px solid var(--border)}
+.bd .lbl{font-weight:550;font-size:13px;white-space:nowrap}
+.bd .det{font-size:12px;color:var(--text-3);min-width:0}
+.bd .pen{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--bad);white-space:nowrap}
+.sbar{display:flex;height:12px;border-radius:6px;overflow:hidden;gap:2px;background:var(--surface-2)}
+.sbar span{background:var(--c);min-width:3px}
+.sbar-l{display:flex;justify-content:space-between;font-size:11.5px;color:var(--text-3);margin:12px 0 5px}
+.legend-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:2px 14px;margin-top:14px}
+.lg{display:flex;align-items:center;gap:8px;font-size:13px;padding:4px 6px;border-radius:6px;border:0;background:none;cursor:pointer;text-align:left;color:var(--text);width:100%}
+.lg:hover{background:var(--surface-2)}
+.lg .cnt{margin-left:auto;color:var(--text-3);font-variant-numeric:tabular-nums;font-size:12px}
+.rlist{list-style:none;margin:0;padding:0}
+.rlist a{display:flex;align-items:center;gap:12px;padding:10px 8px;margin:0 -8px;border-radius:8px;color:var(--text)}
+.rlist a:hover{background:var(--surface-2);text-decoration:none}
+.rlist li+li a{border-top:1px solid var(--border);border-radius:0}
+.rlist .t{font-weight:550;font-size:13px}
+.rlist .x{font-size:12px;color:var(--text-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rlist .bx{min-width:0;flex:1}
+.rlist .go{color:var(--text-3);flex-shrink:0}
+.sev{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--c)}
+.kv{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px 12px;align-items:center;font-size:13px;margin:0}
+.kv dt{color:var(--text-3)}
+.kv dd{margin:0;display:flex;flex-wrap:wrap;gap:5px}
+.deps.collapsed .chip:nth-child(n+25){display:none}
+.mods{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 28px}
+.mods li{display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr) 76px;align-items:center;gap:10px;font-size:12.5px;padding:3px 0}
+.mods .r{text-align:right;color:var(--text-3);font-variant-numeric:tabular-nums;font-size:12px}
+
+/* ===================== Controls ===================== */
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:12px}
+.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:2px}
+.seg button{appearance:none;border:0;background:none;padding:5px 12px;border-radius:7px;cursor:pointer;color:var(--text-2);font-weight:550;font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.08),0 0 0 1px var(--border)}
+.search{position:relative;flex:0 1 280px;min-width:180px}
+.search input{width:100%;height:34px;border:1px solid var(--border);background:var(--surface);border-radius:9px;padding:0 10px 0 32px;font-size:13px}
+.search>svg{position:absolute;left:11px;top:10px;color:var(--text-3);pointer-events:none}
+.sel{height:34px;border:1px solid var(--border);background:var(--surface);border-radius:9px;padding:0 10px;font-size:13px;max-width:100%}
+.search input:focus,.sel:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.sugg{position:absolute;top:calc(100% + 4px);left:0;right:0;min-width:260px;z-index:40;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);padding:4px;max-height:340px;overflow:auto}
+.sugg button{display:block;width:100%;text-align:left;border:0;background:none;padding:6px 8px;border-radius:6px;cursor:pointer}
+.sugg button[aria-selected="true"],.sugg button:hover{background:var(--surface-2)}
+.sugg .s1{font-size:13px;font-weight:550;display:flex;gap:7px;align-items:center}
+.sugg .s2{font-size:11px;color:var(--text-3);font-family:var(--mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.switch{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text-2);cursor:pointer;user-select:none;white-space:nowrap}
+.switch input{appearance:none;-webkit-appearance:none;width:30px;height:18px;border-radius:999px;background:var(--surface-3);border:1px solid var(--border-strong);position:relative;margin:0;cursor:pointer;transition:background .15s;flex-shrink:0}
+.switch input::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .15s}
+.switch input:checked{background:var(--accent);border-color:var(--accent)}
+.switch input:checked::after{transform:translateX(12px)}
+.fchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.fchip{appearance:none;display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:12px;color:var(--text-2);white-space:nowrap}
+.fchip:hover{border-color:var(--border-strong);text-decoration:none;color:var(--text)}
+.fchip[aria-pressed="false"]{color:var(--text-3);background:transparent;border-style:dashed}
+.fchip[aria-pressed="false"] .dot{background:transparent;box-shadow:inset 0 0 0 1.5px var(--c)}
+.fchip:disabled{opacity:.45;cursor:not-allowed}
+.fchip .n{color:var(--text-3);font-variant-numeric:tabular-nums}
+.hint{font-size:12px;color:var(--text-3);margin:10px 2px 0}
+
+/* ===================== Graph canvases ===================== */
+.graph{position:relative;height:max(440px,calc(100vh - 318px));background-color:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;background-image:radial-gradient(var(--dot) 1px,transparent 1.2px);background-size:20px 20px;touch-action:none;user-select:none;-webkit-user-select:none}
+#nav-graph{height:max(440px,calc(100vh - 280px))}
+.graph>canvas,.graph>svg{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+.graph>.drag{cursor:grabbing}
+.zoom{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow);z-index:5}
+.zoom button{appearance:none;border:0;background:none;width:32px;height:30px;cursor:pointer;color:var(--text-2);display:grid;place-items:center}
+.zoom button+button{border-top:1px solid var(--border)}
+.zoom button:hover{background:var(--surface-2);color:var(--text)}
+.glegend{position:absolute;left:12px;bottom:12px;z-index:5;background:color-mix(in srgb,var(--surface) 90%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:10px;padding:7px 10px;font-size:11.5px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;max-width:calc(100% - 80px)}
+.glegend span{display:inline-flex;align-items:center;gap:5px;color:var(--text-2);white-space:nowrap}
+.glegend .sep{width:1px;height:12px;background:var(--border-strong)}
+.tip{position:absolute;left:0;top:0;z-index:6;pointer-events:none;background:var(--surface);border:1px solid var(--border);border-radius:9px;box-shadow:var(--shadow);padding:8px 10px;font-size:12px;max-width:320px}
+.tip b{display:block;font-size:13px}
+.tip .p{font-family:var(--mono);font-size:11px;color:var(--text-3);overflow-wrap:anywhere}
+.tip .m{display:flex;align-items:center;gap:6px;margin-top:4px;color:var(--text-2)}
+.g-empty{position:absolute;inset:0;display:grid;place-items:center;z-index:4;pointer-events:none}
+.g-empty>div{pointer-events:auto}
+svg .nn{cursor:pointer}
+svg .nn rect{fill:var(--surface);stroke:var(--border-strong);stroke-width:1}
+svg .nn:hover rect{stroke:var(--text-3)}
+svg .nn.k-route rect{stroke-dasharray:4 3}
+svg .nn.k-source rect{fill:var(--surface-2)}
+svg .nn.k-app rect{fill:var(--accent-soft);stroke:var(--accent)}
+svg .nn.entry rect{stroke:var(--accent);stroke-width:1.6}
+svg .nn.sel rect{stroke:var(--accent);stroke-width:2.6}
+svg .nn:focus{outline:none}
+svg .nn:focus-visible rect{stroke:var(--accent);stroke-width:2.6}
+svg .t1{font:600 12.5px var(--sans);fill:var(--text)}
+svg .t2{font:10.5px var(--mono);fill:var(--text-3)}
+svg .tg{font:650 9px var(--sans);fill:var(--accent-text);letter-spacing:.06em}
+svg .e{fill:none;stroke-width:1.5;opacity:.7;transition:opacity .15s}
+svg .e.push{stroke:var(--k-push)}svg .e.go{stroke:var(--k-go)}svg .e.replace{stroke:var(--k-replace)}
+svg .e.modal{stroke:var(--k-modal);stroke-dasharray:6 4}svg .e.segue{stroke:var(--k-segue)}svg .e.root{stroke:var(--k-root);stroke-dasharray:2 4}
+svg .e.hl{opacity:1;stroke-width:2.6}
+svg .dim{opacity:.1}
+svg .nn.dim{opacity:.28}
+
+/* ===================== Panels & drawer ===================== */
+.panel{position:absolute;top:12px;right:56px;bottom:12px;width:370px;max-width:calc(100% - 80px);z-index:8;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden;user-select:text;-webkit-user-select:text;touch-action:auto}
+.panel-h{display:flex;align-items:center;justify-content:space-between;padding:8px 8px 8px 16px;border-bottom:1px solid var(--border);font-size:11px;color:var(--text-3);font-weight:650;text-transform:uppercase;letter-spacing:.06em;flex-shrink:0}
+.panel-b{overflow:auto;padding:16px;flex:1;overscroll-behavior:contain}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);z-index:50;background:var(--surface);border-left:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform .2s ease,visibility 0s .2s}
+.drawer.open{transform:none;visibility:visible;transition:transform .2s ease}
+.scrim{position:fixed;inset:0;background:rgba(10,10,16,.28);z-index:45}
+.d-role{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:12px;color:var(--text-3)}
+.d-title{margin:8px 0 2px;font:650 16px/1.35 var(--mono);overflow-wrap:anywhere}
+.d-title.sans{font-family:var(--sans);font-size:17px}
+.d-path{font-family:var(--mono);font-size:11.5px;color:var(--text-3);overflow-wrap:anywhere}
+.d-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.d-tags{margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0 4px}
+.stats div{background:var(--surface);padding:8px 10px}
+.stats b{display:block;font-size:15px;font-variant-numeric:tabular-nums;font-weight:650}
+.stats span{font-size:11px;color:var(--text-3)}
+.d-sec{margin-top:18px}
+.d-sec h4{margin:0 0 6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-3);font-weight:650}
+.flist{list-style:none;margin:0;padding:0;font-size:12.5px}
+.flist li{padding:3px 0;display:flex;align-items:center;gap:8px;min-width:0}
+.flist .r{margin-left:auto;color:var(--text-3);font-size:11.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ell{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.fn{width:100%;border-collapse:collapse;font-size:12px}
+.fn td{padding:4px 0;border-top:1px solid var(--border)}
+.fn td+td{text-align:right;color:var(--text-3);padding-left:10px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.trs{list-style:none;margin:0;padding:0}
+.trs li{padding:8px 0;border-top:1px solid var(--border)}
+.trs li:first-child{border-top:0;padding-top:2px}
+.tr-1{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:550;min-width:0}
+.tr-2{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:11.5px;color:var(--text-3);margin-top:3px}
+
+/* ===================== Tables ===================== */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{background:var(--surface-2);text-align:left;font-weight:600;font-size:12px;color:var(--text-3);padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
+.tbl td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.tbl tbody tr:last-child td{border-bottom:0}
+.tbl tbody tr:not(.grp):hover td{background:var(--surface-2)}
+.tbl .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl th.num{text-align:right}
+.tbl tr.on td{background:var(--accent-soft)!important}
+.tbl.files tbody tr{cursor:pointer}
+.tbl .grp td{background:var(--surface);padding:14px 12px 6px;border-bottom:1px solid var(--border)}
+.grp .host{font-family:var(--mono);font-size:12.5px;font-weight:650;color:var(--text)}
+.grp .n{margin-left:8px;font-size:11.5px;color:var(--text-3)}
+.sort{appearance:none;border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;display:inline-flex;gap:4px;align-items:center}
+.sort:hover{color:var(--text)}
+.sort .ar{opacity:.35;font-size:10px}
+th[aria-sort] .sort{color:var(--text)}
+th[aria-sort] .ar{opacity:1;color:var(--accent-text)}
+.ep{font-family:var(--mono);font-size:12.5px;overflow-wrap:anywhere;min-width:220px}
+.ep .pm{color:var(--accent-text)}
+.used{display:flex;flex-wrap:wrap;gap:4px;min-width:140px}
+.more-row{text-align:center;padding:12px}
+.scorecell{display:flex;align-items:center;gap:10px;min-width:150px}
+
+/* ===================== Risks / APIs / Ask ===================== */
+.rnav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.rsec{margin-bottom:30px;scroll-margin-top:64px}
+.sec-h{display:flex;align-items:center;gap:10px;margin-bottom:2px}
+.sec-h .cnt{font-size:12px;font-weight:600;color:var(--text-3);background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:0 8px;line-height:19px}
+.sec-d{color:var(--text-3);font-size:13px;margin:2px 0 12px;max-width:760px}
+.cyc{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:12px 14px;margin-bottom:8px}
+.cyc-h{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:12.5px}
+.chain+.chain{margin-top:6px;padding-top:6px;border-top:1px dashed var(--border)}
+.chain .arr{color:var(--text-3)}
+.cyc details{margin-top:8px;font-size:12.5px}
+.cyc summary{cursor:pointer;color:var(--text-3);font-size:12px}
+.prog{display:grid;grid-template-columns:150px minmax(0,1fr) 120px;gap:14px;align-items:center;padding:7px 0;font-size:13px}
+.prog .num{text-align:right;color:var(--text-3);font-size:12px;font-variant-numeric:tabular-nums}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.bases{margin-bottom:16px}
+.blist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.blist li{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px}
+.blist .u{font-family:var(--mono);font-size:12.5px;overflow-wrap:anywhere}
+.ask{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px;align-items:start}
+.ask h2{margin:0 0 8px;font-size:17px;letter-spacing:-.01em}
+.ask p{margin:0 0 12px;color:var(--text-2)}
+.cmd{font-family:var(--mono);font-size:13px;background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:11px 13px;overflow-x:auto;white-space:nowrap;margin-bottom:14px}
+.prov{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-direction:column;gap:8px}
+.prov li{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-2);flex-wrap:wrap}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--text-2)}
+.note svg{color:var(--accent-text);flex-shrink:0;margin-top:2px}
+.note b{color:var(--text)}
+pre.ctx{margin:0;max-height:560px;overflow:auto;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font:12px/1.6 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere;color:var(--text-2)}
+
+/* ===================== Responsive ===================== */
+@media (max-width:1080px){.s4,.s5,.s7,.s8{grid-column:1/-1}.ask{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .wrap{padding:0 16px}
+  .hdr-top{flex-direction:column;gap:14px;padding-top:16px}
+  .hdr-right{width:100%}
+  .hdr-right .score{flex:1}
+  .proj h1{font-size:20px}
+  .meta .chip:nth-child(n+5){display:none}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .search{flex:1 1 100%}
+  .graph{height:66vh;min-height:380px}
+  .glegend{display:none}
+  .panel,.drawer{position:fixed;top:auto;left:0;right:0;bottom:0;width:auto;max-width:none;max-height:72vh;border-radius:16px 16px 0 0;z-index:50;border:1px solid var(--border);border-bottom:0}
+  .drawer{transform:translateY(100%)}
+  .two,.mods{grid-template-columns:1fr}
+  .prog{grid-template-columns:100px minmax(0,1fr) 84px;gap:10px}
+  .kv{grid-template-columns:96px minmax(0,1fr)}
+  .health{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="wrap hdr-top">
+    <div class="proj">
+      <div class="brand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.6"/><circle cx="18" cy="8" r="2.6"/><circle cx="9" cy="18" r="2.6"/><path d="M8.5 6.6l7 1M6.9 8.5l1.3 6.9M16.4 10.2l-5.6 5.8"/></svg>MobileRepoMap</div>
+      <h1><span class="nm" id="proj-name"></span><span id="plats" style="display:inline-flex;gap:6px;flex-wrap:wrap"></span></h1>
+      <div class="meta" id="meta"></div>
+    </div>
+    <div class="hdr-right">
+      <a class="score" id="score" href="#overview" title="Health score"></a>
+      <button type="button" class="icon-btn" id="theme" data-act="theme" aria-label="Toggle theme"></button>
+    </div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Report sections"><div class="wrap" id="tabs" role="tablist"></div></nav>
+<main class="wrap">
+  <section class="view" id="view-overview" role="tabpanel" hidden></section>
+  <section class="view" id="view-architecture" role="tabpanel" hidden>
+    <div class="toolbar">
+      <div class="seg" id="arch-mode" role="group" aria-label="Graph granularity"><button type="button" data-mode="modules" aria-pressed="false">Modules</button><button type="button" data-mode="files" aria-pressed="false">Files</button></div>
+      <div id="arch-search"></div>
+      <label class="switch"><input type="checkbox" id="arch-tests" checked>Hide tests &amp; generated</label>
+      <label class="switch"><input type="checkbox" id="arch-iso">Hide isolated</label>
+      <span class="spacer"></span><span class="muted small" id="arch-count"></span>
+    </div>
+    <div class="fchips" id="arch-roles"></div>
+    <div class="graph" id="arch-graph">
+      <canvas id="arch-canvas" role="img" aria-label="Dependency graph. The Files tab lists the same data as a table."></canvas>
+      <div class="zoom" id="arch-zoom"><button type="button" data-z="in" aria-label="Zoom in"></button><button type="button" data-z="out" aria-label="Zoom out"></button><button type="button" data-z="fit" aria-label="Fit to view"></button></div>
+      <div class="glegend" id="arch-legend"></div>
+      <div class="tip" id="arch-tip" hidden></div>
+      <aside class="panel" id="arch-panel" hidden aria-label="Selection details"><div class="panel-h"><span id="arch-panel-t">Details</span><button type="button" class="icon-btn sm" data-act="arch-close" aria-label="Close details"></button></div><div class="panel-b" id="arch-panel-b"></div></aside>
+      <div class="g-empty" id="arch-empty" hidden></div>
+    </div>
+    <p class="hint">Scroll to zoom · drag the background to pan · drag a node to pin it (double-click releases it) · click a node for details</p>
+  </section>
+  <section class="view" id="view-navigation" role="tabpanel" hidden>
+    <div class="toolbar">
+      <div id="nav-search"></div>
+      <label class="switch"><input type="checkbox" id="nav-iso">Show screens without navigation</label>
+      <span class="spacer"></span><span class="muted small" id="nav-count"></span>
+    </div>
+    <div class="graph" id="nav-graph">
+      <svg id="nav-svg" role="img" aria-label="Navigation graph"></svg>
+      <div class="zoom" id="nav-zoom"><button type="button" data-z="in" aria-label="Zoom in"></button><button type="button" data-z="out" aria-label="Zoom out"></button><button type="button" data-z="fit" aria-label="Fit to view"></button></div>
+      <div class="glegend" id="nav-legend"></div>
+      <aside class="panel" id="nav-panel" hidden aria-label="Screen details"><div class="panel-h"><span>Screen</span><button type="button" class="icon-btn sm" data-act="nav-close" aria-label="Close details"></button></div><div class="panel-b" id="nav-panel-b"></div></aside>
+      <div class="g-empty" id="nav-empty" hidden></div>
+    </div>
+    <p class="hint">Scroll to zoom · drag to pan · click a screen to highlight its transitions</p>
+  </section>
+  <section class="view" id="view-apis" role="tabpanel" hidden></section>
+  <section class="view" id="view-risks" role="tabpanel" hidden></section>
+  <section class="view" id="view-files" role="tabpanel" hidden></section>
+  <section class="view" id="view-ask" role="tabpanel" hidden></section>
+</main>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" aria-label="File details"><div class="panel-h"><span>File</span><button type="button" class="icon-btn sm" id="drawer-close" aria-label="Close file details"></button></div><div class="panel-b" id="drawer-b"></div></aside>
+<footer><div class="wrap">Generated by <a href="https://github.com/ananya-kaul/mobile-repo-map" target="_blank" rel="noopener">MobileRepoMap</a> v<span id="ver"></span> — static analysis, no code leaves your machine.</div></footer>
+<script id="mrm-data" type="application/json">{"tool":{"name":"mobile-repo-map","version":"0.1.0"},"generatedAt":"2026-10-12T12:12:23.516Z","project":{"name":"NotesApp","platforms":["ios"],"stack":{"stateManagement":["Combine","ObservableObject","@Observable"],"navigation":["NavigationStack","UINavigationController"],"networking":["URLSession","Alamofire"],"storage":["UserDefaults"],"backend":[]},"dependencies":["Alamofire"],"editorRoot":null,"editor":null,"hasCoverage":false},"stats":{"files":25,"sourceFiles":23,"testFiles":2,"loc":1190,"screens":13,"routes":0,"navEdges":11,"apiEndpoints":7,"urls":3,"cycles":0,"avgComplexity":7.1},"health":{"score":70,"grade":"B","breakdown":[{"label":"Module cycles","penalty":2,"detail":"1 folder-level cycle"},{"label":"Complexity","penalty":7,"detail":"2 of 23 files exceed size/complexity thresholds"},{"label":"Test coverage","penalty":21,"detail":"3 of 18 screens/state/services/repositories have tests"}]},"files":[{"id":0,"path":"NotesApp/Components/EmptyStateView.swift","lang":"swift","role":"widget","module":"NotesApp/Components","loc":13,"complexity":1,"maxDepth":3,"fanIn":2,"fanOut":0,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["EmptyStateView"],"functions":[{"name":"body","line":8,"loc":7,"complexity":1}],"imports":[],"importedBy":[13,17],"apis":[],"screens":[]},{"id":1,"path":"NotesApp/Components/NoteRow.swift","lang":"swift","role":"widget","module":"NotesApp/Components","loc":36,"complexity":4,"maxDepth":7,"fanIn":1,"fanOut":3,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["NoteRow"],"functions":[{"name":"body","line":7,"loc":32,"complexity":4}],"imports":[3,11,2],"importedBy":[17],"apis":[],"screens":[]},{"id":2,"path":"NotesApp/Components/TagChip.swift","lang":"swift","role":"widget","module":"NotesApp/Components","loc":17,"complexity":1,"maxDepth":3,"fanIn":3,"fanOut":0,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["TagChip"],"functions":[{"name":"tint","line":6,"loc":5,"complexity":1},{"name":"body","line":12,"loc":8,"complexity":1}],"imports":[],"importedBy":[1,11,19],"apis":[],"screens":[]},{"id":3,"path":"NotesApp/Models/Note.swift","lang":"swift","role":"model","module":"NotesApp/Models","loc":63,"complexity":3,"maxDepth":2,"fanIn":10,"fanOut":0,"tested":true,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["Note","RemoteNote"],"functions":[{"name":"preview","line":37,"loc":4,"complexity":3},{"name":"init","line":15,"loc":11,"complexity":1},{"name":"init","line":54,"loc":10,"complexity":1},{"name":"asNote","line":65,"loc":6,"complexity":1}],"imports":[],"importedBy":[1,4,5,7,11,12,13,17,20,22,24],"apis":[],"screens":[]},{"id":4,"path":"NotesApp/Networking/APIClient.swift","lang":"swift","role":"service","module":"NotesApp/Networking","loc":82,"complexity":13,"maxDepth":4,"fanIn":1,"fanOut":1,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["APIConfig","Endpoint","APIError","APIClient","RealtimeClient"],"functions":[{"name":"listen","line":84,"loc":13,"complexity":4},{"name":"validate","line":61,"loc":4,"complexity":3},{"name":"createNote","line":41,"loc":9,"complexity":2},{"name":"fetchTags","line":51,"loc":9,"complexity":2},{"name":"init","line":24,"loc":8,"complexity":1}],"imports":[3],"importedBy":[20],"apis":[0,1,2,3,4,5,6],"screens":[]},{"id":5,"path":"NotesApp/Networking/SyncTransport.swift","lang":"swift","role":"service","module":"NotesApp/Networking","loc":32,"complexity":1,"maxDepth":2,"fanIn":1,"fanOut":1,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["SyncPayload","SyncResponse","SyncTransport","AlamofireSyncTransport"],"functions":[{"name":"exchange","line":32,"loc":6,"complexity":1}],"imports":[3],"importedBy":[22],"apis":[7],"screens":[]},{"id":6,"path":"NotesApp/NotesApp.swift","lang":"swift","role":"entry","module":"NotesApp","loc":13,"complexity":1,"maxDepth":3,"fanIn":0,"fanOut":3,"tested":true,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["NotesApp"],"functions":[{"name":"body","line":8,"loc":7,"complexity":1}],"imports":[20,21,16],"importedBy":[23,24],"apis":[],"screens":[]},{"id":7,"path":"NotesApp/Persistence/NotesRepository.swift","lang":"swift","role":"repository","module":"NotesApp/Persistence","loc":35,"complexity":6,"maxDepth":3,"fanIn":1,"fanOut":1,"tested":true,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["NotesRepository"],"functions":[{"name":"init","line":10,"loc":10,"complexity":3},{"name":"loadAll","line":21,"loc":5,"complexity":2},{"name":"saveAll","line":27,"loc":8,"complexity":2},{"name":"wipe","line":36,"loc":5,"complexity":2}],"imports":[3],"importedBy":[20,23],"apis":[],"screens":[]},{"id":8,"path":"NotesApp/Scanner/ScanResultViewController.swift","lang":"swift","role":"screen","module":"NotesApp/Scanner","loc":32,"complexity":2,"maxDepth":3,"fanIn":1,"fanOut":0,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["ScanResultViewController"],"functions":[{"name":"viewDidLoad","line":17,"loc":15,"complexity":2},{"name":"init","line":8,"loc":5,"complexity":1},{"name":"init","line":15,"loc":1,"complexity":1},{"name":"save","line":34,"loc":4,"complexity":1}],"imports":[],"importedBy":[9],"apis":[],"screens":[9]},{"id":9,"path":"NotesApp/Scanner/ScannerViewController.swift","lang":"swift","role":"screen","module":"NotesApp/Scanner","loc":88,"complexity":5,"maxDepth":5,"fanIn":1,"fanOut":1,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["ScannerView","ScannerViewController"],"functions":[{"name":"recognizeText","line":71,"loc":17,"complexity":3},{"name":"viewDidLoad","line":30,"loc":24,"complexity":2},{"name":"startScan","line":57,"loc":9,"complexity":2},{"name":"makeUIViewController","line":10,"loc":3,"complexity":1},{"name":"updateUIViewController","line":14,"loc":1,"complexity":1}],"imports":[8],"importedBy":[13],"apis":[],"screens":[7,8]},{"id":10,"path":"NotesApp/Screens/AboutScreen.swift","lang":"swift","role":"screen","module":"NotesApp/Screens","loc":25,"complexity":3,"maxDepth":4,"fanIn":1,"fanOut":0,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["AboutScreen"],"functions":[{"name":"version","line":4,"loc":6,"complexity":3},{"name":"body","line":11,"loc":16,"complexity":1}],"imports":[],"importedBy":[18],"apis":[8,9],"screens":[0]},{"id":11,"path":"NotesApp/Screens/NoteDetailScreen.swift","lang":"swift","role":"screen","module":"NotesApp/Screens","loc":59,"complexity":5,"maxDepth":8,"fanIn":2,"fanOut":5,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["NoteDetailScreen"],"functions":[{"name":"body","line":18,"loc":45,"complexity":4},{"name":"current","line":14,"loc":3,"complexity":2},{"name":"init","line":9,"loc":4,"complexity":1}],"imports":[20,3,2,19,12],"importedBy":[1,13],"apis":[],"screens":[1]},{"id":12,"path":"NotesApp/Screens/NoteEditorScreen.swift","lang":"swift","role":"screen","module":"NotesApp/Screens","loc":52,"complexity":10,"maxDepth":6,"fanIn":2,"fanOut":2,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["NoteEditorScreen"],"functions":[{"name":"hasChanges","line":17,"loc":3,"complexity":4},{"name":"body","line":21,"loc":25,"complexity":4},{"name":"init","line":11,"loc":5,"complexity":3},{"name":"save","line":47,"loc":10,"complexity":2}],"imports":[20,3],"importedBy":[11,13],"apis":[],"screens":[2]},{"id":13,"path":"NotesApp/Screens/NotesListScreen.swift","lang":"swift","role":"screen","module":"NotesApp/Screens","loc":75,"complexity":4,"maxDepth":11,"fanIn":1,"fanOut":6,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["NotesListScreen"],"functions":[{"name":"body","line":9,"loc":68,"complexity":4}],"imports":[20,3,0,11,12,9],"importedBy":[16],"apis":[],"screens":[3]},{"id":14,"path":"NotesApp/Screens/OnboardingScreen.swift","lang":"swift","role":"screen","module":"NotesApp/Screens","loc":44,"complexity":3,"maxDepth":6,"fanIn":1,"fanOut":0,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["OnboardingScreen"],"functions":[{"name":"body","line":13,"loc":34,"complexity":3}],"imports":[],"importedBy":[16],"apis":[],"screens":[4]},{"id":15,"path":"NotesApp/Screens/PaywallScreen.swift","lang":"swift","role":"screen","module":"NotesApp/Screens","loc":62,"complexity":5,"maxDepth":5,"fanIn":1,"fanOut":1,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["PaywallScreen","Plan"],"functions":[{"name":"price","line":13,"loc":6,"complexity":3},{"name":"body","line":21,"loc":39,"complexity":2},{"name":"id","line":11,"loc":1,"complexity":1},{"name":"purchase","line":65,"loc":6,"complexity":1}],"imports":[21],"importedBy":[18],"apis":[],"screens":[5]},{"id":16,"path":"NotesApp/Screens/RootTabView.swift","lang":"swift","role":"screen","module":"NotesApp/Screens","loc":29,"complexity":2,"maxDepth":4,"fanIn":1,"fanOut":6,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["RootTabView"],"functions":[{"name":"body","line":9,"loc":22,"complexity":2}],"imports":[20,21,13,17,18,14],"importedBy":[6],"apis":[],"screens":[6]},{"id":17,"path":"NotesApp/Screens/SearchScreen.swift","lang":"swift","role":"screen","module":"NotesApp/Screens","loc":31,"complexity":3,"maxDepth":6,"fanIn":1,"fanOut":4,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["SearchScreen"],"functions":[{"name":"body","line":9,"loc":25,"complexity":3},{"name":"results","line":7,"loc":1,"complexity":1}],"imports":[20,3,0,1],"importedBy":[16],"apis":[],"screens":[10]},{"id":18,"path":"NotesApp/Screens/SettingsScreen.swift","lang":"swift","role":"screen","module":"NotesApp/Screens","loc":48,"complexity":3,"maxDepth":8,"fanIn":1,"fanOut":4,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["SettingsScreen"],"functions":[{"name":"body","line":8,"loc":42,"complexity":3}],"imports":[21,20,10,15],"importedBy":[16],"apis":[],"screens":[11]},{"id":19,"path":"NotesApp/Screens/TagPickerScreen.swift","lang":"swift","role":"screen","module":"NotesApp/Screens","loc":47,"complexity":4,"maxDepth":8,"fanIn":1,"fanOut":2,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["TagPickerScreen"],"functions":[{"name":"body","line":8,"loc":35,"complexity":3},{"name":"addTag","line":44,"loc":6,"complexity":2}],"imports":[20,2],"importedBy":[11],"apis":[],"screens":[12]},{"id":20,"path":"NotesApp/State/NotesStore.swift","lang":"swift","role":"state","module":"NotesApp/State","loc":102,"complexity":15,"maxDepth":4,"fanIn":8,"fanOut":4,"tested":true,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["NotesStore"],"functions":[{"name":"search","line":60,"loc":9,"complexity":4},{"name":"apply","line":92,"loc":11,"complexity":4},{"name":"sync","line":79,"loc":12,"complexity":3},{"name":"init","line":16,"loc":7,"complexity":2},{"name":"create","line":32,"loc":6,"complexity":2}],"imports":[3,7,4,22],"importedBy":[6,11,12,13,16,17,18,19,23],"apis":[],"screens":[]},{"id":21,"path":"NotesApp/State/SettingsModel.swift","lang":"swift","role":"state","module":"NotesApp/State","loc":30,"complexity":5,"maxDepth":3,"fanIn":4,"fanOut":0,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["SettingsModel","SortOrder","Keys"],"functions":[{"name":"init","line":23,"loc":6,"complexity":4},{"name":"id","line":8,"loc":1,"complexity":1},{"name":"sortOrder","line":11,"loc":3,"complexity":1},{"name":"syncOnLaunch","line":14,"loc":3,"complexity":1},{"name":"isPro","line":17,"loc":3,"complexity":1}],"imports":[],"importedBy":[6,15,16,18],"apis":[],"screens":[]},{"id":22,"path":"NotesApp/Sync/SyncEngine.swift","lang":"swift","role":"service","module":"NotesApp/Sync","loc":175,"complexity":65,"maxDepth":6,"fanIn":1,"fanOut":2,"tested":true,"coverage":null,"churn":0,"hotspot":0,"isTest":false,"isGenerated":false,"types":["SyncConflictPolicy","SyncConflict","Resolution","SyncPlan","SyncError","SyncEngine"],"functions":[{"name":"plan","line":74,"loc":62,"complexity":24},{"name":"resolve","line":149,"loc":37,"complexity":17},{"name":"mergeBodies","line":189,"loc":19,"complexity":9},{"name":"isEmpty","line":28,"loc":3,"complexity":4},{"name":"run","line":56,"loc":15,"complexity":4}],"imports":[3,5],"importedBy":[20,23,24],"apis":[],"screens":[]},{"id":23,"path":"NotesAppTests/NotesStoreTests.swift","lang":"swift","role":"test","module":"tests","loc":47,"complexity":1,"maxDepth":2,"fanIn":0,"fanOut":0,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":true,"isGenerated":false,"types":["NotesStoreTests"],"functions":[{"name":"setUp","line":9,"loc":7,"complexity":1},{"name":"tearDown","line":17,"loc":3,"complexity":1},{"name":"testCreateInsertsAtTopAndPersists","line":21,"loc":7,"complexity":1},{"name":"testEmptyTitleBecomesUntitled","line":30,"loc":4,"complexity":1},{"name":"testTogglePinMovesNoteToPinnedSection","line":35,"loc":6,"complexity":1}],"imports":[6,20,7,22],"importedBy":[],"apis":[],"screens":[]},{"id":24,"path":"NotesAppTests/SyncEngineTests.swift","lang":"swift","role":"test","module":"tests","loc":57,"complexity":1,"maxDepth":2,"fanIn":0,"fanOut":0,"tested":false,"coverage":null,"churn":0,"hotspot":0,"isTest":true,"isGenerated":false,"types":["SyncEngineTests"],"functions":[{"name":"note","line":7,"loc":3,"complexity":1},{"name":"testCleanNoteNotInFeedIsLeftAlone","line":11,"loc":5,"complexity":1},{"name":"testNewLocalNoteIsUploaded","line":17,"loc":6,"complexity":1},{"name":"testRemoteDeletionRemovesCleanLocalNote","line":24,"loc":7,"complexity":1},{"name":"testLastWriterWinsPrefersNewerRemote","line":32,"loc":10,"complexity":1}],"imports":[6,3,22],"importedBy":[],"apis":[],"screens":[]}],"edges":[[1,3],[1,11],[1,2],[4,3],[5,3],[6,20],[6,21],[6,16],[7,3],[9,8],[11,20],[11,3],[11,2],[11,19],[11,12],[12,20],[12,3],[13,20],[13,3],[13,0],[13,11],[13,12],[13,9],[15,21],[16,20],[16,21],[16,13],[16,17],[16,18],[16,14],[17,20],[17,3],[17,0],[17,1],[18,21],[18,20],[18,10],[18,15],[19,20],[19,2],[20,3],[20,7],[20,4],[20,22],[22,3],[22,5],[23,6],[23,20],[23,7],[23,22],[24,6],[24,3],[24,22]],"modules":[{"id":0,"name":"NotesApp/Components","files":3,"loc":66,"roles":{"widget":3}},{"id":1,"name":"NotesApp/Models","files":1,"loc":63,"roles":{"model":1}},{"id":2,"name":"NotesApp/Networking","files":2,"loc":114,"roles":{"service":2}},{"id":3,"name":"NotesApp","files":1,"loc":13,"roles":{"entry":1}},{"id":4,"name":"NotesApp/Persistence","files":1,"loc":35,"roles":{"repository":1}},{"id":5,"name":"NotesApp/Scanner","files":2,"loc":120,"roles":{"screen":2}},{"id":6,"name":"NotesApp/Screens","files":10,"loc":472,"roles":{"screen":10}},{"id":7,"name":"NotesApp/State","files":2,"loc":132,"roles":{"state":2}},{"id":8,"name":"NotesApp/Sync","files":1,"loc":175,"roles":{"service":1}},{"id":9,"name":"tests","files":2,"loc":104,"roles":{"test":2}}],"moduleEdges":[[0,1,1],[0,6,1],[2,1,2],[3,7,2],[3,6,1],[4,1,1],[6,7,10],[6,1,4],[6,0,5],[6,5,1],[7,1,1],[7,4,1],[7,2,1],[7,8,1],[8,1,1],[8,2,1],[9,3,2],[9,7,1],[9,4,1],[9,8,2],[9,1,1]],"screens":[{"id":0,"name":"AboutScreen","kind":"swiftui","file":10,"line":3,"routes":[],"entry":false},{"id":1,"name":"NoteDetailScreen","kind":"swiftui","file":11,"line":3,"routes":[],"entry":false},{"id":2,"name":"NoteEditorScreen","kind":"swiftui","file":12,"line":3,"routes":[],"entry":false},{"id":3,"name":"NotesListScreen","kind":"swiftui","file":13,"line":3,"routes":[],"entry":false},{"id":4,"name":"OnboardingScreen","kind":"swiftui","file":14,"line":3,"routes":[],"entry":false},{"id":5,"name":"PaywallScreen","kind":"swiftui","file":15,"line":3,"routes":[],"entry":false},{"id":6,"name":"RootTabView","kind":"swiftui","file":16,"line":3,"routes":[],"entry":true},{"id":7,"name":"ScannerView","kind":"swiftui","file":9,"line":7,"routes":[],"entry":false},{"id":8,"name":"ScannerViewController","kind":"uikit","file":9,"line":17,"routes":[],"entry":false},{"id":9,"name":"ScanResultViewController","kind":"uikit","file":8,"line":3,"routes":[],"entry":false},{"id":10,"name":"SearchScreen","kind":"swiftui","file":17,"line":3,"routes":[],"entry":false},{"id":11,"name":"SettingsScreen","kind":"swiftui","file":18,"line":3,"routes":[],"entry":false},{"id":12,"name":"TagPickerScreen","kind":"swiftui","file":19,"line":3,"routes":[],"entry":false}],"routes":[],"nav":{"nodes":[{"id":"screen:1","kind":"screen","label":"NoteDetailScreen","screen":1,"file":11,"route":null},{"id":"screen:10","kind":"screen","label":"SearchScreen","screen":10,"file":17,"route":null},{"id":"screen:8","kind":"screen","label":"ScannerViewController","screen":8,"file":9,"route":null},{"id":"screen:7","kind":"screen","label":"ScannerView","screen":7,"file":9,"route":null},{"id":"screen:9","kind":"screen","label":"ScanResultViewController","screen":9,"file":8,"route":null},{"id":"screen:12","kind":"screen","label":"TagPickerScreen","screen":12,"file":19,"route":null},{"id":"screen:2","kind":"screen","label":"NoteEditorScreen","screen":2,"file":12,"route":null},{"id":"screen:3","kind":"screen","label":"NotesListScreen","screen":3,"file":13,"route":null},{"id":"screen:4","kind":"screen","label":"OnboardingScreen","screen":4,"file":14,"route":null},{"id":"screen:6","kind":"screen","label":"RootTabView","screen":6,"file":16,"route":null},{"id":"screen:0","kind":"screen","label":"AboutScreen","screen":0,"file":10,"route":null},{"id":"screen:11","kind":"screen","label":"SettingsScreen","screen":11,"file":18,"route":null},{"id":"screen:5","kind":"screen","label":"PaywallScreen","screen":5,"file":15,"route":null}],"edges":[{"from":"screen:10","to":"screen:1","kind":"push","method":"NavigationLink","file":1,"line":8,"via":"NoteRow"},{"from":"screen:7","to":"screen:8","kind":"push","method":"UINavigationController","file":9,"line":11,"via":null},{"from":"screen:8","to":"screen:9","kind":"push","method":"pushViewController","file":9,"line":68,"via":null},{"from":"screen:1","to":"screen:12","kind":"push","method":"NavigationLink","file":11,"line":35,"via":null},{"from":"screen:1","to":"screen:2","kind":"modal","method":"sheet","file":11,"line":57,"via":null},{"from":"screen:3","to":"screen:1","kind":"push","method":"navigationDestination","file":13,"line":52,"via":null},{"from":"screen:3","to":"screen:2","kind":"modal","method":"sheet","file":13,"line":65,"via":null},{"from":"screen:3","to":"screen:7","kind":"modal","method":"sheet","file":13,"line":68,"via":null},{"from":"screen:6","to":"screen:4","kind":"modal","method":"fullScreenCover","file":16,"line":18,"via":null},{"from":"screen:11","to":"screen:0","kind":"push","method":"NavigationLink","file":18,"line":41,"via":null},{"from":"screen:11","to":"screen:5","kind":"modal","method":"fullScreenCover","file":18,"line":47,"via":null}],"entries":["screen:6"]},"apis":[{"id":0,"method":"POST","url":"https://api.notesapp.dev/notes","resolved":true,"client":"URLSession","file":4,"line":42,"usedBy":[1,2,3,6,10,11,12],"host":"api.notesapp.dev"},{"id":1,"method":"GET","url":"{url}","resolved":false,"client":"URLSession","file":4,"line":53,"usedBy":[1,2,3,6,10,11,12],"host":"api.notesapp.dev"},{"id":2,"method":"WS","url":"wss://realtime.notesapp.dev/socket","resolved":true,"client":"URLSession","file":4,"line":73,"usedBy":[1,2,3,6,10,11,12],"host":"realtime.notesapp.dev"},{"id":3,"method":"URL","url":"https://api.notesapp.dev/v1/notes","resolved":true,"client":"literal","file":4,"line":35,"usedBy":[1,2,3,6,10,11,12],"host":"api.notesapp.dev"},{"id":4,"method":"API","url":"/v1/notes","resolved":true,"client":"Endpoint.notes","file":4,"line":null,"usedBy":[1,2,3,6,10,11,12],"host":"api.notesapp.dev"},{"id":5,"method":"API","url":"/v1/sync","resolved":true,"client":"Endpoint.sync","file":4,"line":null,"usedBy":[1,2,3,6,10,11,12],"host":"api.notesapp.dev"},{"id":6,"method":"API","url":"/v1/tags","resolved":true,"client":"Endpoint.tags","file":4,"line":null,"usedBy":[1,2,3,6,10,11,12],"host":"api.notesapp.dev"},{"id":7,"method":"POST","url":"https://api.notesapp.dev/v1/sync","resolved":true,"client":"Alamofire","file":5,"line":33,"usedBy":[1,2,3,6,10,11,12],"host":"api.notesapp.dev"},{"id":8,"method":"URL","url":"https://notesapp.dev","resolved":true,"client":"literal","file":10,"line":17,"usedBy":[11,0],"host":"notesapp.dev"},{"id":9,"method":"URL","url":"https://notesapp.dev/privacy","resolved":true,"client":"literal","file":10,"line":18,"usedBy":[11,0],"host":"notesapp.dev"}],"bases":[{"url":"https://api.notesapp.dev","file":4,"line":4}],"risks":{"cycles":[],"moduleCycles":[{"modules":[0,6]}],"complex":[{"file":22,"score":2.9,"reasons":["plan() has complexity 24"]},{"file":13,"score":1.8,"reasons":["nesting depth 11"]}],"hotspots":[],"untested":{"byRole":[{"role":"screen","total":12,"tested":0},{"role":"state","total":2,"tested":1},{"role":"service","total":3,"tested":1},{"role":"repository","total":1,"tested":1},{"role":"model","total":1,"tested":1},{"role":"widget","total":3,"tested":0}],"files":[4,12,9,11,15,21,13,19,10,14,17,18,8,16,5]},"godFiles":[]},"warnings":[],"aiContext":"# NotesApp — codebase context\nStatic analysis by mobile-repo-map v0.1.0 on 2026-10-12. Heuristic and possibly incomplete; paths are relative to the repo root.\n\n## Project\n- Platforms: ios\n- Stack: State management: Combine, ObservableObject, @Observable; Navigation: NavigationStack, UINavigationController; Networking: URLSession, Alamofire; Storage: UserDefaults\n- Size: 25 files (23 source, 2 test), 1,190 LOC, 10 modules, 13 screens, 0 routes, 11 navigation edges, 7 API endpoints\n- Health: 70/100 (B); penalties: Module cycles -2, Complexity -7, Test coverage -21\n- Entry files: NotesApp/NotesApp.swift\n\n## Dependencies (1)\nAlamofire\n\n## Modules (10)\n- NotesApp/Screens — 10 files, 472 LOC; roles: screen 10\n- NotesApp/Sync — 1 file, 175 LOC; roles: service 1\n- NotesApp/State — 2 files, 132 LOC; roles: state 2\n- NotesApp/Scanner — 2 files, 120 LOC; roles: screen 2\n- NotesApp/Networking — 2 files, 114 LOC; roles: service 2\n- tests — 2 files, 104 LOC; roles: test 2\n- NotesApp/Components — 3 files, 66 LOC; roles: widget 3\n- NotesApp/Models — 1 file, 63 LOC; roles: model 1\n- NotesApp/Persistence — 1 file, 35 LOC; roles: repository 1\n- NotesApp — 1 file, 13 LOC; roles: entry 1\n\n## Screens (13)\n- RootTabView [swiftui, entry] — NotesApp/Screens/RootTabView.swift:3\n- AboutScreen [swiftui] — NotesApp/Screens/AboutScreen.swift:3\n- NoteDetailScreen [swiftui] — NotesApp/Screens/NoteDetailScreen.swift:3\n- NoteEditorScreen [swiftui] — NotesApp/Screens/NoteEditorScreen.swift:3\n- NotesListScreen [swiftui] — NotesApp/Screens/NotesListScreen.swift:3\n- OnboardingScreen [swiftui] — NotesApp/Screens/OnboardingScreen.swift:3\n- PaywallScreen [swiftui] — NotesApp/Screens/PaywallScreen.swift:3\n- ScannerView [swiftui] — NotesApp/Scanner/ScannerViewController.swift:7\n- ScannerViewController [uikit] — NotesApp/Scanner/ScannerViewController.swift:17\n- ScanResultViewController [uikit] — NotesApp/Scanner/ScanResultViewController.swift:3\n- SearchScreen [swiftui] — NotesApp/Screens/SearchScreen.swift:3\n- SettingsScreen [swiftui] — NotesApp/Screens/SettingsScreen.swift:3\n- TagPickerScreen [swiftui] — NotesApp/Screens/TagPickerScreen.swift:3\n\n## Navigation (11 edges)\nEntry points: RootTabView\n```text\nRootTabView -\u003e OnboardingScreen (modal)\nSearchScreen -\u003e NoteDetailScreen (push)\nNoteDetailScreen -\u003e TagPickerScreen (push)\nNoteDetailScreen -\u003e NoteEditorScreen (modal)\nScannerView -\u003e ScannerViewController (push)\nScannerViewController -\u003e ScanResultViewController (push)\nNotesListScreen -\u003e NoteDetailScreen (push)\nNotesListScreen -\u003e NoteEditorScreen (modal)\nNotesListScreen -\u003e ScannerView (modal)\nSettingsScreen -\u003e AboutScreen (push)\nSettingsScreen -\u003e PaywallScreen (modal)\n```\n\n## API endpoints (7)\n3 plain URL literals not listed.\n```text\nBASE https://api.notesapp.dev (NotesApp/Networking/APIClient.swift:4)\nAPI true (NotesApp/Networking/APIClient.swift) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nAPI true (NotesApp/Networking/APIClient.swift) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nAPI true (NotesApp/Networking/APIClient.swift) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nPOST true (NotesApp/Networking/APIClient.swift:42) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nPOST true (NotesApp/Networking/SyncTransport.swift:33) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nGET {url} (NotesApp/Networking/APIClient.swift:53) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nWS true (NotesApp/Networking/APIClient.swift:73) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\n```\n\n## Risks\n- Import cycles: none\n- Module cycle: NotesApp/Components \u003c-\u003e NotesApp/Screens\n- Complex: NotesApp/Sync/SyncEngine.swift (score 2.9; plan() has complexity 24)\n- Complex: NotesApp/Screens/NotesListScreen.swift (score 1.8; nesting depth 11)\n- Tested files by role: screen 0/12, widget 0/3, state 1/2, service 1/3, repository 1/1, model 1/1\n\n## Key files (largest / most connected, top 23)\n- NotesApp/State/NotesStore.swift [state] 102 LOC, fan-in 8, fan-out 4, complexity 15, module module NotesApp/State; defines NotesStore\n- NotesApp/Sync/SyncEngine.swift [service] 175 LOC, fan-in 1, fan-out 2, complexity 65, module module NotesApp/Sync; defines SyncConflictPolicy, SyncConflict, Resolution, SyncPlan, …\n- NotesApp/Models/Note.swift [model] 63 LOC, fan-in 10, fan-out 0, complexity 3, module module NotesApp/Models; defines Note, RemoteNote\n- NotesApp/Screens/NotesListScreen.swift [screen] 75 LOC, fan-in 1, fan-out 6, complexity 4, module module NotesApp/Screens; defines NotesListScreen\n- NotesApp/Screens/NoteDetailScreen.swift [screen] 59 LOC, fan-in 2, fan-out 5, complexity 5, module module NotesApp/Screens; defines NoteDetailScreen\n- NotesApp/Screens/RootTabView.swift [screen] 29 LOC, fan-in 1, fan-out 6, complexity 2, module module NotesApp/Screens; defines RootTabView\n- NotesApp/Screens/SettingsScreen.swift [screen] 48 LOC, fan-in 1, fan-out 4, complexity 3, module module NotesApp/Screens; defines SettingsScreen\n- NotesApp/Scanner/ScannerViewController.swift [screen] 88 LOC, fan-in 1, fan-out 1, complexity 5, module module NotesApp/Scanner; defines ScannerView, ScannerViewController\n- NotesApp/Networking/APIClient.swift [service] 82 LOC, fan-in 1, fan-out 1, complexity 13, module module NotesApp/Networking; defines APIConfig, Endpoint, APIError, APIClient, …\n- NotesApp/Screens/NoteEditorScreen.swift [screen] 52 LOC, fan-in 2, fan-out 2, complexity 10, module module NotesApp/Screens; defines NoteEditorScreen\n- NotesApp/Screens/SearchScreen.swift [screen] 31 LOC, fan-in 1, fan-out 4, complexity 3, module module NotesApp/Screens; defines SearchScreen\n- NotesApp/Components/NoteRow.swift [widget] 36 LOC, fan-in 1, fan-out 3, complexity 4, module module NotesApp/Components; defines NoteRow\n- NotesApp/Screens/PaywallScreen.swift [screen] 62 LOC, fan-in 1, fan-out 1, complexity 5, module module NotesApp/Screens; defines PaywallScreen, Plan\n- NotesApp/Screens/TagPickerScreen.swift [screen] 47 LOC, fan-in 1, fan-out 2, complexity 4, module module NotesApp/Screens; defines TagPickerScreen\n- NotesApp/State/SettingsModel.swift [state] 30 LOC, fan-in 4, fan-out 0, complexity 5, module module NotesApp/State; defines SettingsModel, SortOrder, Keys\n- NotesApp/Persistence/NotesRepository.swift [repository] 35 LOC, fan-in 1, fan-out 1, complexity 6, module module NotesApp/Persistence; defines NotesRepository\n- NotesApp/Networking/SyncTransport.swift [service] 32 LOC, fan-in 1, fan-out 1, complexity 1, module module NotesApp/Networking; defines SyncPayload, SyncResponse, SyncTransport, AlamofireSyncTransport\n- NotesApp/Components/TagChip.swift [widget] 17 LOC, fan-in 3, fan-out 0, complexity 1, module module NotesApp/Components; defines TagChip\n- NotesApp/Screens/OnboardingScreen.swift [screen] 44 LOC, fan-in 1, fan-out 0, complexity 3, module module NotesApp/Screens; defines OnboardingScreen\n- NotesApp/NotesApp.swift [entry] 13 LOC, fan-in 0, fan-out 3, complexity 1, module module NotesApp; defines NotesApp\n- NotesApp/Scanner/ScanResultViewController.swift [screen] 32 LOC, fan-in 1, fan-out 0, complexity 2, module module NotesApp/Scanner; defines ScanResultViewController\n- NotesApp/Components/EmptyStateView.swift [widget] 13 LOC, fan-in 2, fan-out 0, complexity 1, module module NotesApp/Components; defines EmptyStateView\n- NotesApp/Screens/AboutScreen.swift [screen] 25 LOC, fan-in 1, fan-out 0, complexity 3, module module NotesApp/Screens; defines AboutScreen\n"}</script>
+<script>
+(() => {
+'use strict';
+
+/* ===================== Data ===================== */
+const arr = (v) => (Array.isArray(v) ? v : []);
+function normalize(m) {
+  m = m && typeof m === 'object' ? m : {};
+  m.tool = Object.assign({ name: 'mobile-repo-map', version: '' }, m.tool);
+  const p = (m.project = Object.assign({ name: 'Project', editorRoot: null }, m.project));
+  p.platforms = arr(p.platforms); p.dependencies = arr(p.dependencies); p.stack = p.stack || {};
+  m.stats = m.stats || {};
+  m.health = Object.assign({ score: null, grade: '' }, m.health); m.health.breakdown = arr(m.health.breakdown);
+  for (const k of ['files', 'edges', 'modules', 'moduleEdges', 'screens', 'routes', 'apis', 'bases']) m[k] = arr(m[k]);
+  m.nav = Object.assign({}, m.nav);
+  for (const k of ['nodes', 'edges', 'entries']) m.nav[k] = arr(m.nav[k]);
+  const r = (m.risks = Object.assign({}, m.risks));
+  for (const k of ['cycles', 'moduleCycles', 'complex', 'hotspots', 'godFiles']) r[k] = arr(r[k]);
+  r.untested = Object.assign({}, r.untested); r.untested.byRole = arr(r.untested.byRole); r.untested.files = arr(r.untested.files);
+  for (const f of m.files) {
+    f.path = String(f.path ?? ''); f.role = f.role || 'other';
+    for (const k of ['imports', 'importedBy', 'apis', 'screens', 'types', 'functions']) f[k] = arr(f[k]);
+  }
+  for (const c of r.cycles) { c.files = arr(c.files); c.examples = arr(c.examples); }
+  for (const a of m.apis) a.usedBy = arr(a.usedBy);
+  for (const s of m.screens) s.routes = arr(s.routes);
+  m.aiContext = typeof m.aiContext === 'string' ? m.aiContext : '';
+  return m;
+}
+let RAW = {};
+try { RAW = JSON.parse(document.getElementById('mrm-data').textContent); } catch (e) { console.error('MobileRepoMap: report data is not valid JSON', e); }
+const M = normalize(RAW);
+const fileById = new Map(M.files.map((f) => [f.id, f]));
+const screenById = new Map(M.screens.map((s) => [s.id, s]));
+const apiById = new Map(M.apis.map((a) => [a.id, a]));
+const moduleById = new Map(M.modules.map((m) => [m.id, m]));
+const keyOf = (id) => (typeof id === 'string' && id.trim() !== '' && !isNaN(id) ? Number(id) : id);
+const getFile = (id) => (id == null ? undefined : fileById.get(id) ?? fileById.get(keyOf(id)));
+const getScreen = (id) => (id == null ? undefined : screenById.get(id) ?? screenById.get(keyOf(id)));
+const modName = (id) => moduleById.get(id)?.name ?? moduleById.get(keyOf(id))?.name ?? String(id ?? '');
+
+/* ===================== Helpers ===================== */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ESC[c]);
+const num = (v) => (typeof v === 'number' && isFinite(v) ? v : 0);
+const fmt = (v) => (v == null || v === '' || !isFinite(v) ? '—' : Number(v).toLocaleString('en-US'));
+const compact = (v) => { v = num(v); return v >= 1e6 ? +(v / 1e6).toFixed(1) + 'M' : v >= 1e4 ? +(v / 1e3).toFixed(1) + 'k' : fmt(v); };
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const base = (p) => String(p ?? '').split('/').pop();
+const dirOf = (p) => { p = String(p ?? ''); const i = p.lastIndexOf('/'); return i < 0 ? '' : p.slice(0, i + 1); };
+const plural = (n, w, pl) => `${fmt(n)} ${n === 1 ? w : pl || w + 's'}`;
+const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
+const isTestish = (f) => !!(f.isTest || f.isGenerated || f.role === 'test' || f.role === 'generated');
+
+const ROLES = ['screen', 'widget', 'state', 'service', 'repository', 'model', 'router', 'entry', 'util', 'test', 'generated', 'other'];
+const ROLE_LABEL = { screen: 'Screens', widget: 'Widgets & views', state: 'State', service: 'Services', repository: 'Repositories', model: 'Models', router: 'Routing', entry: 'Entry points', util: 'Utilities', test: 'Tests', generated: 'Generated', other: 'Other' };
+const roleOf = (r) => (ROLES.includes(r) ? r : 'other');
+const rc = (r) => `var(--r-${roleOf(r)})`;
+const METHOD_C = { GET: 'var(--g-a)', POST: 'var(--k-segue)', PUT: 'var(--k-replace)', PATCH: 'var(--r-state)', DELETE: 'var(--bad)', WS: 'var(--k-go)', FIRESTORE: 'var(--r-repository)', GRAPHQL: 'var(--r-router)' };
+const mc = (m) => METHOD_C[String(m).toUpperCase()] || 'var(--text-3)';
+const NAV_KINDS = ['push', 'go', 'replace', 'modal', 'segue', 'root'];
+const kindOf = (k) => (NAV_KINDS.includes(k) ? k : 'push');
+const GRADE_C = { A: 'var(--g-a)', B: 'var(--g-b)', C: 'var(--g-c)', D: 'var(--g-d)', F: 'var(--g-f)' };
+const gradeC = (g) => GRADE_C[String(g).toUpperCase()] || 'var(--text-3)';
+const PLAT = { flutter: ['Flutter', '#0ea5e9'], ios: ['iOS', 'var(--text-2)'], 'swift-package': ['Swift Package', '#f97316'], dart: ['Dart', '#0d9488'] };
+const STACK = [['stateManagement', 'State'], ['navigation', 'Navigation'], ['networking', 'Networking'], ['storage', 'Storage'], ['backend', 'Backend']];
+
+const svgI = (d, s = 16, w = 2) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const I = {
+  search: svgI('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>', 14),
+  ext: svgI('<path d="M14 4h6v6M20 4 10 14M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/>', 13),
+  close: svgI('<path d="M6 6l12 12M18 6 6 18"/>'),
+  plus: svgI('<path d="M12 5v14M5 12h14"/>'), minus: svgI('<path d="M5 12h14"/>'),
+  fit: svgI('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>'),
+  check: svgI('<path d="m5 12 5 5 9-10"/>', 15, 2.4), arrow: svgI('<path d="M9 6l6 6-6 6"/>', 14),
+  sun: svgI('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
+  moon: svgI('<path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/>'),
+  copy: svgI('<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/>', 15),
+  graph: svgI('<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="9" r="2.5"/><circle cx="9" cy="18" r="2.5"/><path d="M8.3 7l7.4 1.4M7 8.4l1.3 7.2M16.4 11l-5.5 5.4"/>', 13),
+  shield: svgI('<path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="m9 12 2 2 4-4"/>'),
+  empty: svgI('<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 14h8"/>', 34, 1.5),
+  nav: svgI('<rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><path d="M10 7.5h3a2 2 0 0 1 2 2V12"/>', 34, 1.5),
+  dl: svgI('<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>', 15),
+};
+const emptyHTML = (title, text, icon = I.empty) => `<div class="empty">${icon}<h3>${esc(title)}</h3><p>${text}</p></div>`;
+const okHTML = (text) => `<div class="ok-state">${I.check}${esc(text)}</div>`;
+
+const EDROOT = M.project.editorRoot ? String(M.project.editorRoot).replace(/\\/g, '/').replace(/\/+$/, '') : '';
+const edHref = (p, line) => ((/^[a-z][a-z0-9+.-]*$/i.test(M.project.editor || '') ? M.project.editor : 'vscode') + '://file/' + encodeURI(EDROOT.replace(/^\/+/, '') + '/' + String(p).replace(/^\/+/, '') + (line ? ':' + line : ''))).replace(/#/g, '%23').replace(/\?/g, '%3F');
+const edLink = (p, line) => (EDROOT ? `<a class="ed" href="${esc(edHref(p, line))}" title="Open in editor" aria-label="Open ${esc(base(p))} in editor">${I.ext}</a>` : '');
+const pathHTML = (p) => `<span class="dir"><bdi>${esc(dirOf(p))}</bdi></span><span class="base">${esc(base(p))}</span>`;
+function fileLink(id, line, o = {}) {
+  const f = getFile(id);
+  if (!f) return '<span class="muted">—</span>';
+  const ln = line ? ':' + line : '';
+  const label = o.full ? pathHTML(f.path) : `<span class="base">${esc(base(f.path))}</span>`;
+  return `<span class="fl"><button type="button" class="lnk path" data-act="${o.act || 'file'}" data-id="${esc(f.id)}" title="${esc(f.path + ln)}">${label}${ln ? `<span class="ln">${ln}</span>` : ''}</button>${edLink(f.path, line)}</span>`;
+}
+const roleHTML = (r) => `<span class="role"><span class="dot" style="--c:${rc(r)}"></span>${esc(r)}</span>`;
+const barHTML = (p, c) => `<div class="bar" style="--c:${c}"><i style="width:${clamp(p, 0, 100)}%"></i></div>`;
+const cxCls = (c) => (num(c) >= 30 ? 'cx-hi' : num(c) >= 15 ? 'cx-mid' : '');
+const screenBtn = (sid) => { const s = getScreen(sid); return s ? `<button type="button" class="chip" data-act="screen" data-id="${esc(s.id)}">${esc(s.name)}</button>` : ''; };
+const testedSummary = () => {
+  const rows = M.risks.untested.byRole.filter((r) => r.role !== 'test' && r.role !== 'generated');
+  if (rows.length) { const t = rows.reduce((s, r) => s + num(r.tested), 0), n = rows.reduce((s, r) => s + num(r.total), 0); return { tested: t, total: n, pct: pct(t, n) }; }
+  const src = M.files.filter((f) => !isTestish(f)); const t = src.filter((f) => f.tested).length;
+  return { tested: t, total: src.length, pct: pct(t, src.length) };
+};
+const hasChurn = () => M.risks.hotspots.length > 0 && M.files.some((f) => num(f.churn) > 0);
+let MEASURE = null;
+function fitText(text, font, max) {
+  text = String(text ?? '');
+  MEASURE = MEASURE || document.createElement('canvas').getContext('2d');
+  MEASURE.font = font;
+  if (MEASURE.measureText(text).width <= max) return text;
+  let lo = 0, hi = text.length;
+  while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (MEASURE.measureText(text.slice(0, mid) + '…').width <= max) lo = mid; else hi = mid - 1; }
+  return text.slice(0, lo) + '…';
+}
+const cssVar = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+/** Search box with a suggestion list. `source()` returns [{label, sub, value, dot}]. */
+function searchBox(host, { placeholder, source, onPick }) {
+  host.className = 'search';
+  host.innerHTML = `${I.search}<input type="search" placeholder="${esc(placeholder)}" aria-label="${esc(placeholder)}" autocomplete="off" spellcheck="false"><div class="sugg" role="listbox" hidden></div>`;
+  const input = $('input', host), box = $('.sugg', host);
+  let items = [], active = 0;
+  const paint = () => $$('button', box).forEach((b, i) => b.setAttribute('aria-selected', String(i === active)));
+  const render = () => {
+    const q = input.value.trim().toLowerCase();
+    if (!q) { box.hidden = true; return; }
+    const hits = [];
+    for (const it of source()) {
+      const a = it.label.toLowerCase(), b = String(it.sub || '').toLowerCase();
+      const s = a === q ? 0 : a.startsWith(q) ? 1 : a.includes(q) ? 2 : b.includes(q) ? 3 : -1;
+      if (s >= 0) hits.push([s, it]);
+    }
+    hits.sort((x, y) => x[0] - y[0] || x[1].label.length - y[1].label.length);
+    items = hits.slice(0, 8).map((h) => h[1]); active = 0;
+    box.innerHTML = items.length ? items.map((it, i) => `<button type="button" role="option" data-i="${i}"><div class="s1">${it.dot ? `<span class="dot" style="--c:${it.dot}"></span>` : ''}${esc(it.label)}</div>${it.sub ? `<div class="s2">${esc(it.sub)}</div>` : ''}</button>`).join('') : '<div class="muted small" style="padding:8px">No matches</div>';
+    paint(); box.hidden = false;
+  };
+  const choose = (i) => { const it = items[i]; if (!it) return; box.hidden = true; input.value = ''; input.blur(); onPick(it.value); };
+  input.addEventListener('input', render);
+  input.addEventListener('focus', render);
+  input.addEventListener('blur', () => setTimeout(() => { box.hidden = true; }, 120));
+  input.addEventListener('keydown', (e) => {
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && items.length) { e.preventDefault(); active = (active + (e.key === 'ArrowDown' ? 1 : items.length - 1)) % items.length; paint(); }
+    else if (e.key === 'Enter') { e.preventDefault(); choose(active); }
+    else if (e.key === 'Escape') { input.value = ''; box.hidden = true; }
+  });
+  box.addEventListener('mousedown', (e) => e.preventDefault());
+  box.addEventListener('click', (e) => { const b = e.target.closest('button[data-i]'); if (b) choose(+b.dataset.i); });
+}
+
+/** Wire the +/−/fit buttons of a graph. */
+function zoomButtons(host, on) {
+  const b = $$('button', host);
+  b[0].innerHTML = I.plus; b[1].innerHTML = I.minus; b[2].innerHTML = I.fit;
+  host.addEventListener('click', (e) => { const t = e.target.closest('[data-z]'); if (t) on(t.dataset.z); });
+}
+
+/* ===================== File detail (shared by Architecture & Files) ===================== */
+function fileDetail(f, ctx) {
+  const inArch = ctx === 'arch', act = inArch ? 'arch-file' : 'file';
+  const list = (ids, max = 60) => (ids.length ? `<ul class="flist">${ids.slice(0, max).map((id) => `<li>${fileLink(id, 0, { full: true, act })}</li>`).join('')}${ids.length > max ? `<li class="muted small">+${fmt(ids.length - max)} more</li>` : ''}</ul>` : '<div class="muted small">None</div>');
+  const sec = (title, body) => `<div class="d-sec"><h4>${title}</h4>${body}</div>`;
+  const tags = [];
+  if (f.isTest || f.role === 'test') tags.push('<span class="tag">test</span>');
+  if (f.isGenerated || f.role === 'generated') tags.push('<span class="tag">generated</span>');
+  if (f.tested) tags.push(`<span class="tag ok">tested${f.coverage != null ? ` · ${Math.round(f.coverage)}% coverage` : ''}</span>`);
+  else if (!isTestish(f)) tags.push('<span class="tag warn">no tests</span>');
+  if (num(f.hotspot) >= 0.5) tags.push('<span class="tag bad">hotspot</span>');
+  if (num(f.complexity) >= 30) tags.push('<span class="tag bad">high complexity</span>');
+  const st = [['Lines', f.loc], ['Complexity', f.complexity], ['Max depth', f.maxDepth], ['Fan-in', f.fanIn], ['Fan-out', f.fanOut], ['Churn', f.churn]];
+  const apis = f.apis.map((id) => apiById.get(id)).filter(Boolean);
+  const scr = f.screens.map(getScreen).filter(Boolean);
+  const fns = f.functions.slice(0, 5);
+  return `<div class="d-role">${roleHTML(f.role)}${f.lang ? `<span>·</span><span>${esc(f.lang)}</span>` : ''}${f.module != null && f.module !== '' ? `<span>·</span><span>${esc(typeof f.module === 'number' ? modName(f.module) : f.module)}</span>` : ''}</div>
+    <h3 class="d-title">${esc(base(f.path))}</h3><div class="d-path">${esc(f.path)}</div>
+    ${tags.length ? `<div class="tags d-tags">${tags.join('')}</div>` : ''}
+    <div class="d-actions">${EDROOT ? `<a class="btn sm" href="${esc(edHref(f.path, 0))}">${I.ext}Open in editor</a>` : ''}${inArch ? `<a class="btn sm" href="#files/${encodeURIComponent(f.id)}">Open in Files</a>` : `<a class="btn sm" href="#architecture/${encodeURIComponent(f.id)}">${I.graph}Show in graph</a>`}</div>
+    <div class="stats">${st.map(([l, v]) => `<div><b>${fmt(v)}</b><span>${l}</span></div>`).join('')}</div>
+    ${f.types.length ? sec('Types', `<div class="tags">${f.types.slice(0, 24).map((t) => `<span class="chip mono">${esc(t)}</span>`).join('')}</div>`) : ''}
+    ${fns.length ? sec('Most complex functions', `<table class="fn"><tbody>${fns.map((fn) => `<tr><td><span class="mono">${esc(fn.name)}</span>${fn.line ? ` ${EDROOT ? `<a class="muted small" href="${esc(edHref(f.path, fn.line))}">:${fn.line}</a>` : `<span class="muted small">:${fn.line}</span>`}` : ''}</td><td title="cyclomatic complexity"><span class="${cxCls(fn.complexity * 2)}">cx ${fmt(fn.complexity)}</span></td><td>${fmt(fn.loc)} lines</td></tr>`).join('')}</tbody></table>`) : ''}
+    ${sec(`Imports · ${f.imports.length}`, list(f.imports))}
+    ${sec(`Imported by · ${f.importedBy.length}`, list(f.importedBy))}
+    ${apis.length ? sec(`API calls · ${apis.length}`, `<ul class="flist">${apis.slice(0, 40).map((a) => `<li><span class="pill" style="--c:${mc(a.method)}">${esc(a.method)}</span><span class="mono small ell" title="${esc(a.url)}">${esc(a.url)}</span>${a.line ? `<span class="r">:${a.line}</span>` : ''}</li>`).join('')}</ul>`) : ''}
+    ${scr.length ? sec(`Screens · ${scr.length}`, `<div class="tags">${scr.map((s) => screenBtn(s.id)).join('')}</div>`) : ''}`;
+}
+
+/* ===================== Overview ===================== */
+const Overview = {
+  init() {
+    const el = $('#view-overview'), s = M.stats, R = M.risks, h = M.health;
+    const nFiles = s.files ?? M.files.length, cyc = s.cycles ?? R.cycles.length, ts = testedSummary();
+    const hosts = new Set(M.apis.filter((a) => a.method !== 'URL' && a.host).map((a) => a.host)).size;
+    const tiles = [
+      { l: 'Files', v: nFiles, d: `${fmt(s.sourceFiles ?? 0)} source · ${fmt(s.testFiles ?? 0)} test`, h: '#files' },
+      { l: 'Lines of code', v: s.loc ?? M.files.reduce((t, f) => t + num(f.loc), 0), d: s.avgComplexity != null ? `avg complexity ${(+s.avgComplexity).toFixed(1)}` : '', h: '#files' },
+      { l: 'Screens', v: s.screens ?? M.screens.length, d: plural(M.screens.filter((x) => x.entry).length || M.nav.entries.length, 'entry point'), h: '#navigation' },
+      { l: 'Routes', v: s.routes ?? M.routes.length, d: plural(s.navEdges ?? M.nav.edges.length, 'transition'), h: '#navigation' },
+      { l: 'API endpoints', v: s.apiEndpoints ?? M.apis.filter((a) => a.method !== 'URL').length, d: `${plural(hosts, 'host')} · ${plural(s.urls ?? 0, 'URL')}`, h: '#apis' },
+      { l: 'Test files', v: s.testFiles ?? 0, d: ts.total ? `${ts.pct}% of files tested` : 'no tests found', h: '#risks/untested' },
+      { l: 'Import cycles', v: cyc, d: cyc ? plural(R.moduleCycles.length, 'module cycle') : 'none found', h: '#risks/cycles', c: cyc ? 'bad' : '' },
+      { l: 'Modules', v: M.modules.length, d: plural(M.moduleEdges.length, 'dependency', 'dependencies'), h: '#architecture' },
+    ];
+    // health
+    const score = h.score == null ? null : clamp(num(h.score), 0, 100), gc = gradeC(h.grade), C = 2 * Math.PI * 44;
+    const SUM = { A: 'Excellent shape', B: 'Healthy, a few things to watch', C: 'Some structural debt', D: 'Significant risks', F: 'Needs attention' };
+    const lost = h.breakdown.reduce((t, b) => t + num(b.penalty), 0);
+    const health = `<div class="card s4"><div class="card-h"><h2>Health score</h2><span class="sub">out of 100</span></div>
+      <div class="health"><div class="ring" style="--gc:${gc}"><svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true"><circle cx="52" cy="52" r="44" fill="none" style="stroke:var(--surface-3)" stroke-width="9"/>${score != null ? `<circle cx="52" cy="52" r="44" fill="none" style="stroke:${gc}" stroke-width="9" stroke-linecap="round" stroke-dasharray="${((C * score) / 100).toFixed(1)} ${C.toFixed(1)}"/>` : ''}</svg><div class="c"><div><b>${esc(h.grade || '–')}</b><small>${score == null ? 'n/a' : score + ' / 100'}</small></div></div></div>
+      <div class="hsum"><b>${esc(SUM[String(h.grade).toUpperCase()] || 'Not scored')}</b><span>${h.breakdown.length ? `−${fmt(lost)} points across ${plural(h.breakdown.length, 'area')}` : 'No deductions'}</span></div></div>
+      ${h.breakdown.length ? `<ul class="bd">${h.breakdown.map((b) => `<li><div style="min-width:0"><div class="lbl">${esc(b.label)}</div><div class="det">${esc(b.detail)}</div></div><span class="pen">−${fmt(b.penalty)}</span></li>`).join('')}</ul>` : ''}</div>`;
+    // roles
+    const byRole = new Map(), locRole = new Map();
+    for (const f of M.files) { const r = roleOf(f.role); byRole.set(r, (byRole.get(r) || 0) + 1); locRole.set(r, (locRole.get(r) || 0) + num(f.loc)); }
+    const present = ROLES.filter((r) => byRole.has(r)), tl = [...locRole.values()].reduce((a, b) => a + b, 0);
+    const top = M.modules.slice().sort((a, b) => num(b.loc) - num(a.loc)).slice(0, 6), maxLoc = Math.max(1, ...top.map((m) => num(m.loc)));
+    const mods = top.length > 1 ? `<div class="sbar-l" style="margin-top:18px"><span>Largest modules</span><a href="#architecture">Open graph →</a></div><ul class="mods">${top.map((m) => `<li><button type="button" class="lnk mono ell" data-act="arch-mod" data-id="${esc(m.id)}">${esc(m.name)}</button>${barHTML(pct(num(m.loc), maxLoc), 'var(--accent)')}<span class="r">${compact(m.loc)} LOC</span></li>`).join('')}</ul>` : '';
+    const seg = (m, t) => present.filter((r) => m.get(r)).map((r) => `<span style="--c:${rc(r)};flex:${m.get(r)}" title="${ROLE_LABEL[r]}: ${fmt(m.get(r))} (${pct(m.get(r), t)}%)"></span>`).join('');
+    const roles = `<div class="card s8"><div class="card-h"><h2>What the code is made of</h2><span class="sub">${fmt(M.files.length)} files by role · click a role to browse</span></div>
+      ${present.length ? `<div class="sbar-l" style="margin-top:0"><span>Files</span><span>${fmt(M.files.length)}</span></div><div class="sbar" role="img" aria-label="Files by role">${seg(byRole, M.files.length)}</div>
+      <div class="sbar-l"><span>Lines of code</span><span>${fmt(tl)}</span></div><div class="sbar" role="img" aria-label="Lines of code by role">${seg(locRole, tl)}</div>
+      <div class="legend-list">${present.map((r) => `<button type="button" class="lg" data-act="role" data-role="${r}"><span class="dot" style="--c:${rc(r)}"></span>${ROLE_LABEL[r]}<span class="cnt">${fmt(byRole.get(r))} · ${pct(byRole.get(r), M.files.length)}%</span></button>`).join('')}</div>${mods}` : emptyHTML('No files analyzed', 'Nothing to break down yet.')}</div>`;
+    // risks preview
+    const items = riskPreview();
+    const risks = `<div class="card s7"><div class="card-h"><h2>Top risks</h2><a class="sub" href="#risks">View all risks →</a></div>
+      ${items.length ? `<ul class="rlist">${items.map((it) => `<li><a href="#risks/${it.h}"><span class="sev" style="--c:var(--${it.sev})"></span><span class="bx"><div class="t">${esc(it.t)}</div><div class="x">${esc(it.d)}</div></span><span class="go">${I.arrow}</span></a></li>`).join('')}</ul>` : okHTML('No major risks detected.')}</div>`;
+    // stack
+    const plats = M.project.platforms.map(platBadge).join('');
+    const stack = `<div class="card s5"><div class="card-h"><h2>Stack</h2><span class="sub">detected from imports &amp; manifests</span></div><dl class="kv">
+      <dt>Platforms</dt><dd>${plats || '<span class="muted">—</span>'}</dd>
+      ${STACK.map(([k, l]) => { const v = arr(M.project.stack[k]); return `<dt>${l}</dt><dd>${v.length ? v.map((x) => `<span class="chip">${esc(x)}</span>`).join('') : '<span class="muted">—</span>'}</dd>`; }).join('')}</dl></div>`;
+    // dependencies
+    const deps = M.project.dependencies;
+    const depCard = `<div class="card s12"><div class="card-h"><h2>Dependencies</h2><span class="sub">${plural(deps.length, 'package')}</span></div>
+      ${deps.length ? `<div class="tags deps${deps.length > 24 ? ' collapsed' : ''}" id="deps">${deps.map((d) => `<span class="chip mono">${esc(typeof d === 'string' ? d : d?.name)}</span>`).join('')}</div>${deps.length > 24 ? `<button type="button" class="btn sm" style="margin-top:12px" data-act="deps" aria-expanded="false">Show all ${deps.length}</button>` : ''}` : '<div class="muted small">No dependencies declared.</div>'}</div>`;
+    el.innerHTML = `<div class="grid"><div class="tiles">${tiles.map((t) => `<a class="tile ${t.c || ''}" href="${t.h}"><div class="l">${t.l}</div><div class="v" title="${fmt(t.v)}">${compact(t.v)}</div><div class="d">${esc(t.d)}</div></a>`).join('')}</div>${health}${roles}${risks}${stack}${depCard}</div>`;
+  },
+};
+function platBadge(p) { const [l, c] = PLAT[p] || [p, 'var(--text-2)']; return `<span class="badge" style="--c:${c}">${esc(l)}</span>`; }
+function riskPreview() {
+  const R = M.risks, out = [];
+  if (R.cycles.length) out.push({ sev: 'bad', t: plural(R.cycles.length, 'import cycle'), d: `largest spans ${Math.max(...R.cycles.map((c) => num(c.size) || c.files.length))} files`, h: 'cycles' });
+  const c0 = R.complex[0], f0 = c0 && getFile(c0.file);
+  if (f0) out.push({ sev: 'warn', t: `Most complex: ${base(f0.path)}`, d: arr(c0.reasons).slice(0, 3).join(' · ') || `score ${c0.score}`, h: 'complex' });
+  const ts = testedSummary();
+  if (ts.total && ts.pct < 80) out.push({ sev: ts.pct < 40 ? 'bad' : 'warn', t: `${100 - ts.pct}% of source files untested`, d: `${fmt(ts.total - ts.tested)} of ${fmt(ts.total)} files are not referenced by any test`, h: 'untested' });
+  const h0 = R.hotspots[0], hf = h0 && getFile(h0.file);
+  if (hasChurn() && hf) out.push({ sev: 'warn', t: `Hotspot: ${base(hf.path)}`, d: `${fmt(h0.churn)} changes × complexity ${fmt(h0.complexity)}`, h: 'hotspots' });
+  const g0 = R.godFiles[0], gf = g0 && getFile(g0.file);
+  if (gf) out.push({ sev: 'warn', t: `God file: ${base(gf.path)}`, d: `fan-in ${fmt(g0.fanIn)} · fan-out ${fmt(g0.fanOut)}`, h: 'god' });
+  if (R.moduleCycles.length) out.push({ sev: 'warn', t: plural(R.moduleCycles.length, 'module cycle'), d: arr(R.moduleCycles[0].modules).map(modName).join(' ↔ '), h: 'module-cycles' });
+  return out.sort((a, b) => (a.sev === 'bad' ? 0 : 1) - (b.sev === 'bad' ? 0 : 1)).slice(0, 5);
+}
+
+/* ===================== Architecture (canvas force graph) ===================== */
+const Arch = (() => {
+  const TAU = Math.PI * 2, THETA2 = 0.81, DECAY = 0.6, AMIN = 0.004, ADECAY = 1 - Math.pow(0.001, 1 / 300), KMIN = 0.03, KMAX = 6;
+  let wrapEl, canvas, ctx, tip, panel, panelB, chipsEl, countEl, emptyEl, SANS = 'sans-serif';
+  let W = 0, H = 0, dpr = 1, mode = M.files.length > 300 && M.modules.length ? 'modules' : M.files.length ? 'files' : 'modules';
+  const G = {};
+  let g = null, vis = [], vlinks = [], labelOrder = [];
+  let view = { k: 1, x: 0, y: 0 }, vt = null, autoFit = true, alpha = 0, alphaTarget = 0, raf = 0;
+  let hover = null, sel = null, focus = null, colors = null, down = null, pinch = null;
+  const hiddenRoles = new Set(), pointers = new Map();
+  let hideTests = true, hideIso = false;
+
+  function dominant(roles) {
+    const e = Object.entries(roles || {}).filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]);
+    const src = e.filter(([r]) => r !== 'test' && r !== 'generated');
+    return roleOf((src[0] || e[0] || ['other'])[0]);
+  }
+  function build(m) {
+    if (G[m]) return G[m];
+    let nodes, links = [];
+    if (m === 'files') {
+      nodes = M.files.map((f) => ({ key: f.id, label: base(f.path), sub: f.path, role: roleOf(f.role), r: clamp(2.6 + Math.sqrt(num(f.loc)) * 0.33, 3, 20), test: isTestish(f), ref: f, group: f.module }));
+      const idx = new Map(nodes.map((n) => [n.key, n]));
+      for (const [a, b] of M.edges) { const s = idx.get(a) ?? idx.get(keyOf(a)), t = idx.get(b) ?? idx.get(keyOf(b)); if (s && t && s !== t) links.push({ s, t, w: 1 }); }
+    } else {
+      nodes = M.modules.map((mo) => {
+        const roles = mo.roles || {}, tot = Object.values(roles).reduce((a, b) => a + num(b), 0) || 1, keys = Object.keys(roles);
+        const slices = ROLES.filter((r) => num(roles[r]) > 0).map((r) => [r, num(roles[r]) / tot]);
+        for (const r of keys) if (!ROLES.includes(r) && num(roles[r]) > 0) slices.push(['other', num(roles[r]) / tot]);
+        const nf = Array.isArray(mo.files) ? mo.files.length : num(mo.files);
+        return { key: mo.id, label: String(mo.name), sub: `${plural(nf, 'file')} · ${fmt(mo.loc)} LOC`, role: dominant(roles), slices, r: clamp(5 + Math.sqrt(num(mo.loc)) * 0.2, 7, 44), test: keys.length > 0 && keys.every((r) => r === 'test' || r === 'generated'), ref: mo };
+      });
+      const idx = new Map(nodes.map((n) => [n.key, n]));
+      for (const [a, b, w] of M.moduleEdges) { const s = idx.get(a), t = idx.get(b); if (s && t && s !== t) links.push({ s, t, w: Math.max(1, num(w)) }); }
+    }
+    for (const n of nodes) { n.out = []; n.in = []; n.vx = n.vy = 0; n.fx = n.fy = null; n.q = m === 'files' ? -(30 + n.r * 5) : -(180 + n.r * 9); }
+    for (const l of links) { l.s.out.push(l.t); l.t.in.push(l.s); }
+    // seed positions: groups (modules) around a circle, phyllotaxis inside each group
+    const groups = new Map();
+    for (const n of nodes) { const k = n.group ?? ''; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(n); }
+    const gl = [...groups.values()].sort((a, b) => b.length - a.length), R0 = gl.length > 1 ? 9 * Math.sqrt(nodes.length) + 40 : 0, sp = m === 'files' ? 9 : 34;
+    const sx = W && H ? clamp(W / H, 0.6, 2.2) : 1;
+    gl.forEach((a, gi) => { const ang = (gi / gl.length) * TAU, cx = R0 * Math.cos(ang) * Math.sqrt(sx), cy = (R0 * Math.sin(ang)) / Math.sqrt(sx); a.forEach((n, i) => { const rr = sp * Math.sqrt(i + 0.5), aa = i * 2.39996; n.x = cx + rr * Math.cos(aa); n.y = cy + rr * Math.sin(aa); }); });
+    return (G[m] = { nodes, links, fresh: true });
+  }
+
+  function applyFilters(reheat) {
+    for (const n of g.nodes) n.vis = !(hideTests && n.test) && !(mode === 'files' && hiddenRoles.has(n.role));
+    if (hideIso) {
+      const linked = new Set();
+      for (const l of g.links) if (l.s.vis && l.t.vis) { linked.add(l.s); linked.add(l.t); }
+      for (const n of g.nodes) if (n.vis && !linked.has(n)) n.vis = false;
+    }
+    vis = g.nodes.filter((n) => n.vis); vlinks = g.links.filter((l) => l.s.vis && l.t.vis);
+    labelOrder = vis.slice().sort((a, b) => b.r - a.r);
+    const cnt = new Map();
+    for (const l of vlinks) { cnt.set(l.s, (cnt.get(l.s) || 0) + 1); cnt.set(l.t, (cnt.get(l.t) || 0) + 1); }
+    for (const l of vlinks) { const a = cnt.get(l.s), b = cnt.get(l.t); l.bias = a / (a + b); l.str = 1 / Math.min(a, b); l.dist = (mode === 'files' ? 24 : 70) + l.s.r + l.t.r; }
+    if (sel && !sel.vis) select(null);
+    else if (sel) focus = neighborhood(sel);
+    countEl.textContent = `${fmt(vis.length)} of ${plural(g.nodes.length, mode === 'files' ? 'file' : 'module')} · ${plural(vlinks.length, 'edge')}`;
+    emptyEl.hidden = vis.length > 0;
+    if (!vis.length) emptyEl.innerHTML = `<div>${emptyHTML('Nothing to show', g.nodes.length ? 'Every node is hidden by the current filters.' : 'No modules were detected.')}</div>`;
+    if (reheat) heat(reheat);
+  }
+  const neighborhood = (n) => new Set([n, ...n.out.filter((v) => v.vis), ...n.in.filter((v) => v.vis)]);
+
+  /* --- simulation: Barnes–Hut repulsion + springs + gravity --- */
+  const cell = (x, y, s) => ({ x, y, s, k: null, p: null, q: 0, cx: 0, cy: 0 });
+  function insert(c, n, d) {
+    for (;;) {
+      if (c.k) { const h = c.s / 2, i = (n.x >= c.x + h ? 1 : 0) + (n.y >= c.y + h ? 2 : 0); c = c.k[i] || (c.k[i] = cell(c.x + (i & 1 ? h : 0), c.y + (i & 2 ? h : 0), h)); d++; continue; }
+      if (!c.p) { c.p = [n]; return; }
+      if (d > 24) { c.p.push(n); return; }
+      const old = c.p; c.p = null; c.k = [null, null, null, null];
+      for (const o of old) insert(c, o, d);
+    }
+  }
+  function accumulate(c) {
+    let q = 0, wx = 0, wy = 0, w = 0;
+    if (c.k) { for (const k of c.k) if (k) { accumulate(k); const a = Math.abs(k.q); q += k.q; wx += k.cx * a; wy += k.cy * a; w += a; } }
+    else for (const p of c.p) { const a = Math.abs(p.q); q += p.q; wx += p.x * a; wy += p.y * a; w += a; }
+    c.q = q; c.cx = w ? wx / w : c.x; c.cy = w ? wy / w : c.y;
+  }
+  function repel(c, n, a) {
+    let dx = c.cx - n.x, dy = c.cy - n.y, l = dx * dx + dy * dy;
+    if (c.k) {
+      if ((c.s * c.s) / THETA2 < l) { const f = (c.q * a) / (l < 1 ? Math.sqrt(l) || 1 : l); n.vx += dx * f; n.vy += dy * f; return; }
+      for (const k of c.k) if (k) repel(k, n, a);
+      return;
+    }
+    for (const p of c.p) {
+      if (p === n) continue;
+      dx = p.x - n.x; dy = p.y - n.y; l = dx * dx + dy * dy;
+      if (!l) { dx = (Math.random() - 0.5) * 1e-2; dy = (Math.random() - 0.5) * 1e-2; l = dx * dx + dy * dy; }
+      if (l < 1) l = Math.sqrt(l);
+      const f = (p.q * a) / l; n.vx += dx * f; n.vy += dy * f;
+    }
+  }
+  function tick() {
+    const a = alpha, grav = mode === 'files' ? 0.055 : 0.06, ar = W && H ? H / W : 1;
+    const gx = grav * clamp(Math.pow(ar, 1.5), 0.2, 1), gy = grav * clamp(Math.pow(1 / ar, 1.5), 0.2, 1);
+    for (const l of vlinks) {
+      const s = l.s, t = l.t;
+      let dx = t.x + t.vx - s.x - s.vx || 1e-3, dy = t.y + t.vy - s.y - s.vy || 1e-3;
+      const d = Math.sqrt(dx * dx + dy * dy), f = ((d - l.dist) / d) * a * l.str;
+      dx *= f; dy *= f;
+      t.vx -= dx * l.bias; t.vy -= dy * l.bias; s.vx += dx * (1 - l.bias); s.vy += dy * (1 - l.bias);
+    }
+    if (vis.length) {
+      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      for (const n of vis) { if (n.x < x0) x0 = n.x; if (n.y < y0) y0 = n.y; if (n.x > x1) x1 = n.x; if (n.y > y1) y1 = n.y; }
+      const root = cell(x0, y0, Math.max(x1 - x0, y1 - y0) + 1);
+      for (const n of vis) insert(root, n, 0);
+      accumulate(root);
+      for (const n of vis) { repel(root, n, a); n.vx -= n.x * gx * a; n.vy -= n.y * gy * a; }
+    }
+    for (const n of vis) {
+      if (n.fx != null) { n.x = n.fx; n.y = n.fy; n.vx = n.vy = 0; }
+      else { n.x += n.vx *= DECAY; n.y += n.vy *= DECAY; }
+    }
+    alpha += (alphaTarget - alpha) * ADECAY;
+  }
+  function heat(a) { alpha = Math.max(alpha, a); kick(); }
+  function kick() { if (!raf) raf = requestAnimationFrame(frame); }
+  function frame() {
+    raf = 0;
+    if (current !== 'architecture' || !W) return;
+    if ((window.devicePixelRatio || 1) !== dpr) resize();
+    const running = vis.length && (alpha > AMIN || alphaTarget > 0);
+    if (running) { tick(); if (vis.length < 300) tick(); }
+    if (running && autoFit) vt = fitView();
+    if (vt) {
+      const e = 0.18;
+      view.k += (vt.k - view.k) * e; view.x += (vt.x - view.x) * e; view.y += (vt.y - view.y) * e;
+      if (Math.abs(vt.k - view.k) < 1e-3 * vt.k && Math.abs(vt.x - view.x) < 0.5 && Math.abs(vt.y - view.y) < 0.5) { view = { ...vt }; vt = null; }
+    }
+    draw();
+    if (running || vt) kick();
+  }
+  function fitView() {
+    if (!vis.length || !W) return { k: 1, x: W / 2, y: H / 2 };
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (const n of vis) { x0 = Math.min(x0, n.x - n.r); y0 = Math.min(y0, n.y - n.r); x1 = Math.max(x1, n.x + n.r); y1 = Math.max(y1, n.y + n.r + 14); }
+    const px = W < 600 ? 20 : 48, pt = W < 600 ? 20 : 32, pb = W < 760 ? 20 : 64; // bottom leaves room for the legend
+    const k = clamp(Math.min((W - px * 2) / (x1 - x0 || 1), (H - pt - pb) / (y1 - y0 || 1)), KMIN, 2.2);
+    return { k, x: W / 2 - ((x0 + x1) / 2) * k, y: pt + (H - pt - pb) / 2 - ((y0 + y1) / 2) * k };
+  }
+
+  /* --- rendering --- */
+  function readColors() {
+    const role = {};
+    for (const r of ROLES) role[r] = cssVar('--r-' + r);
+    colors = { bg: cssVar('--surface'), text: cssVar('--text'), text3: cssVar('--text-3'), edge: cssVar('--edge'), accent: cssVar('--accent'), inc: cssVar('--k-go'), role };
+    SANS = getComputedStyle(document.body).fontFamily || 'sans-serif';
+  }
+  const lw = (l) => clamp(0.8 + Math.log2(1 + l.w) * 0.9, 0.8, 7);
+  function seg(c, l, ah) {
+    const s = l.s, t = l.t, dx = t.x - s.x, dy = t.y - s.y, d = Math.hypot(dx, dy);
+    if (d <= s.r + t.r) return;
+    const e = t.r + ah;
+    c.moveTo(s.x + (dx / d) * s.r, s.y + (dy / d) * s.r); c.lineTo(t.x - (dx / d) * e, t.y - (dy / d) * e);
+  }
+  function head(c, l, ah) {
+    const s = l.s, t = l.t, dx = t.x - s.x, dy = t.y - s.y, d = Math.hypot(dx, dy);
+    if (d <= s.r + t.r + ah) return;
+    const ux = dx / d, uy = dy / d, ex = t.x - ux * (t.r + 1 / view.k), ey = t.y - uy * (t.r + 1 / view.k), bx = ex - ux * ah, by = ey - uy * ah, w = ah * 0.52;
+    c.moveTo(ex, ey); c.lineTo(bx - uy * w, by + ux * w); c.lineTo(bx + uy * w, by - ux * w); c.closePath();
+  }
+  function draw() {
+    const c = ctx;
+    c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H);
+    if (!vis.length) return;
+    const { k, x: tx, y: ty } = view, F = focus, files = mode === 'files';
+    c.setTransform(dpr * k, 0, 0, dpr * k, dpr * tx, dpr * ty);
+    const x0 = -tx / k, y0 = -ty / k, x1 = (W - tx) / k, y1 = (H - ty) / k;
+    c.lineCap = 'round'; c.lineJoin = 'round';
+    // edges
+    c.strokeStyle = colors.edge; c.fillStyle = colors.edge;
+    if (files) {
+      c.beginPath();
+      for (const l of vlinks) { if (F && (l.s === sel || l.t === sel)) continue; c.moveTo(l.s.x, l.s.y); c.lineTo(l.t.x, l.t.y); }
+      c.globalAlpha = F ? 0.07 : clamp(0.42 * Math.sqrt(400 / Math.max(400, vlinks.length)), 0.14, 0.42); c.lineWidth = 0.9 / k; c.stroke();
+    } else {
+      for (const l of vlinks) {
+        if (F && (l.s === sel || l.t === sel)) continue;
+        const w = lw(l), ah = (5 + w * 1.3) / k;
+        c.globalAlpha = F ? 0.07 : clamp(0.5 * Math.sqrt(120 / Math.max(120, vlinks.length)), 0.18, 0.5); c.lineWidth = w / k;
+        c.beginPath(); seg(c, l, ah * 0.8); c.stroke(); c.beginPath(); head(c, l, ah); c.fill();
+      }
+    }
+    if (F) {
+      c.globalAlpha = 0.95;
+      for (const [isOut, col] of [[true, colors.accent], [false, colors.inc]]) {
+        c.strokeStyle = col; c.fillStyle = col;
+        for (const l of vlinks) {
+          if ((isOut ? l.s : l.t) !== sel) continue;
+          const w = files ? 1.7 : lw(l) + 0.6, ah = (6 + w * 1.4) / k;
+          c.lineWidth = w / k; c.beginPath(); seg(c, l, ah * 0.8); c.stroke(); c.beginPath(); head(c, l, ah); c.fill();
+        }
+      }
+    }
+    // nodes (batched by color; dimmed pass first)
+    const pass = (dim) => {
+      c.globalAlpha = dim ? 0.15 : 1; c.lineWidth = 1.4 / k; c.strokeStyle = colors.bg;
+      if (files) {
+        const groups = new Map();
+        for (const n of vis) {
+          if (F && F.has(n) === dim) continue;
+          if (n.x + n.r < x0 || n.x - n.r > x1 || n.y + n.r < y0 || n.y - n.r > y1) continue;
+          let a = groups.get(n.role); if (!a) groups.set(n.role, (a = [])); a.push(n);
+        }
+        for (const [r, a] of groups) { c.fillStyle = colors.role[r] || colors.role.other; c.beginPath(); for (const n of a) { c.moveTo(n.x + n.r, n.y); c.arc(n.x, n.y, n.r, 0, TAU); } c.fill(); c.stroke(); }
+      } else {
+        for (const n of vis) {
+          if (F && F.has(n) === dim) continue;
+          if (n.x + n.r < x0 || n.x - n.r > x1 || n.y + n.r < y0 || n.y - n.r > y1) continue;
+          let a0 = -Math.PI / 2;
+          if (!n.slices.length) { c.fillStyle = colors.role.other; c.beginPath(); c.arc(n.x, n.y, n.r, 0, TAU); c.fill(); }
+          for (const [r, fr] of n.slices) { const a1 = a0 + fr * TAU; c.fillStyle = colors.role[r] || colors.role.other; c.beginPath(); c.moveTo(n.x, n.y); c.arc(n.x, n.y, n.r, a0, a1); c.closePath(); c.fill(); a0 = a1; }
+          c.beginPath(); c.arc(n.x, n.y, n.r, 0, TAU); c.stroke();
+        }
+      }
+    };
+    if (F) pass(true);
+    pass(false);
+    c.globalAlpha = 1;
+    // pinned markers & rings
+    c.fillStyle = colors.bg; c.beginPath();
+    for (const n of vis) if (n.fx != null && !(down && down.node === n && !down.moved)) { const rr = Math.max(1.2 / k, Math.min(n.r * 0.32, 3.5 / k)); c.moveTo(n.x + rr, n.y); c.arc(n.x, n.y, rr, 0, TAU); }
+    c.fill();
+    const ring = (n, col, w) => { c.beginPath(); c.arc(n.x, n.y, n.r + 3 / k, 0, TAU); c.strokeStyle = col; c.lineWidth = w / k; c.stroke(); };
+    if (hover && hover.vis && hover !== sel) ring(hover, colors.text3, 1.5);
+    if (sel) ring(sel, colors.accent, 2.5);
+    // labels with simple collision avoidance (screen space)
+    const fs = files ? 11 : 12;
+    c.font = `${files ? 500 : 600} ${fs / k}px ${SANS}`; c.textAlign = 'center'; c.textBaseline = 'top';
+    c.lineWidth = 3.5 / k; c.strokeStyle = colors.bg;
+    const placed = [];
+    const label = (n, force) => {
+      const sx = n.x * k + tx, sy = (n.y + n.r) * k + ty + 3;
+      const w = c.measureText(n.label).width * k, box = [sx - w / 2 - 2, sy - 1, sx + w / 2 + 2, sy + fs + 2];
+      if (!force && placed.some((b) => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1])) return false;
+      placed.push(box);
+      c.globalAlpha = F && !F.has(n) ? 0.35 : 1; c.fillStyle = colors.text;
+      c.strokeText(n.label, n.x, n.y + n.r + 3 / k); c.fillText(n.label, n.x, n.y + n.r + 3 / k);
+      return true;
+    };
+    for (const n of [sel, hover]) if (n && n.vis) label(n, true);
+    let shown = 0;
+    for (const n of labelOrder) {
+      if (n === sel || n === hover) continue;
+      const sr = n.r * k;
+      if (!(F ? F.has(n) && (F.size <= 40 || sr > 4) : files ? sr >= 6.5 : sr >= 3)) continue;
+      if (n.x < x0 - 80 / k || n.x > x1 + 80 / k || n.y < y0 - 20 / k || n.y > y1) continue;
+      if (label(n, false) && ++shown > 220) break;
+    }
+    c.globalAlpha = 1;
+  }
+
+  /* --- interaction --- */
+  const pt = (e) => { const r = canvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  function pick(x, y) {
+    const wx = (x - view.x) / view.k, wy = (y - view.y) / view.k, min = 5 / view.k;
+    let best = null, bd = Infinity;
+    for (const n of vis) { const dx = n.x - wx, dy = n.y - wy, d = dx * dx + dy * dy, rr = Math.max(n.r, min) + 1 / view.k; if (d <= rr * rr && d < bd) { bd = d; best = n; } }
+    return best;
+  }
+  function zoomAt(x, y, f) { const k = clamp(view.k * f, KMIN, KMAX); f = k / view.k; view = { k, x: x - (x - view.x) * f, y: y - (y - view.y) * f }; autoFit = false; vt = null; kick(); }
+  function showTip(n, p) {
+    const f = n.ref;
+    tip.innerHTML = mode === 'files'
+      ? `<b>${esc(n.label)}</b><div class="p">${esc(f.path)}</div><div class="m">${roleHTML(f.role)}<span>· ${fmt(f.loc)} LOC · in ${fmt(f.fanIn ?? n.in.length)} / out ${fmt(f.fanOut ?? n.out.length)}</span></div>`
+      : `<b>${esc(n.label)}</b><div class="m">${esc(n.sub)}</div><div class="m small">depends on ${n.out.length} · used by ${n.in.length}</div>`;
+    tip.hidden = false;
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    let x = p.x + 14, y = p.y + 14;
+    if (x + tw > W - 8) x = p.x - tw - 14;
+    if (y + th > H - 8) y = p.y - th - 14;
+    tip.style.transform = `translate(${Math.max(4, x)}px,${Math.max(4, y)}px)`;
+  }
+  const hideTip = () => { tip.hidden = true; };
+  function onDown(e) {
+    if (e.button > 0) return;
+    canvas.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, pt(e));
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      if (down && down.node && !down.wasPinned) down.node.fx = down.node.fy = null;
+      down = null; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y) || 1, mx: (a.x + b.x) / 2, my: (a.y + b.y) / 2, v: { ...view } };
+      return;
+    }
+    const p = pt(e), n = pick(p.x, p.y);
+    down = { p, node: n, moved: false, vx: view.x, vy: view.y, wasPinned: !!(n && n.fx != null) };
+    if (n) { n.fx = n.x; n.fy = n.y; }
+    hideTip();
+  }
+  function onMove(e) {
+    const p = pt(e);
+    if (pointers.has(e.pointerId)) pointers.set(e.pointerId, p);
+    if (pinch && pointers.size === 2) {
+      const [a, b] = [...pointers.values()], k = clamp((pinch.v.k * Math.hypot(a.x - b.x, a.y - b.y)) / pinch.d, KMIN, KMAX);
+      view = { k, x: pinch.mx - ((pinch.mx - pinch.v.x) * k) / pinch.v.k, y: pinch.my - ((pinch.my - pinch.v.y) * k) / pinch.v.k };
+      autoFit = false; vt = null; kick(); return;
+    }
+    if (!down) {
+      const n = pick(p.x, p.y);
+      if (n !== hover) { hover = n; canvas.style.cursor = n ? 'pointer' : ''; kick(); }
+      if (n && e.pointerType !== 'touch') showTip(n, p); else hideTip();
+      return;
+    }
+    if (!down.moved && Math.hypot(p.x - down.p.x, p.y - down.p.y) < 4) return;
+    down.moved = true; autoFit = false; vt = null;
+    if (down.node) { down.node.fx = (p.x - view.x) / view.k; down.node.fy = (p.y - view.y) / view.k; alphaTarget = 0.25; heat(0.25); }
+    else { view.x = down.vx + p.x - down.p.x; view.y = down.vy + p.y - down.p.y; canvas.classList.add('drag'); kick(); }
+  }
+  function onUp(e) {
+    pointers.delete(e.pointerId);
+    if (pinch) { if (pointers.size < 2) pinch = null; return; }
+    if (!down) return;
+    const d = down; down = null; canvas.classList.remove('drag'); alphaTarget = 0;
+    if (d.node) { if (!d.moved) { if (!d.wasPinned) d.node.fx = d.node.fy = null; select(d.node === sel ? null : d.node); } }
+    else if (!d.moved) select(null);
+    kick();
+  }
+
+  function select(n, center) {
+    sel = n || null; focus = sel ? neighborhood(sel) : null;
+    if (sel) {
+      $('#arch-panel-t').textContent = mode === 'files' ? 'File' : 'Module';
+      panelB.innerHTML = mode === 'files' ? fileDetail(sel.ref, 'arch') : moduleDetail(sel.ref);
+      panel.hidden = false; panelB.scrollTop = 0;
+      if (center) {
+        const k = Math.max(view.k, mode === 'files' ? 1.5 : 0.9), cx = W > 760 ? (W - 400) / 2 : W / 2, cy = W > 760 ? H / 2 : H * 0.28;
+        vt = { k, x: cx - sel.x * k, y: cy - sel.y * k }; autoFit = false;
+      }
+    } else panel.hidden = true;
+    legend();
+    if (current === 'architecture') try { history.replaceState(null, '', '#architecture' + (sel ? '/' + (mode === 'modules' ? 'm:' : '') + encodeURIComponent(sel.key) : '')); } catch (_) { /* file:// may refuse */ }
+    kick();
+  }
+  function moduleDetail(mo) {
+    const files = M.files.filter((f) => f.module === mo.name || f.module === mo.id).sort((a, b) => num(b.loc) - num(a.loc));
+    const outs = M.moduleEdges.filter((e) => e[0] === mo.id).sort((a, b) => num(b[2]) - num(a[2]));
+    const ins = M.moduleEdges.filter((e) => e[1] === mo.id).sort((a, b) => num(b[2]) - num(a[2]));
+    const roles = Object.entries(mo.roles || {}).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]), tot = roles.reduce((t, [, v]) => t + v, 0);
+    const mlist = (es, end) => (es.length ? `<ul class="flist">${es.slice(0, 40).map((e) => `<li><button type="button" class="lnk" data-act="arch-mod" data-id="${esc(e[end])}">${esc(modName(e[end]))}</button><span class="r">${plural(num(e[2]), 'import')}</span></li>`).join('')}</ul>` : '<div class="muted small">None</div>');
+    const nf = Array.isArray(mo.files) ? mo.files.length : num(mo.files);
+    return `<div class="d-role"><span class="tag">module</span></div><h3 class="d-title">${esc(mo.name)}</h3>
+      <div class="stats"><div><b>${fmt(nf)}</b><span>Files</span></div><div><b>${compact(mo.loc)}</b><span>Lines</span></div><div><b>${fmt(outs.length)} / ${fmt(ins.length)}</b><span>Deps out / in</span></div></div>
+      ${roles.length ? `<div class="d-sec"><h4>Roles</h4><div class="sbar">${roles.map(([r, v]) => `<span style="--c:${rc(r)};flex:${v}" title="${esc(r)}: ${v}"></span>`).join('')}</div><div class="tags" style="margin-top:8px">${roles.map(([r, v]) => `<span class="role"><span class="dot" style="--c:${rc(r)}"></span>${esc(r)} ${v}</span>`).join('')}</div></div>` : ''}
+      <div class="d-sec"><h4>Depends on · ${outs.length}</h4>${mlist(outs, 1)}</div>
+      <div class="d-sec"><h4>Used by · ${ins.length}</h4>${mlist(ins, 0)}</div>
+      <div class="d-sec"><h4>Largest files · ${fmt(files.length)}</h4>${files.length ? `<ul class="flist">${files.slice(0, 30).map((f) => `<li>${fileLink(f.id, 0, { full: true })}<span class="r">${fmt(f.loc)}</span></li>`).join('')}</ul>` : '<div class="muted small">None</div>'}</div>`;
+  }
+  function reveal(n) {
+    let changed = false;
+    if (n.test && hideTests) { hideTests = false; $('#arch-tests').checked = false; changed = true; }
+    if (mode === 'files' && hiddenRoles.has(n.role)) { hiddenRoles.delete(n.role); changed = true; }
+    if (changed) { syncChips(); applyFilters(0.15); }
+    if (!n.vis && hideIso) { hideIso = false; $('#arch-iso').checked = false; applyFilters(0.15); }
+  }
+  function focusNode(n) { reveal(n); select(n, true); }
+  function syncChips() {
+    for (const b of $$('[data-role]', chipsEl)) {
+      const r = b.dataset.role, lock = mode === 'modules' || (hideTests && (r === 'test' || r === 'generated'));
+      b.disabled = lock; b.setAttribute('aria-pressed', String(!hiddenRoles.has(r) && !(hideTests && (r === 'test' || r === 'generated'))));
+      b.title = mode === 'modules' ? 'Role filters apply to the Files view' : lock ? 'Hidden by “Hide tests & generated”' : '';
+    }
+  }
+  function legend() {
+    const present = ROLES.filter((r) => M.files.some((f) => roleOf(f.role) === r));
+    const ln = (c, t) => `<span><svg width="18" height="8" aria-hidden="true"><line x1="1" y1="4" x2="17" y2="4" style="stroke:${c}" stroke-width="2"/></svg>${t}</span>`;
+    $('#arch-legend').innerHTML = present.map((r) => `<span><span class="dot" style="--c:${rc(r)}"></span>${esc(r)}</span>`).join('') + '<span class="sep"></span>' +
+      (sel ? ln('var(--accent)', mode === 'files' ? 'imports' : 'depends on') + ln('var(--k-go)', mode === 'files' ? 'imported by' : 'used by') : `<span>${mode === 'files' ? 'size = lines of code' : 'pie = roles · size = LOC · width = imports'}</span>`);
+  }
+  function setMode(m) {
+    if (m === 'modules' && !M.modules.length) m = 'files';
+    if (m === 'files' && !M.files.length) m = 'modules';
+    mode = m; g = build(m);
+    $$('#arch-mode button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === m)));
+    syncChips(); hover = null; hideTip(); select(null); autoFit = true; vt = null;
+    applyFilters(0);
+    if (g.fresh) { g.fresh = false; alpha = 1; for (let i = 0, n = Math.min(80, Math.ceil(30000 / Math.max(1, vis.length))); i < n; i++) tick(); }
+    else alpha = Math.max(alpha, 0.05);
+    view = fitView(); legend(); kick();
+  }
+  function resize() {
+    const r = wrapEl.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    W = r.width; H = r.height; dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    if (autoFit) view = fitView();
+    kick();
+  }
+  function init() {
+    wrapEl = $('#arch-graph'); canvas = $('#arch-canvas'); tip = $('#arch-tip'); panel = $('#arch-panel'); panelB = $('#arch-panel-b');
+    chipsEl = $('#arch-roles'); countEl = $('#arch-count'); emptyEl = $('#arch-empty');
+    $('[data-act="arch-close"]').innerHTML = I.close;
+    if (!M.files.length && !M.modules.length) { $('#view-architecture').innerHTML = emptyHTML('No source files analyzed', 'The analyzer did not find any Dart or Swift sources, so there is no dependency graph to draw.'); return; }
+    ctx = canvas.getContext('2d');
+    readColors();
+    if (!M.modules.length) $('[data-mode="modules"]').disabled = true;
+    $$('#arch-mode button').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
+    const present = ROLES.filter((r) => M.files.some((f) => roleOf(f.role) === r));
+    chipsEl.innerHTML = present.map((r) => `<button type="button" class="fchip" data-role="${r}" aria-pressed="true"><span class="dot" style="--c:${rc(r)}"></span>${ROLE_LABEL[r]}<span class="n">${fmt(M.files.filter((f) => roleOf(f.role) === r).length)}</span></button>`).join('');
+    chipsEl.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-role]'); if (!b || b.disabled) return;
+      const r = b.dataset.role; hiddenRoles.has(r) ? hiddenRoles.delete(r) : hiddenRoles.add(r);
+      syncChips(); applyFilters(0.3);
+    });
+    $('#arch-tests').addEventListener('change', (e) => { hideTests = e.target.checked; syncChips(); applyFilters(0.35); });
+    $('#arch-iso').addEventListener('change', (e) => { hideIso = e.target.checked; applyFilters(0.3); });
+    searchBox($('#arch-search'), {
+      placeholder: 'Find a file or module…',
+      source: () => g.nodes.map((n) => ({ label: n.label, sub: mode === 'files' ? n.sub : n.sub, value: n, dot: mode === 'files' ? rc(n.role) : '' })),
+      onPick: focusNode,
+    });
+    zoomButtons($('#arch-zoom'), (z) => { if (z === 'fit') { autoFit = true; vt = fitView(); kick(); } else zoomAt(W / 2, H / 2, z === 'in' ? 1.4 : 1 / 1.4); });
+    canvas.addEventListener('pointerdown', onDown);
+    canvas.addEventListener('pointermove', onMove);
+    canvas.addEventListener('pointerup', onUp);
+    canvas.addEventListener('pointercancel', onUp);
+    canvas.addEventListener('pointerleave', () => { if (!down && hover) { hover = null; kick(); } hideTip(); });
+    canvas.addEventListener('wheel', (e) => { e.preventDefault(); const p = pt(e); zoomAt(p.x, p.y, Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : e.ctrlKey ? 0.01 : 0.0016))); }, { passive: false });
+    canvas.addEventListener('dblclick', (e) => { const p = pt(e), n = pick(p.x, p.y); if (n && n.fx != null) { n.fx = n.fy = null; heat(0.12); } });
+    new ResizeObserver(resize).observe(wrapEl);
+    resize();
+    setMode(mode);
+  }
+  return {
+    init,
+    show() { resize(); kick(); },
+    route(arg) {
+      if (!g || !arg) return;
+      const isMod = arg.startsWith('m:'), key = isMod ? arg.slice(2) : arg;
+      if ((isMod ? 'modules' : 'files') !== mode) setMode(isMod ? 'modules' : 'files');
+      const n = g.nodes.find((x) => String(x.key) === key);
+      if (n) focusNode(n);
+    },
+    recolor() { if (ctx) { readColors(); kick(); } },
+    close() { if (sel) select(null); },
+    get selected() { return sel; },
+  };
+})();
+
+/* ===================== Navigation (layered SVG) ===================== */
+const Nav = (() => {
+  const NW = 188, NH = 48, SUBG = 28, LG = 96, RG = 16, MAXC = 14;
+  const N = M.nav.nodes.filter((n) => n && n.id != null).map((n) => ({ ...n, id: String(n.id), label: String(n.label ?? n.id) }));
+  const byId = new Map(N.map((n) => [n.id, n]));
+  const E = M.nav.edges.map((e) => ({ ...e, from: String(e.from), to: String(e.to) })).filter((e) => byId.has(e.from) && byId.has(e.to));
+  const outE = new Map(N.map((n) => [n.id, []])), inE = new Map(N.map((n) => [n.id, []]));
+  for (const e of E) { outE.get(e.from).push(e); inE.get(e.to).push(e); }
+  const entries = new Set(M.nav.entries.map(String).filter((id) => byId.has(id)));
+  const deg = (id) => outE.get(id).length + inE.get(id).length;
+  let svg, wrapEl, panel, panelB, emptyEl, W = 0, H = 0, vb = { x: 0, y: 0, w: 1, h: 1 }, L = null, sel = null, showIso = false, fitted = false, drag = null;
+  let F1 = '', F2 = '';
+  const screenOf = (n) => (n.screen != null ? getScreen(n.screen) : undefined);
+  function subOf(n) {
+    const sc = screenOf(n), r = n.route || sc?.routes[0];
+    if (r) return r;
+    if (n.kind === 'app') return 'app entry';
+    const f = getFile(n.file ?? sc?.file);
+    return f ? base(f.path) : String(n.kind || 'screen');
+  }
+
+  function layout() {
+    const visN = N.filter((n) => showIso || (E.length && (deg(n.id) > 0 || entries.has(n.id))));
+    const vs = new Set(visN.map((n) => n.id)), succ = new Map(), nbr = new Map(), pairs = new Map();
+    for (const n of visN) { succ.set(n.id, []); nbr.set(n.id, new Set()); }
+    for (const e of E) {
+      if (!vs.has(e.from) || !vs.has(e.to)) continue;
+      const k = e.from + '\u0000' + e.to;
+      if (!pairs.has(k)) { pairs.set(k, []); if (e.from !== e.to) { succ.get(e.from).push(e.to); nbr.get(e.from).add(e.to); nbr.get(e.to).add(e.from); } }
+      pairs.get(k).push(e);
+    }
+    const layer = new Map();
+    const bfs = (roots, b) => {
+      const q = [];
+      for (const r of roots) if (!layer.has(r)) { layer.set(r, b); q.push(r); }
+      for (let h = 0; h < q.length; h++) for (const w of succ.get(q[h])) if (!layer.has(w)) { layer.set(w, layer.get(q[h]) + 1); q.push(w); }
+    };
+    const indeg = (ids, within) => { const d = new Map(ids.map((id) => [id, 0])); for (const v of ids) for (const w of succ.get(v)) if (within.has(w)) d.set(w, d.get(w) + 1); return d; };
+    let roots = [...entries].filter((id) => vs.has(id));
+    if (!roots.length) { const d = indeg([...vs], vs); roots = [...vs].filter((id) => !d.get(id)); }
+    if (!roots.length && visN.length) roots = [visN[0].id];
+    bfs(roots, 0);
+    while (layer.size < visN.length) { // unreachable parts go after the reachable layers
+      const rest = visN.map((n) => n.id).filter((id) => !layer.has(id)), rs = new Set(rest), d = indeg(rest, rs);
+      let rr = rest.filter((id) => !d.get(id));
+      if (!rr.length) rr = [rest[0]];
+      bfs(rr, layer.size ? Math.max(...layer.values()) + 1 : 0);
+    }
+    const nL = layer.size ? Math.max(...layer.values()) + 1 : 0, cols = Array.from({ length: nL }, () => []);
+    for (const [id, l] of layer) cols[l].push(id);
+    const idx = new Map();
+    cols.forEach((c) => c.forEach((id, i) => idx.set(id, i)));
+    const sweep = (l, adj) => {
+      const c = cols[l], b = new Map();
+      c.forEach((id, i) => { let s = 0, n = 0; for (const w of nbr.get(id)) if (layer.get(w) === adj) { s += idx.get(w); n++; } b.set(id, n ? s / n : i); });
+      c.sort((x, y) => b.get(x) - b.get(y)); c.forEach((id, i) => idx.set(id, i));
+    };
+    for (let it = 0; it < 4; it++) { for (let l = 1; l < nL; l++) sweep(l, l - 1); for (let l = nL - 2; l >= 0; l--) sweep(l, l + 1); }
+    // coordinates; very tall layers are split round-robin into sub-columns
+    const placed = cols.map((c) => { const sub = Math.max(1, Math.ceil(c.length / MAXC)); return { c, sub, rows: Math.ceil(c.length / sub) }; });
+    const maxRows = Math.max(1, ...placed.map((p) => p.rows)), totalH = maxRows * (NH + RG) - RG, pos = new Map();
+    let x = 0;
+    const colX = [];
+    placed.forEach((p, l) => {
+      const y0 = (totalH - (p.rows * (NH + RG) - RG)) / 2, w = p.sub * (NW + SUBG) - SUBG;
+      p.c.forEach((id, i) => pos.set(id, { x: x + (i % p.sub) * (NW + SUBG), y: y0 + Math.floor(i / p.sub) * (NH + RG), l }));
+      colX.push([x, x + w]); x += w + LG;
+    });
+    let minY = 0, maxX = Math.max(NW, x - LG), lane = 0;
+    const paths = [];
+    for (const [, es] of pairs) {
+      const e = es[0], a = pos.get(e.from), b = pos.get(e.to);
+      let d;
+      if (e.from === e.to) { const x1 = a.x + NW - 34, y1 = a.y; d = `M${x1},${y1} C${x1 - 4},${y1 - 34} ${x1 + 28},${y1 - 34} ${x1 + 24},${y1 - 3}`; minY = Math.min(minY, y1 - 34); }
+      else if (b.x > a.x + NW / 2) { const x1 = a.x + NW, y1 = a.y + NH / 2, x2 = b.x - 1, y2 = b.y + NH / 2, dx = Math.max(32, (x2 - x1) * 0.5); d = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`; }
+      else if (Math.abs(b.x - a.x) < 1) { const x1 = a.x + NW, y1 = a.y + NH / 2, y2 = b.y + NH / 2, bu = 26 + Math.abs(y2 - y1) * 0.22; d = `M${x1},${y1} C${x1 + bu},${y1} ${x1 + bu},${y2} ${x1 + 1},${y2}`; maxX = Math.max(maxX, x1 + bu); }
+      else if (b.l >= a.l - 1) { // back edge to the neighbouring column: S-curve through the gap
+        const x1 = a.x, y1 = a.y + NH / 2, x2 = b.x + NW + 1, y2 = b.y + NH / 2, dx = Math.max(28, (x1 - x2) / 2);
+        d = `M${x1},${y1} C${x1 - dx},${y1} ${x2 + dx},${y2} ${x2},${y2}`;
+      } else { // long back edge: up a column gap, along a lane above the graph, down the target's gap
+        const k = lane++, j = ((k % 3) - 1) * 6, ly = -30 - (k % 8) * 9, gA = colX[a.l][0] - LG / 2 + j, gB = colX[b.l][1] + LG / 2 + j;
+        d = rounded([[a.x, a.y + NH / 2], [gA, a.y + NH / 2], [gA, ly], [gB, ly], [gB, b.y + NH / 2], [b.x + NW + 1, b.y + NH / 2]], 12);
+        minY = Math.min(minY, ly);
+      }
+      paths.push({ es, d, from: e.from, to: e.to, kind: kindOf(e.kind) });
+    }
+    return { ids: [...layer.keys()], pos, paths, bounds: { x0: -10, y0: minY - 10, x1: maxX + 10, y1: totalH + 10 } };
+  }
+
+  function rounded(pts, r) {
+    let d = `M${pts[0][0]},${pts[0][1]}`;
+    for (let i = 1; i < pts.length - 1; i++) {
+      const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], [x2, y2] = pts[i + 1], d1 = Math.hypot(x1 - x0, y1 - y0) || 1, d2 = Math.hypot(x2 - x1, y2 - y1) || 1, rr = Math.min(r, d1 / 2, d2 / 2);
+      d += ` L${x1 - ((x1 - x0) / d1) * rr},${y1 - ((y1 - y0) / d1) * rr} Q${x1},${y1} ${x1 + ((x2 - x1) / d2) * rr},${y1 + ((y2 - y1) / d2) * rr}`;
+    }
+    const l = pts[pts.length - 1];
+    return d + ` L${l[0]},${l[1]}`;
+  }
+  function nodeSVG(id) {
+    const n = byId.get(id), p = L.pos.get(id), en = entries.has(id), kind = ['screen', 'route', 'source', 'app'].includes(n.kind) ? n.kind : 'screen';
+    const dot = { screen: 'var(--r-screen)', route: 'var(--r-router)', source: 'var(--r-service)', app: 'var(--accent)' }[kind];
+    const sub = subOf(n), t1 = fitText(n.label, F1, NW - 36), t2 = fitText(sub, F2, NW - 36 - (en ? 40 : 0));
+    return `<g class="nn k-${kind}${en ? ' entry' : ''}" data-id="${esc(id)}" transform="translate(${p.x},${p.y})" tabindex="0" role="button" aria-label="${esc(n.label)}"><title>${esc(n.label)}${sub ? ' — ' + esc(sub) : ''}</title><rect width="${NW}" height="${NH}" rx="10"/><circle cx="15" cy="${NH / 2}" r="4" style="fill:${dot}"/><text class="t1" x="27" y="20">${esc(t1)}</text><text class="t2" x="27" y="36">${esc(t2)}</text>${en ? `<text class="tg" x="${NW - 10}" y="36" text-anchor="end">ENTRY</text>` : ''}</g>`;
+  }
+  function render() {
+    L = layout();
+    const shown = L.ids.length, iso = N.filter((n) => !deg(n.id)).length;
+    $('#nav-count').textContent = `${plural(shown, 'node')} · ${plural(E.length, 'transition')}${!showIso && iso ? ` · ${fmt(iso)} hidden without navigation` : ''}`;
+    if (!shown) {
+      svg.innerHTML = ''; emptyEl.hidden = false;
+      emptyEl.innerHTML = `<div>${emptyHTML('No transitions detected', `${plural(N.length, 'screen')} found, but no navigation calls between them were recognised.`, I.nav)}<div style="text-align:center;margin-top:-32px"><button type="button" class="btn sm" data-act="nav-iso">Show all screens</button></div></div>`;
+      return;
+    }
+    emptyEl.hidden = true;
+    const marks = NAV_KINDS.map((k) => `<marker id="mrm-ah-${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,1 L10,5 L0,9 z" style="fill:var(--k-${k})"/></marker>`).join('');
+    const edges = L.paths.map((p) => `<path class="e ${p.kind}" d="${p.d}" marker-end="url(#mrm-ah-${p.kind})" data-f="${esc(p.from)}" data-t="${esc(p.to)}"><title>${esc(byId.get(p.from).label)} → ${esc(byId.get(p.to).label)}: ${esc(p.es.map((e) => [e.kind, e.method, e.via].filter(Boolean).join(' ')).join('; '))}</title></path>`).join('');
+    svg.innerHTML = `<defs>${marks}</defs><g>${edges}</g><g>${L.ids.map(nodeSVG).join('')}</g>`;
+    if (sel && !L.pos.has(sel)) sel = null;
+    applySel();
+  }
+  function applySel() {
+    const ids = sel ? new Set([sel, ...outE.get(sel).map((e) => e.to), ...inE.get(sel).map((e) => e.from)]) : null;
+    for (const g of $$('.nn', svg)) { const id = g.dataset.id; g.classList.toggle('sel', id === sel); g.classList.toggle('dim', !!ids && !ids.has(id)); }
+    for (const p of $$('.e', svg)) { const on = !!sel && (p.dataset.f === sel || p.dataset.t === sel); p.classList.toggle('hl', on); p.classList.toggle('dim', !!sel && !on); }
+    if (sel) { panelB.innerHTML = panelHTML(sel); panel.hidden = false; panelB.scrollTop = 0; } else panel.hidden = true;
+  }
+  function panelHTML(id) {
+    const n = byId.get(id), sc = screenOf(n), fid = sc ? sc.file : n.file, outs = outE.get(id), ins = inE.get(id);
+    const routes = [...new Set([n.route, ...(sc ? sc.routes : [])].filter(Boolean))];
+    const row = (e, other, ar) => `<li><div class="tr-1"><span class="kpill" style="--c:var(--k-${kindOf(e.kind)})">${esc(e.kind || 'push')}</span><span class="muted">${ar}</span><button type="button" class="lnk ell" data-act="nav" data-id="${esc(other)}">${esc(byId.get(other).label)}</button></div><div class="tr-2">${e.method ? `<span class="mono">${esc(e.method)}</span>` : ''}${e.via ? `<span class="mono">${esc(e.via)}</span>` : ''}${e.file != null ? fileLink(e.file, e.line) : ''}</div></li>`;
+    const apis = sc ? M.apis.filter((a) => a.usedBy.some((u) => String(u) === String(sc.id))) : [];
+    const kindLabel = { screen: 'Screen', route: 'Route', source: 'Navigation source', app: 'App entry' }[n.kind] || 'Screen';
+    return `<div class="d-role"><span class="tag">${kindLabel}${sc && sc.kind ? ' · ' + esc(sc.kind) : ''}</span>${entries.has(id) ? '<span class="tag accent">entry point</span>' : ''}</div>
+      <h3 class="d-title sans">${esc(n.label)}</h3>
+      ${routes.length ? `<div class="tags" style="margin-top:6px">${routes.map((r) => `<span class="chip mono">${esc(r)}</span>`).join('')}</div>` : ''}
+      ${fid != null && getFile(fid) ? `<div class="d-sec"><h4>Defined in</h4>${fileLink(fid, sc ? sc.line : 0, { full: true })}</div>` : ''}
+      <div class="d-sec"><h4>Navigates to · ${outs.length}</h4>${outs.length ? `<ul class="trs">${outs.map((e) => row(e, e.to, '→')).join('')}</ul>` : '<div class="muted small">No outgoing transitions</div>'}</div>
+      <div class="d-sec"><h4>Reached from · ${ins.length}</h4>${ins.length ? `<ul class="trs">${ins.map((e) => row(e, e.from, '←')).join('')}</ul>` : '<div class="muted small">No incoming transitions</div>'}</div>
+      ${apis.length ? `<div class="d-sec"><h4>API calls · ${apis.length}</h4><ul class="flist">${apis.slice(0, 30).map((a) => `<li><span class="pill" style="--c:${mc(a.method)}">${esc(a.method)}</span><span class="mono small ell" title="${esc(a.url)}">${esc(a.url)}</span></li>`).join('')}</ul></div>` : ''}`;
+  }
+  function select(id, center) {
+    sel = id && L && L.pos.has(id) ? id : null;
+    applySel();
+    if (sel && center) {
+      const p = L.pos.get(sel), s = Math.max(vb.w / W, 0.9), w = W * Math.min(s, 1.25), h = (w * H) / W;
+      const off = W > 760 ? (400 * w) / W / 2 : 0;
+      vb = { x: p.x + NW / 2 - w / 2 + off, y: p.y + NH / 2 - h / 2 - (W > 760 ? 0 : h * 0.2), w, h }; setVB();
+    }
+    if (current === 'navigation') try { history.replaceState(null, '', '#navigation' + (sel ? '/' + encodeURIComponent(sel) : '')); } catch (_) { /* ignore */ }
+  }
+  const setVB = () => svg.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
+  function fit(all) { // initial view keeps text readable and starts at the entry; "fit" shows everything
+    if (!L || !L.ids.length || !W) return;
+    const { x0, y0, x1, y1 } = L.bounds, pad = W < 600 ? 16 : 36, w = x1 - x0 + pad * 2, h = y1 - y0 + pad * 2;
+    let s = Math.min(W / w, H / h, 1.15);
+    if (!all) s = Math.max(s, W < 600 ? 0.6 : 0.8);
+    const vw = W / s, vh = H / s;
+    vb = { x: vw >= w ? (x0 + x1) / 2 - vw / 2 : x0 - pad, y: (y0 + y1) / 2 - vh / 2, w: vw, h: vh }; setVB(); fitted = true;
+  }
+  function zoom(cx, cy, f) {
+    const maxW = Math.max(W * 6, (L ? L.bounds.x1 - L.bounds.x0 : W) * 2.5), nw = clamp(vb.w * f, W * 0.25, maxW), s = nw / vb.w;
+    vb = { x: cx - (cx - vb.x) * s, y: cy - (cy - vb.y) * s, w: nw, h: (nw * H) / W }; setVB();
+  }
+  function resize() {
+    const r = wrapEl.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    const cx = vb.x + vb.w / 2, cy = vb.y + vb.h / 2, s = W ? vb.w / W : 1;
+    W = r.width; H = r.height;
+    if (!fitted) fit(); else { vb.w = W * s; vb.h = H * s; vb.x = cx - vb.w / 2; vb.y = cy - vb.h / 2; setVB(); }
+  }
+  function legend() {
+    const used = new Set(E.map((e) => kindOf(e.kind)));
+    const ks = NAV_KINDS.filter((k) => used.has(k));
+    const line = (k) => `<svg width="22" height="8" aria-hidden="true"><line x1="1" y1="4" x2="21" y2="4" style="stroke:var(--k-${k})" stroke-width="2" ${k === 'modal' ? 'stroke-dasharray="5 3"' : k === 'root' ? 'stroke-dasharray="2 3"' : ''}/></svg>`;
+    const kinds = [['screen', 'var(--r-screen)'], ['route', 'var(--r-router)'], ['source', 'var(--r-service)']].filter(([k]) => N.some((n) => n.kind === k));
+    $('#nav-legend').innerHTML = [ks.map((k) => `<span>${line(k)}${k}</span>`).join(''), kinds.map(([k, c]) => `<span><span class="dot" style="--c:${c}"></span>${k}</span>`).join('')].filter(Boolean).join('<span class="sep"></span>');
+  }
+  function init() {
+    const view = $('#view-navigation');
+    if (!N.length) { view.innerHTML = emptyHTML('No navigation detected', 'No screens, routes or navigation calls were recognised. Supported sources include go_router, auto_route, GetX, route maps, onGenerateRoute, SwiftUI and storyboards.', I.nav); return; }
+    svg = $('#nav-svg'); wrapEl = $('#nav-graph'); panel = $('#nav-panel'); panelB = $('#nav-panel-b'); emptyEl = $('#nav-empty');
+    $('[data-act="nav-close"]').innerHTML = I.close;
+    const sans = getComputedStyle(document.body).fontFamily, mono = cssVar('--mono') || 'monospace';
+    F1 = `600 12.5px ${sans}`; F2 = `10.5px ${mono}`;
+    $('#nav-iso').addEventListener('change', (e) => { showIso = e.target.checked; fitted = false; render(); fit(); });
+    searchBox($('#nav-search'), { placeholder: 'Find a screen or route…', source: () => N.map((n) => ({ label: n.label, sub: subOf(n), value: n.id, dot: 'var(--r-screen)' })), onPick: focus });
+    zoomButtons($('#nav-zoom'), (z) => (z === 'fit' ? fit(true) : zoom(vb.x + vb.w / 2, vb.y + vb.h / 2, z === 'in' ? 1 / 1.35 : 1.35)));
+    svg.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const r = svg.getBoundingClientRect();
+      zoom(vb.x + ((e.clientX - r.left) / r.width) * vb.w, vb.y + ((e.clientY - r.top) / r.height) * vb.h, Math.exp(e.deltaY * (e.deltaMode === 1 ? 0.05 : e.ctrlKey ? 0.01 : 0.0016)));
+    }, { passive: false });
+    svg.addEventListener('pointerdown', (e) => { if (e.button > 0) return; drag = { x: e.clientX, y: e.clientY, vx: vb.x, vy: vb.y, moved: false, node: e.target.closest('.nn')?.dataset.id ?? null }; svg.setPointerCapture(e.pointerId); });
+    svg.addEventListener('pointermove', (e) => {
+      if (!drag) return;
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.moved && Math.hypot(dx, dy) < 4) return;
+      drag.moved = true; svg.classList.add('drag');
+      const s = vb.w / W; vb.x = drag.vx - dx * s; vb.y = drag.vy - dy * s; setVB();
+    });
+    const up = () => { if (!drag) return; const d = drag; drag = null; svg.classList.remove('drag'); if (!d.moved) select(d.node === sel ? null : d.node); };
+    svg.addEventListener('pointerup', up); svg.addEventListener('pointercancel', () => { drag = null; svg.classList.remove('drag'); });
+    svg.addEventListener('keydown', (e) => { const g = e.target.closest('.nn'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); select(g.dataset.id); } });
+    legend(); render();
+    new ResizeObserver(resize).observe(wrapEl);
+    resize();
+  }
+  function focus(id) {
+    if (!byId.has(id)) return;
+    if (!L || !L.pos.has(id)) { showIso = true; $('#nav-iso').checked = true; render(); fit(); }
+    select(id, true);
+  }
+  return {
+    init, show() { if (wrapEl) resize(); }, route(arg) { if (arg && svg) focus(arg); },
+    close() { if (sel) select(null); }, get selected() { return sel; },
+    showAll() { showIso = true; $('#nav-iso').checked = true; fitted = false; render(); fit(); },
+    nodeForScreen(sid) { const n = N.find((x) => x.screen != null && String(x.screen) === String(sid)); return n ? n.id : null; },
+  };
+})();
+
+/* ===================== APIs ===================== */
+const Apis = (() => {
+  let q = '', host = '', urls = false;
+  const off = new Set();
+  const hostOf = (a) => a.host || '';
+  const hay = (a) => [a.method, a.url, a.client, getFile(a.file)?.path, ...a.usedBy.map((u) => getScreen(u)?.name)].join(' ').toLowerCase();
+  const epHTML = (u) => esc(u).replace(/(\{[^}]*\}|\/:[A-Za-z_]\w*|\$\{[^}]*\}|\$[A-Za-z_]\w*)/g, '<span class="pm">$1</span>');
+  function init() {
+    const el = $('#view-apis');
+    if (!M.apis.length && !M.bases.length) { el.innerHTML = emptyHTML('No API endpoints detected', 'No HTTP, WebSocket, Firestore or URL usage was recognised in this repository.'); return; }
+    const methods = new Map();
+    for (const a of M.apis) if (a.method !== 'URL') methods.set(a.method, (methods.get(a.method) || 0) + 1);
+    const hosts = new Map();
+    for (const a of M.apis) hosts.set(hostOf(a), (hosts.get(hostOf(a)) || 0) + 1);
+    const nUrl = M.apis.filter((a) => a.method === 'URL').length;
+    el.innerHTML = `${M.bases.length ? `<div class="card bases"><div class="card-h"><h2>Base URLs</h2><span class="sub">${plural(M.bases.length, 'base URL')} configured in code</span></div><ul class="blist">${M.bases.map((b) => `<li><span class="u">${esc(b.url)}</span>${fileLink(b.file, b.line)}</li>`).join('')}</ul></div>` : ''}
+      <div class="toolbar"><div class="search">${I.search}<input type="search" id="api-q" placeholder="Filter endpoints, files, screens…" aria-label="Filter endpoints"></div>
+      <select class="sel" id="api-host" aria-label="Filter by host"><option value="">All hosts</option>${[...hosts].sort((a, b) => b[1] - a[1]).map(([h, n]) => `<option value="${esc(h)}">${esc(h || 'No host (relative / dynamic)')} · ${n}</option>`).join('')}</select>
+      ${nUrl ? `<label class="switch"><input type="checkbox" id="api-urls">Include plain URL literals (${nUrl})</label>` : ''}<span class="spacer"></span><span class="muted small" id="api-info"></span></div>
+      <div class="fchips" id="api-methods">${[...methods].sort((a, b) => b[1] - a[1]).map(([m, n]) => `<button type="button" class="fchip" data-m="${esc(m)}" aria-pressed="true"><span class="dot" style="--c:${mc(m)}"></span>${esc(m)}<span class="n">${n}</span></button>`).join('')}</div>
+      <div id="api-table"></div>`;
+    $('#api-q').addEventListener('input', (e) => { q = e.target.value.trim().toLowerCase(); render(); });
+    $('#api-host').addEventListener('change', (e) => { host = e.target.value; render(); });
+    $('#api-urls')?.addEventListener('change', (e) => { urls = e.target.checked; render(); });
+    $('#api-methods').addEventListener('click', (e) => { const b = e.target.closest('[data-m]'); if (!b) return; const m = b.dataset.m; off.has(m) ? off.delete(m) : off.add(m); b.setAttribute('aria-pressed', String(!off.has(m))); render(); });
+    render();
+  }
+  function render() {
+    const rows = M.apis.filter((a) => (urls || a.method !== 'URL') && !off.has(a.method) && (!host || hostOf(a) === host) && (!q || hay(a).includes(q)));
+    const total = M.apis.filter((a) => urls || a.method !== 'URL').length;
+    $('#api-info').textContent = `${fmt(rows.length)} of ${plural(total, 'entry', 'entries')}`;
+    if (!rows.length) { $('#api-table').innerHTML = emptyHTML('No matching endpoints', M.apis.length ? 'Try clearing the filters or include plain URL literals.' : 'Only base URLs were found.'); return; }
+    const groups = new Map();
+    for (const a of rows) { const h = hostOf(a); if (!groups.has(h)) groups.set(h, []); groups.get(h).push(a); }
+    const order = [...groups].sort((a, b) => (a[0] === '') - (b[0] === '') || b[1].length - a[1].length);
+    const LIMIT = 800;
+    let n = 0;
+    const body = order.map(([h, list]) => {
+      list.sort((a, b) => String(a.url).localeCompare(String(b.url)) || String(a.method).localeCompare(String(b.method)));
+      const tr = list.map((a) => {
+        if (++n > LIMIT) return '';
+        const used = a.usedBy.map(getScreen).filter(Boolean);
+        return `<tr><td><span class="pill" style="--c:${mc(a.method)}">${esc(a.method)}</span></td><td class="ep">${epHTML(a.url)}${a.resolved === false ? ' <span class="tag" title="Built at runtime; shown as written in code">dynamic</span>' : ''}</td><td class="muted">${esc(a.client || '—')}</td><td>${fileLink(a.file, a.line)}</td><td><div class="used">${used.slice(0, 3).map((s) => screenBtn(s.id)).join('')}${used.length > 3 ? `<span class="chip" title="${esc(used.slice(3).map((s) => s.name).join(', '))}">+${used.length - 3}</span>` : ''}${used.length ? '' : '<span class="muted">—</span>'}</div></td></tr>`;
+      }).join('');
+      return `<tbody><tr class="grp"><td colspan="5"><span class="host">${esc(h || 'No host · relative or dynamic')}</span><span class="n">${plural(list.length, 'entry', 'entries')}</span></td></tr>${tr}</tbody>`;
+    }).join('');
+    $('#api-table').innerHTML = `<div class="table-wrap"><table class="tbl"><thead><tr><th>Method</th><th>Endpoint</th><th>Client</th><th>Location</th><th>Used by</th></tr></thead>${body}</table></div>${n > LIMIT ? `<p class="muted small">Showing the first ${LIMIT} entries — refine the filters to see the rest.</p>` : ''}`;
+  }
+  return { init };
+})();
+
+/* ===================== Risks ===================== */
+const Risks = (() => {
+  const more = {};
+  const DESC = {
+    cycles: 'Files that import each other in a loop. Cycles make code harder to test, reason about and split into packages.',
+    'module-cycles': 'Modules that depend on each other in both directions, so neither can change or be extracted on its own.',
+    complex: 'Files ranked by cyclomatic complexity, nesting depth and size — the hardest code to read and change safely.',
+    hotspots: 'Hotspots are files that are both complex and changed often (git churn): that is where bugs cluster and refactoring pays off most.',
+    untested: 'Share of files per role that are referenced by at least one test, and the most important files without any.',
+    god: 'Files with unusually many dependents (fan-in) or dependencies (fan-out); changes to them ripple across the codebase.',
+  };
+  const moreBtn = (k, total, lim) => (total > lim && !more[k] ? `<button type="button" class="btn sm" data-act="more" data-k="${k}">Show all ${fmt(total)}</button>` : '');
+  const chain = (ids) => { const seq = ids.length > 1 && ids[0] === ids[ids.length - 1] ? ids : ids.concat(ids[0]); return `<div class="chain">${seq.map((id) => fileLink(id)).join('<span class="arr">→</span>')}</div>`; };
+  const colorFor = (p) => (p > 66 ? 'var(--bad)' : p > 33 ? 'var(--warn)' : 'var(--accent)');
+  function cycles(R) {
+    if (!R.cycles.length) return okHTML('No import cycles found.');
+    const lim = more.cycles ? Infinity : 10;
+    return R.cycles.slice(0, lim).map((c, i) => {
+      const ex = (c.examples.length ? c.examples : [c.files]).filter((x) => arr(x).length).slice(0, 2);
+      const size = num(c.size) || c.files.length;
+      return `<div class="cyc"><div class="cyc-h"><span class="tag bad">${plural(size, 'file')}</span><span class="muted small">cycle ${i + 1}${ex.length > 1 ? ' · 2 example loops' : ''}</span></div>${ex.map(chain).join('')}
+        ${c.files.length > (ex[0] || []).length ? `<details><summary>All ${fmt(c.files.length)} files in this cycle</summary><ul class="flist" style="margin-top:6px">${c.files.slice(0, 200).map((id) => `<li>${fileLink(id, 0, { full: true })}</li>`).join('')}</ul></details>` : ''}</div>`;
+    }).join('') + moreBtn('cycles', R.cycles.length, 10);
+  }
+  function modLoop(ms) { // shortest dependency loop inside the group, from the module edges
+    const set = new Set(ms.map(String)), adj = new Map();
+    for (const [a, b] of M.moduleEdges) if (set.has(String(a)) && set.has(String(b))) { if (!adj.has(String(a))) adj.set(String(a), []); adj.get(String(a)).push(b); }
+    let best = null;
+    for (const s of ms) {
+      const prev = new Map([[String(s), null]]), q = [s];
+      for (let h = 0; h < q.length && !best; h++) for (const w of adj.get(String(q[h])) || []) {
+        if (String(w) === String(s)) { const p = [s]; let x = q[h]; while (String(x) !== String(s)) { p.splice(1, 0, x); x = prev.get(String(x)); } if (!best || p.length < best.length) best = p; break; }
+        if (!prev.has(String(w))) { prev.set(String(w), q[h]); q.push(w); }
+      }
+      if (best && best.length <= 2) break;
+    }
+    return best || ms;
+  }
+  function modCycles(R) {
+    if (!R.moduleCycles.length) return okHTML('No cycles between modules.');
+    const mb = (m) => `<button type="button" class="lnk mono" data-act="arch-mod" data-id="${esc(m)}">${esc(modName(m))}</button>`;
+    return R.moduleCycles.map((c) => {
+      const ms = arr(c.modules), loop = ms.length > 2 ? modLoop(ms) : ms;
+      return `<div class="cyc"><div class="cyc-h"><span class="tag warn">${plural(ms.length, 'module')}</span><span class="muted small">${ms.length > loop.length ? 'shortest loop shown' : ''}</span></div><div class="chain">${loop.concat(loop.slice(0, 1)).map(mb).join('<span class="arr">→</span>')}</div>
+        ${ms.length > loop.length ? `<details><summary>All ${ms.length} modules in this group</summary><div class="tags" style="margin-top:8px">${ms.map((m) => `<button type="button" class="chip" data-act="arch-mod" data-id="${esc(m)}">${esc(modName(m))}</button>`).join('')}</div></details>` : ''}</div>`;
+    }).join('');
+  }
+  function complex(R) {
+    if (!R.complex.length) return okHTML('No unusually complex files.');
+    const max = Math.max(1, ...R.complex.map((c) => num(c.score))), lim = more.complex ? Infinity : 15;
+    return `<div class="table-wrap"><table class="tbl"><thead><tr><th>File</th><th>Score</th><th>Why</th></tr></thead><tbody>${R.complex.slice(0, lim).map((c) => { const p = pct(num(c.score), max); return `<tr><td>${fileLink(c.file, 0, { full: true })}</td><td><div class="scorecell">${barHTML(p, colorFor(p))}<span class="num">${fmt(c.score)}</span></div></td><td><div class="tags">${arr(c.reasons).map((r) => `<span class="tag">${esc(r)}</span>`).join('')}</div></td></tr>`; }).join('')}</tbody></table></div>` + moreBtn('complex', R.complex.length, 15);
+  }
+  function hotspots(R) {
+    const max = Math.max(1e-9, ...R.hotspots.map((h) => num(h.score))), lim = more.hotspots ? Infinity : 15;
+    return `<div class="table-wrap"><table class="tbl"><thead><tr><th>File</th><th class="num">Churn</th><th class="num">Complexity</th><th>Hotspot score</th></tr></thead><tbody>${R.hotspots.slice(0, lim).map((h) => { const p = pct(num(h.score), max); return `<tr><td>${fileLink(h.file, 0, { full: true })}</td><td class="num">${fmt(h.churn)}</td><td class="num"><span class="${cxCls(h.complexity)}">${fmt(h.complexity)}</span></td><td><div class="scorecell">${barHTML(p, colorFor(p))}<span class="num">${num(h.score) <= 1 ? num(h.score).toFixed(2) : fmt(h.score)}</span></div></td></tr>`; }).join('')}</tbody></table></div>` + moreBtn('hotspots', R.hotspots.length, 15);
+  }
+  function untested(R) {
+    const rows = R.untested.byRole.filter((r) => num(r.total) > 0 && r.role !== 'test' && r.role !== 'generated');
+    const files = R.untested.files.map(getFile).filter(Boolean), lim = more.untested ? Infinity : 20;
+    if (!rows.length && !files.length) return okHTML('No test coverage data.');
+    const bars = rows.map((r) => { const p = pct(num(r.tested), num(r.total)); return `<div class="prog">${roleHTML(r.role)}${barHTML(p, p >= 70 ? 'var(--ok)' : p >= 40 ? 'var(--warn)' : 'var(--bad)')}<span class="num">${fmt(r.tested)} / ${fmt(r.total)} · ${p}%</span></div>`; }).join('');
+    return `<div class="two"><div class="card"><div class="card-h"><h2>Tested files by role</h2></div>${bars || '<div class="muted small">No per-role data.</div>'}</div>
+      <div class="card"><div class="card-h"><h2>Important files without tests</h2><span class="sub">${fmt(files.length)}</span></div>${files.length ? `<ul class="flist">${files.slice(0, lim).map((f) => `<li>${fileLink(f.id, 0, { full: true })}<span class="r">${esc(f.role)} · cx ${fmt(f.complexity)}</span></li>`).join('')}</ul>${moreBtn('untested', files.length, 20)}` : okHTML('Every important file has a test.')}</div></div>`;
+  }
+  function god(R) {
+    if (!R.godFiles.length) return okHTML('No god files detected.');
+    const mi = Math.max(1, ...R.godFiles.map((g) => num(g.fanIn))), mo = Math.max(1, ...R.godFiles.map((g) => num(g.fanOut)));
+    return `<div class="table-wrap"><table class="tbl"><thead><tr><th>File</th><th>Fan-in (dependents)</th><th>Fan-out (dependencies)</th></tr></thead><tbody>${R.godFiles.map((g) => `<tr><td>${fileLink(g.file, 0, { full: true })}</td><td><div class="scorecell">${barHTML(pct(num(g.fanIn), mi), 'var(--k-go)')}<span class="num">${fmt(g.fanIn)}</span></div></td><td><div class="scorecell">${barHTML(pct(num(g.fanOut), mo), 'var(--accent)')}<span class="num">${fmt(g.fanOut)}</span></div></td></tr>`).join('')}</tbody></table></div>`;
+  }
+  function render() {
+    const R = M.risks;
+    const secs = [
+      ['cycles', 'Import cycles', R.cycles.length, cycles(R)],
+      ['module-cycles', 'Module cycles', R.moduleCycles.length, modCycles(R)],
+      ['complex', 'Most complex files', R.complex.length, complex(R)],
+      hasChurn() && ['hotspots', 'Hotspots', R.hotspots.length, hotspots(R)],
+      ['untested', 'Untested code', R.untested.files.length, untested(R)],
+      ['god', 'God files', R.godFiles.length, god(R)],
+    ].filter(Boolean);
+    $('#view-risks').innerHTML = `<div class="rnav">${secs.map(([id, t, n]) => `<a class="fchip" href="#risks/${id}">${t}<span class="n">${fmt(n)}</span></a>`).join('')}</div>` +
+      secs.map(([id, t, n, body]) => `<section class="rsec" id="risk-${id}"><div class="sec-h"><h2>${t}</h2><span class="cnt">${fmt(n)}</span></div><p class="sec-d">${DESC[id]}</p>${body}</section>`).join('');
+  }
+  return {
+    init: render,
+    route(arg) { if (arg) requestAnimationFrame(() => document.getElementById('risk-' + arg)?.scrollIntoView({ block: 'start' })); },
+    more(k) { more[k] = true; const y = window.scrollY; render(); window.scrollTo(0, y); },
+  };
+})();
+
+/* ===================== Files ===================== */
+const Files = (() => {
+  let q = '', role = '', hideGen = false, untestedOnly = false, key = 'complexity', dirn = -1, limit = 300, openId = null, ready = false;
+  const COLS = [['path', 'Path'], ['role', 'Role'], ['loc', 'LOC', 1], ['complexity', 'Complexity', 1], ['fanIn', 'Fan-in', 1], ['fanOut', 'Fan-out', 1], ['tested', 'Tested', 1], ['churn', 'Churn', 1]];
+  const drawer = $('#drawer'), scrim = $('#scrim');
+  function init() {
+    const el = $('#view-files');
+    if (!M.files.length) { el.innerHTML = emptyHTML('No files', 'The analyzer did not find any source files.'); return; }
+    const roles = ROLES.filter((r) => M.files.some((f) => roleOf(f.role) === r));
+    el.innerHTML = `<div class="toolbar"><div class="search">${I.search}<input type="search" id="files-q" placeholder="Filter by path or type…" aria-label="Filter files"></div>
+      <select class="sel" id="files-role" aria-label="Filter by role"><option value="">All roles</option>${roles.map((r) => `<option value="${r}">${ROLE_LABEL[r]} (${fmt(M.files.filter((f) => roleOf(f.role) === r).length)})</option>`).join('')}</select>
+      <label class="switch"><input type="checkbox" id="files-gen">Hide tests &amp; generated</label><label class="switch"><input type="checkbox" id="files-untested">Untested only</label>
+      <span class="spacer"></span><span class="muted small" id="files-info"></span></div>
+      <div class="table-wrap"><table class="tbl files"><thead><tr>${COLS.map(([k, l, n]) => `<th${n ? ' class="num"' : ''} data-k="${k}"><button type="button" class="sort" data-sort="${k}">${l}<span class="ar"></span></button></th>`).join('')}</tr></thead><tbody id="files-body"></tbody></table></div><div id="files-more" class="more-row"></div>`;
+    $('#files-q').addEventListener('input', (e) => { q = e.target.value.trim().toLowerCase(); limit = 300; render(); });
+    $('#files-role').addEventListener('change', (e) => { role = e.target.value; limit = 300; render(); });
+    $('#files-gen').addEventListener('change', (e) => { hideGen = e.target.checked; render(); });
+    $('#files-untested').addEventListener('change', (e) => { untestedOnly = e.target.checked; render(); });
+    $('thead', el).addEventListener('click', (e) => { const b = e.target.closest('[data-sort]'); if (!b) return; const k = b.dataset.sort; if (k === key) dirn = -dirn; else { key = k; dirn = k === 'path' || k === 'role' ? 1 : -1; } render(); });
+    $('#files-body').addEventListener('click', (e) => { const tr = e.target.closest('tr[data-id]'); if (tr && !e.target.closest('a,button')) go('files/' + encodeURIComponent(tr.dataset.id)); });
+    $('#files-more').addEventListener('click', (e) => { if (e.target.closest('button')) { limit += 500; render(); } });
+    ready = true; $('#files-role').value = role; render();
+  }
+  function rows() {
+    const r = M.files.filter((f) => (!role || roleOf(f.role) === role) && (!hideGen || !isTestish(f)) && (!untestedOnly || (!f.tested && !isTestish(f))) && (!q || f.path.toLowerCase().includes(q) || f.types.some((t) => String(t).toLowerCase().includes(q))));
+    const get = (f) => (key === 'path' ? f.path : key === 'role' ? roleOf(f.role) : key === 'tested' ? (f.tested ? 1 + num(f.coverage) / 1000 : 0) : num(f[key]));
+    return r.sort((a, b) => { const x = get(a), y = get(b); return (typeof x === 'string' ? x.localeCompare(y) : x - y) * dirn || a.path.localeCompare(b.path); });
+  }
+  function render() {
+    if (!ready) return;
+    const list = rows();
+    $('#files-info').textContent = `${fmt(list.length)} of ${plural(M.files.length, 'file')}`;
+    for (const th of $$('#view-files th')) { const on = th.dataset.k === key; th.toggleAttribute('aria-sort', on); if (on) th.setAttribute('aria-sort', dirn > 0 ? 'ascending' : 'descending'); $('.ar', th).textContent = on ? (dirn > 0 ? '▲' : '▼') : '↕'; }
+    const tested = (f) => (f.tested ? `<span style="color:var(--ok)" title="tested">${f.coverage != null ? Math.round(f.coverage) + '%' : I.check}</span>` : isTestish(f) ? '<span class="muted">·</span>' : '<span class="muted" title="no tests">—</span>');
+    $('#files-body').innerHTML = list.length ? list.slice(0, limit).map((f) => `<tr data-id="${esc(f.id)}"${String(f.id) === String(openId) ? ' class="on"' : ''}><td><button type="button" class="lnk path" data-act="file" data-id="${esc(f.id)}">${pathHTML(f.path)}</button></td><td>${roleHTML(f.role)}</td><td class="num">${fmt(f.loc)}</td><td class="num"><span class="${cxCls(f.complexity)}">${fmt(f.complexity)}</span></td><td class="num">${fmt(f.fanIn)}</td><td class="num">${fmt(f.fanOut)}</td><td class="num">${tested(f)}</td><td class="num">${fmt(f.churn)}</td></tr>`).join('') : `<tr><td colspan="8">${emptyHTML('No matching files', 'Try a different filter.')}</td></tr>`;
+    $('#files-more').innerHTML = list.length > limit ? `<button type="button" class="btn sm">Show ${fmt(Math.min(500, list.length - limit))} more</button>` : '';
+  }
+  function open(id) {
+    const f = getFile(id);
+    if (!f) return close();
+    openId = f.id; $('#drawer-b').innerHTML = fileDetail(f, 'files'); $('#drawer-b').scrollTop = 0;
+    drawer.classList.add('open'); scrim.hidden = false;
+    $$('#files-body tr').forEach((tr) => tr.classList.toggle('on', tr.dataset.id === String(f.id)));
+    $('#drawer-close').focus({ preventScroll: true });
+  }
+  function close() {
+    openId = null; drawer.classList.remove('open'); scrim.hidden = true;
+    $$('#files-body tr.on').forEach((tr) => tr.classList.remove('on'));
+  }
+  return {
+    init, route(arg) { arg ? open(arg) : close(); }, close, get isOpen() { return openId != null; },
+    setRole(r) { role = r; limit = 300; if (ready) { $('#files-role').value = r; render(); } },
+  };
+})();
+
+/* ===================== Ask AI ===================== */
+const Ask = {
+  init() {
+    const t = M.aiContext, n = t.length;
+    $('#view-ask').innerHTML = `<div class="ask"><div class="card"><h2>Ask questions about this codebase</h2>
+      <p>Run the <code>ask</code> command from your project root to get answers grounded in this map:</p>
+      <div class="cmd"><span class="muted">$</span> npx mobile-repo-map ask "How does login work?"</div>
+      <p>It uses whichever provider you configure:</p>
+      <ul class="prov"><li><code>ANTHROPIC_API_KEY</code><span>Anthropic API</span></li><li><code>OPENAI_API_KEY</code><span>OpenAI API</span></li><li><code>Ollama</code><span>a local model on your machine</span></li></ul>
+      <div class="note">${I.shield}<div><b>No key needed for this report.</b> Static analysis runs entirely offline. A provider is only used by the optional <code>ask</code> command.</div></div></div>
+      <div class="card"><div class="card-h"><div><h2 style="font-size:14px;margin:0">AI context</h2><span class="sub">${fmt(n)} characters · ~${fmt(Math.ceil(n / 4))} tokens</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn" data-act="download"${n ? '' : ' disabled'}>${I.dl}Download .md</button><button type="button" class="btn primary" id="copy-btn" data-act="copy"${n ? '' : ' disabled'}>${I.copy}<span>Copy AI context</span></button></div></div>
+      <p class="muted small" style="margin-top:-4px">Prefer your own chat? Paste this summary into any AI assistant to give it a map of the repository before you ask.</p>
+      ${n ? `<pre class="ctx" id="ctx" tabindex="0">${esc(t)}</pre>` : emptyHTML('No AI context in this report', 'The analyzer did not produce a summary.')}</div></div>`;
+  },
+};
+async function copyText(text) {
+  try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; } } catch (_) { /* fall back */ }
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none';
+    document.body.appendChild(ta); ta.select();
+    const ok = document.execCommand('copy'); ta.remove(); return ok;
+  } catch (_) { return false; }
+}
+
+/* ===================== Header, tabs, routing ===================== */
+const VIEWS = { overview: Overview, architecture: Arch, navigation: Nav, apis: Apis, risks: Risks, files: Files, ask: Ask };
+const TABS = [['overview', 'Overview'], ['architecture', 'Architecture'], ['navigation', 'Navigation', M.screens.length || M.nav.nodes.length], ['apis', 'APIs', M.apis.filter((a) => a.method !== 'URL').length], ['risks', 'Risks'], ['files', 'Files', M.files.length], ['ask', 'Ask AI']];
+const inited = {};
+let current = null;
+function renderHeader() {
+  const p = M.project, h = M.health;
+  $('#proj-name').textContent = p.name;
+  $('#plats').innerHTML = p.platforms.map(platBadge).join('');
+  const chips = [];
+  for (const [k, l] of STACK) for (const v of arr(p.stack[k])) chips.push(`<span class="chip" title="${l}">${esc(v)}</span>`);
+  const d = new Date(M.generatedAt), when = isNaN(d) ? '' : d.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+  $('#meta').innerHTML = chips.slice(0, 8).join('') + (chips.length > 8 ? `<span class="chip">+${chips.length - 8}</span>` : '') + (when ? `<span class="muted small" title="${esc(M.generatedAt)}">Generated ${esc(when)}</span>` : '');
+  const sc = $('#score');
+  sc.style.setProperty('--gc', gradeC(h.grade));
+  sc.innerHTML = `<span class="grade">${esc(h.grade || '–')}</span><span><b>${h.score == null ? '—' : fmt(Math.round(num(h.score)))}<small> / 100</small></b><small>Health score</small></span>`;
+  $('#ver').textContent = M.tool.version || '';
+  $('#tabs').innerHTML = TABS.map(([id, l, n]) => `<button type="button" class="tab" role="tab" id="tab-${id}" data-tab="${id}" aria-controls="view-${id}" aria-selected="false">${l}${n ? `<span class="n">${compact(n)}</span>` : ''}</button>`).join('');
+  $('#drawer-close').innerHTML = I.close;
+  syncThemeBtn();
+}
+function showTab(t) {
+  if (current !== t) {
+    const prev = current;
+    current = t;
+    $$('.tab').forEach((b) => { const on = b.dataset.tab === t; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; if (on) b.scrollIntoView({ block: 'nearest', inline: 'nearest' }); });
+    $$('main > .view').forEach((v) => { v.hidden = v.id !== 'view-' + t; });
+    if (t !== 'files') Files.close();
+    if (prev) window.scrollTo(0, 0);
+  }
+  if (!inited[t]) { inited[t] = true; try { VIEWS[t].init(); } catch (e) { console.error('MobileRepoMap: failed to render ' + t, e); } }
+  VIEWS[t].show?.();
+}
+function route() {
+  const h = location.hash.slice(1), i = h.indexOf('/');
+  let tab = i < 0 ? h : h.slice(0, i);
+  let arg = '';
+  try { arg = i < 0 ? '' : decodeURIComponent(h.slice(i + 1)); } catch (_) { arg = ''; }
+  if (!VIEWS[tab]) tab = 'overview';
+  showTab(tab);
+  if (VIEWS[tab].route) VIEWS[tab].route(arg);
+}
+function go(hash) { if (location.hash.slice(1) === hash) route(); else location.hash = hash; }
+
+/* ===================== Theme ===================== */
+const mq = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
+const isDark = () => (document.documentElement.getAttribute('data-theme') || (mq && mq.matches ? 'dark' : 'light')) === 'dark';
+function syncThemeBtn() { const b = $('#theme'); b.innerHTML = isDark() ? I.sun : I.moon; b.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme'); b.title = b.getAttribute('aria-label'); }
+function themeChanged() { syncThemeBtn(); Arch.recolor(); }
+function toggleTheme() {
+  const t = isDark() ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  try { localStorage.setItem('mrm-theme', t); } catch (_) { /* storage unavailable */ }
+  themeChanged();
+}
+if (mq) (mq.addEventListener ? mq.addEventListener('change', themeChanged) : mq.addListener(themeChanged));
+
+/* ===================== Global events ===================== */
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-act],[data-tab]');
+  if (!t) return;
+  if (t.dataset.tab) { go(t.dataset.tab); return; }
+  const id = t.dataset.id;
+  switch (t.dataset.act) {
+    case 'file': go('files/' + encodeURIComponent(id)); break;
+    case 'arch-file': go('architecture/' + encodeURIComponent(id)); break;
+    case 'arch-mod': go('architecture/m:' + encodeURIComponent(id)); break;
+    case 'nav': go('navigation/' + encodeURIComponent(id)); break;
+    case 'screen': { const n = Nav.nodeForScreen(id), s = getScreen(id); if (n) go('navigation/' + encodeURIComponent(n)); else if (s && getFile(s.file)) go('files/' + encodeURIComponent(s.file)); break; }
+    case 'role': Files.setRole(t.dataset.role); go('files'); break;
+    case 'theme': toggleTheme(); break;
+    case 'arch-close': Arch.close(); break;
+    case 'nav-close': Nav.close(); break;
+    case 'nav-iso': Nav.showAll(); break;
+    case 'more': Risks.more(t.dataset.k); break;
+    case 'deps': { const d = $('#deps'), c = d.classList.toggle('collapsed'); t.textContent = c ? `Show all ${M.project.dependencies.length}` : 'Show fewer'; t.setAttribute('aria-expanded', String(!c)); break; }
+    case 'copy': copyText(M.aiContext).then((ok) => {
+      const lbl = $('span', t);
+      lbl.textContent = ok ? 'Copied' : 'Select and copy manually';
+      if (!ok) { const pre = $('#ctx'); if (pre) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); } }
+      setTimeout(() => { lbl.textContent = 'Copy AI context'; }, 1800);
+    }); break;
+    case 'download': {
+      const a = document.createElement('a'), url = URL.createObjectURL(new Blob([M.aiContext], { type: 'text/markdown' }));
+      a.href = url; a.download = `${String(M.project.name).replace(/[^\w.-]+/g, '_') || 'project'}-context.md`;
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); break;
+    }
+  }
+});
+$('#scrim').addEventListener('click', () => go('files'));
+$('#drawer-close').addEventListener('click', () => go('files'));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (Files.isOpen) go('files');
+    else if (current === 'architecture') Arch.close();
+    else if (current === 'navigation') Nav.close();
+  } else if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && e.target.classList && e.target.classList.contains('tab')) {
+    const ids = TABS.map((x) => x[0]), i = ids.indexOf(e.target.dataset.tab), n = ids[(i + (e.key === 'ArrowRight' ? 1 : ids.length - 1)) % ids.length];
+    go(n); $('#tab-' + n).focus();
+  }
+});
+window.addEventListener('hashchange', route);
+
+renderHeader();
+route();
+})();
+</script>
+</body>
+</html>

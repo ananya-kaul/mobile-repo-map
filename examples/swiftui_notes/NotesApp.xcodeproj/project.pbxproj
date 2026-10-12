@@ -1,0 +1,118 @@
+// !$*UTF8*$!
+// Trimmed project file for the MobileRepoMap fixture: file references and
+// build phases are omitted; only the targets and package references remain.
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXNativeTarget section */
+		A1000000000000000000A001 /* NotesApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000000000000000000C001 /* Build configuration list for PBXNativeTarget "NotesApp" */;
+			buildPhases = (
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotesApp;
+			packageProductDependencies = (
+				A1000000000000000000D001 /* Alamofire */,
+			);
+			productName = NotesApp;
+			productReference = A1000000000000000000E001 /* NotesApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A1000000000000000000A002 /* NotesAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000000000000000000C002 /* Build configuration list for PBXNativeTarget "NotesAppTests" */;
+			buildPhases = (
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotesAppTests;
+			productName = NotesAppTests;
+			productReference = A1000000000000000000E002 /* NotesAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1000000000000000000B001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = A1000000000000000000C000 /* Build configuration list for PBXProject "NotesApp" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1000000000000000000F000;
+			packageReferences = (
+				A1000000000000000000D000 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
+			productRefGroup = A1000000000000000000F001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1000000000000000000A001 /* NotesApp */,
+				A1000000000000000000A002 /* NotesAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		A1000000000000000000C101 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.notesapp.NotesApp;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1000000000000000000C102 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.notesapp.NotesApp;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A1000000000000000000D000 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A1000000000000000000D001 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1000000000000000000D000 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A1000000000000000000B001 /* Project object */;
+}

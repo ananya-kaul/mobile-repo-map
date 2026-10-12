@@ -1,0 +1,3082 @@
+{
+  "tool": {
+    "name": "mobile-repo-map",
+    "version": "0.1.0"
+  },
+  "generatedAt": "2026-10-12T12:12:23.442Z",
+  "project": {
+    "name": "flutter_shop",
+    "platforms": [
+      "flutter"
+    ],
+    "stack": {
+      "stateManagement": [
+        "Riverpod"
+      ],
+      "navigation": [
+        "go_router",
+        "Navigator"
+      ],
+      "networking": [
+        "dio"
+      ],
+      "storage": [
+        "shared_preferences"
+      ],
+      "backend": [
+        "Firebase"
+      ]
+    },
+    "dependencies": [
+      "cloud_firestore",
+      "dio",
+      "flutter_riverpod",
+      "go_router",
+      "shared_preferences"
+    ],
+    "editorRoot": null,
+    "editor": null,
+    "hasCoverage": false
+  },
+  "stats": {
+    "files": 35,
+    "sourceFiles": 31,
+    "testFiles": 4,
+    "loc": 1679,
+    "screens": 11,
+    "routes": 10,
+    "navEdges": 19,
+    "apiEndpoints": 14,
+    "urls": 2,
+    "cycles": 1,
+    "avgComplexity": 5.8
+  },
+  "health": {
+    "score": 71,
+    "grade": "B",
+    "breakdown": [
+      {
+        "label": "Import cycles",
+        "penalty": 3,
+        "detail": "1 cycle involving 2 files"
+      },
+      {
+        "label": "Module cycles",
+        "penalty": 2,
+        "detail": "1 folder-level cycle"
+      },
+      {
+        "label": "Complexity",
+        "penalty": 3,
+        "detail": "1 of 31 files exceed size/complexity thresholds"
+      },
+      {
+        "label": "Test coverage",
+        "penalty": 21,
+        "detail": "3 of 21 screens/state/services/repositories have tests"
+      }
+    ]
+  },
+  "files": [
+    {
+      "id": 0,
+      "path": "lib/app.dart",
+      "lang": "dart",
+      "role": "widget",
+      "module": "(root)",
+      "loc": 17,
+      "complexity": 1,
+      "maxDepth": 2,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "ShopApp"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 9,
+          "loc": 11,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        29
+      ],
+      "importedBy": [
+        28
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 1,
+      "path": "lib/core/network/api_client.dart",
+      "lang": "dart",
+      "role": "service",
+      "module": "core/network",
+      "loc": 40,
+      "complexity": 4,
+      "maxDepth": 3,
+      "fanIn": 5,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "_AuthInterceptor"
+      ],
+      "functions": [
+        {
+          "name": "onRequest",
+          "line": 31,
+          "loc": 8,
+          "complexity": 3
+        },
+        {
+          "name": "onError",
+          "line": 41,
+          "loc": 6,
+          "complexity": 2
+        },
+        {
+          "name": "createApiClient",
+          "line": 10,
+          "loc": 13,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        2
+      ],
+      "importedBy": [
+        6,
+        11,
+        15,
+        22,
+        24
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 2,
+      "path": "lib/core/network/api_config.dart",
+      "lang": "dart",
+      "role": "service",
+      "module": "core/network",
+      "loc": 12,
+      "complexity": 1,
+      "maxDepth": 1,
+      "fanIn": 5,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "ApiConfig"
+      ],
+      "functions": [],
+      "imports": [],
+      "importedBy": [
+        1,
+        6,
+        11,
+        15,
+        22
+      ],
+      "apis": [
+        0
+      ],
+      "screens": []
+    },
+    {
+      "id": 3,
+      "path": "lib/core/utils/formatters.dart",
+      "lang": "dart",
+      "role": "util",
+      "module": "core/utils",
+      "loc": 47,
+      "complexity": 9,
+      "maxDepth": 3,
+      "fanIn": 9,
+      "fanOut": 0,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "Formatters"
+      ],
+      "functions": [
+        {
+          "name": "_groupThousands",
+          "line": 34,
+          "loc": 10,
+          "complexity": 6
+        },
+        {
+          "name": "price",
+          "line": 7,
+          "loc": 7,
+          "complexity": 2
+        },
+        {
+          "name": "maskEmail",
+          "line": 28,
+          "loc": 5,
+          "complexity": 2
+        },
+        {
+          "name": "shortDate",
+          "line": 15,
+          "loc": 5,
+          "complexity": 1
+        }
+      ],
+      "imports": [],
+      "importedBy": [
+        12,
+        16,
+        18,
+        19,
+        21,
+        23,
+        25,
+        26,
+        27,
+        31
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 4,
+      "path": "lib/core/widgets/app_scaffold.dart",
+      "lang": "dart",
+      "role": "widget",
+      "module": "core/widgets",
+      "loc": 23,
+      "complexity": 1,
+      "maxDepth": 2,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "AppScaffold"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 14,
+          "loc": 14,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        30
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 5,
+      "path": "lib/features/auth/application/auth_controller.dart",
+      "lang": "dart",
+      "role": "state",
+      "module": "features/auth",
+      "loc": 27,
+      "complexity": 3,
+      "maxDepth": 2,
+      "fanIn": 3,
+      "fanOut": 2,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "AuthController"
+      ],
+      "functions": [
+        {
+          "name": "login",
+          "line": 13,
+          "loc": 6,
+          "complexity": 2
+        },
+        {
+          "name": "logout",
+          "line": 20,
+          "loc": 7,
+          "complexity": 2
+        }
+      ],
+      "imports": [
+        30,
+        6
+      ],
+      "importedBy": [
+        7,
+        23,
+        26,
+        32
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 6,
+      "path": "lib/features/auth/data/auth_repository.dart",
+      "lang": "dart",
+      "role": "repository",
+      "module": "features/auth",
+      "loc": 46,
+      "complexity": 2,
+      "maxDepth": 3,
+      "fanIn": 1,
+      "fanOut": 2,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "AuthUser",
+        "AuthRepository"
+      ],
+      "functions": [
+        {
+          "name": "login",
+          "line": 28,
+          "loc": 10,
+          "complexity": 1
+        },
+        {
+          "name": "logout",
+          "line": 39,
+          "loc": 8,
+          "complexity": 1
+        },
+        {
+          "name": "hasSession",
+          "line": 48,
+          "loc": 4,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        1,
+        2
+      ],
+      "importedBy": [
+        5,
+        32
+      ],
+      "apis": [
+        1,
+        2
+      ],
+      "screens": []
+    },
+    {
+      "id": 7,
+      "path": "lib/features/auth/presentation/login_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/auth",
+      "loc": 69,
+      "complexity": 11,
+      "maxDepth": 3,
+      "fanIn": 1,
+      "fanOut": 2,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "LoginScreen",
+        "_LoginScreenState"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 42,
+          "loc": 34,
+          "complexity": 7
+        },
+        {
+          "name": "_submit",
+          "line": 27,
+          "loc": 13,
+          "complexity": 5
+        },
+        {
+          "name": "dispose",
+          "line": 21,
+          "loc": 5,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        30,
+        5
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [],
+      "screens": [
+        4
+      ]
+    },
+    {
+      "id": 8,
+      "path": "lib/features/auth/presentation/splash_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/auth",
+      "loc": 41,
+      "complexity": 3,
+      "maxDepth": 3,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "SplashScreen",
+        "_SplashScreenState"
+      ],
+      "functions": [
+        {
+          "name": "_bootstrap",
+          "line": 21,
+          "loc": 10,
+          "complexity": 3
+        },
+        {
+          "name": "initState",
+          "line": 16,
+          "loc": 4,
+          "complexity": 1
+        },
+        {
+          "name": "build",
+          "line": 33,
+          "loc": 14,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        30
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [],
+      "screens": [
+        10
+      ]
+    },
+    {
+      "id": 9,
+      "path": "lib/features/cart/application/cart_controller.dart",
+      "lang": "dart",
+      "role": "state",
+      "module": "features/cart",
+      "loc": 55,
+      "complexity": 10,
+      "maxDepth": 3,
+      "fanIn": 4,
+      "fanOut": 3,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "CartState",
+        "CartController"
+      ],
+      "functions": [
+        {
+          "name": "add",
+          "line": 27,
+          "loc": 22,
+          "complexity": 5
+        },
+        {
+          "name": "setQuantity",
+          "line": 50,
+          "loc": 7,
+          "complexity": 4
+        },
+        {
+          "name": "remove",
+          "line": 58,
+          "loc": 4,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        14,
+        10,
+        11
+      ],
+      "importedBy": [
+        12,
+        16,
+        18,
+        23
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 10,
+      "path": "lib/features/cart/data/cart_item.dart",
+      "lang": "dart",
+      "role": "other",
+      "module": "features/cart",
+      "loc": 46,
+      "complexity": 3,
+      "maxDepth": 2,
+      "fanIn": 2,
+      "fanOut": 1,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "CartItem"
+      ],
+      "functions": [],
+      "imports": [
+        14
+      ],
+      "importedBy": [
+        9,
+        11,
+        33
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 11,
+      "path": "lib/features/cart/data/cart_repository.dart",
+      "lang": "dart",
+      "role": "repository",
+      "module": "features/cart",
+      "loc": 34,
+      "complexity": 1,
+      "maxDepth": 3,
+      "fanIn": 2,
+      "fanOut": 4,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "CartRepository"
+      ],
+      "functions": [
+        {
+          "name": "fetchCart",
+          "line": 17,
+          "loc": 5,
+          "complexity": 1
+        },
+        {
+          "name": "addItem",
+          "line": 23,
+          "loc": 4,
+          "complexity": 1
+        },
+        {
+          "name": "updateQuantity",
+          "line": 28,
+          "loc": 3,
+          "complexity": 1
+        },
+        {
+          "name": "removeItem",
+          "line": 32,
+          "loc": 3,
+          "complexity": 1
+        },
+        {
+          "name": "refreshQuote",
+          "line": 38,
+          "loc": 4,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        1,
+        2,
+        22,
+        10
+      ],
+      "importedBy": [
+        9,
+        22,
+        33
+      ],
+      "apis": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "screens": []
+    },
+    {
+      "id": 12,
+      "path": "lib/features/cart/presentation/cart_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/cart",
+      "loc": 75,
+      "complexity": 3,
+      "maxDepth": 3,
+      "fanIn": 1,
+      "fanOut": 3,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "CartScreen"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 13,
+          "loc": 65,
+          "complexity": 3
+        }
+      ],
+      "imports": [
+        3,
+        30,
+        9
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [],
+      "screens": [
+        0
+      ]
+    },
+    {
+      "id": 13,
+      "path": "lib/features/catalog/application/catalog_providers.dart",
+      "lang": "dart",
+      "role": "state",
+      "module": "features/catalog",
+      "loc": 41,
+      "complexity": 5,
+      "maxDepth": 2,
+      "fanIn": 4,
+      "fanOut": 2,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "CatalogFilter",
+        "CatalogFilterNotifier"
+      ],
+      "functions": [],
+      "imports": [
+        14,
+        15
+      ],
+      "importedBy": [
+        16,
+        18,
+        19,
+        20
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 14,
+      "path": "lib/features/catalog/data/product.dart",
+      "lang": "dart",
+      "role": "other",
+      "module": "features/catalog",
+      "loc": 60,
+      "complexity": 8,
+      "maxDepth": 2,
+      "fanIn": 5,
+      "fanOut": 0,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "Product",
+        "Review"
+      ],
+      "functions": [
+        {
+          "name": "Product.fromJson",
+          "line": 26,
+          "loc": 13,
+          "complexity": 7
+        }
+      ],
+      "imports": [],
+      "importedBy": [
+        9,
+        10,
+        13,
+        15,
+        21,
+        34
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 15,
+      "path": "lib/features/catalog/data/product_repository.dart",
+      "lang": "dart",
+      "role": "repository",
+      "module": "features/catalog",
+      "loc": 32,
+      "complexity": 4,
+      "maxDepth": 3,
+      "fanIn": 1,
+      "fanOut": 3,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "ProductRepository"
+      ],
+      "functions": [
+        {
+          "name": "fetchProducts",
+          "line": 13,
+          "loc": 11,
+          "complexity": 4
+        },
+        {
+          "name": "fetchProduct",
+          "line": 25,
+          "loc": 4,
+          "complexity": 1
+        },
+        {
+          "name": "fetchReviews",
+          "line": 30,
+          "loc": 5,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        1,
+        2,
+        14
+      ],
+      "importedBy": [
+        13
+      ],
+      "apis": [
+        7,
+        8,
+        9
+      ],
+      "screens": []
+    },
+    {
+      "id": 16,
+      "path": "lib/features/catalog/presentation/home_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/catalog",
+      "loc": 73,
+      "complexity": 2,
+      "maxDepth": 4,
+      "fanIn": 1,
+      "fanOut": 6,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "HomeScreen"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 16,
+          "loc": 60,
+          "complexity": 2
+        }
+      ],
+      "imports": [
+        3,
+        9,
+        30,
+        13,
+        20,
+        21
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [],
+      "screens": [
+        2
+      ]
+    },
+    {
+      "id": 17,
+      "path": "lib/features/catalog/presentation/image_viewer_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/catalog",
+      "loc": 32,
+      "complexity": 2,
+      "maxDepth": 2,
+      "fanIn": 1,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "ImageViewerScreen",
+        "_ImageViewerScreenState"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 17,
+          "loc": 20,
+          "complexity": 2
+        }
+      ],
+      "imports": [],
+      "importedBy": [
+        18
+      ],
+      "apis": [],
+      "screens": [
+        3
+      ]
+    },
+    {
+      "id": 18,
+      "path": "lib/features/catalog/presentation/product_detail_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/catalog",
+      "loc": 87,
+      "complexity": 3,
+      "maxDepth": 3,
+      "fanIn": 1,
+      "fanOut": 5,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "ProductDetailScreen"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 17,
+          "loc": 74,
+          "complexity": 3
+        }
+      ],
+      "imports": [
+        3,
+        9,
+        30,
+        13,
+        17
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [],
+      "screens": [
+        6
+      ]
+    },
+    {
+      "id": 19,
+      "path": "lib/features/catalog/presentation/product_reviews_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/catalog",
+      "loc": 31,
+      "complexity": 1,
+      "maxDepth": 3,
+      "fanIn": 1,
+      "fanOut": 2,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "ProductReviewsScreen"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 13,
+          "loc": 22,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        3,
+        13
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [],
+      "screens": [
+        7
+      ]
+    },
+    {
+      "id": 20,
+      "path": "lib/features/catalog/presentation/widgets/filter_sheet.dart",
+      "lang": "dart",
+      "role": "widget",
+      "module": "features/catalog",
+      "loc": 52,
+      "complexity": 3,
+      "maxDepth": 2,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "FilterSheet"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 12,
+          "loc": 44,
+          "complexity": 3
+        }
+      ],
+      "imports": [
+        13
+      ],
+      "importedBy": [
+        16
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 21,
+      "path": "lib/features/catalog/presentation/widgets/product_card.dart",
+      "lang": "dart",
+      "role": "widget",
+      "module": "features/catalog",
+      "loc": 50,
+      "complexity": 5,
+      "maxDepth": 2,
+      "fanIn": 1,
+      "fanOut": 2,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "ProductCard"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 15,
+          "loc": 40,
+          "complexity": 5
+        }
+      ],
+      "imports": [
+        3,
+        14
+      ],
+      "importedBy": [
+        16,
+        34
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 22,
+      "path": "lib/features/checkout/application/checkout_service.dart",
+      "lang": "dart",
+      "role": "state",
+      "module": "features/checkout",
+      "loc": 66,
+      "complexity": 5,
+      "maxDepth": 3,
+      "fanIn": 2,
+      "fanOut": 3,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "PaymentMethod",
+        "DeliverySpeed",
+        "CheckoutQuote",
+        "CheckoutService"
+      ],
+      "functions": [
+        {
+          "name": "placeOrder",
+          "line": 57,
+          "loc": 17,
+          "complexity": 3
+        },
+        {
+          "name": "quote",
+          "line": 44,
+          "loc": 7,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        1,
+        2,
+        11
+      ],
+      "importedBy": [
+        11,
+        23
+      ],
+      "apis": [
+        10,
+        11
+      ],
+      "screens": []
+    },
+    {
+      "id": 23,
+      "path": "lib/features/checkout/presentation/checkout_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/checkout",
+      "loc": 279,
+      "complexity": 73,
+      "maxDepth": 4,
+      "fanIn": 1,
+      "fanOut": 5,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "CheckoutScreen",
+        "_CheckoutScreenState",
+        "_SummaryRow"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 74,
+          "loc": 193,
+          "complexity": 63
+        },
+        {
+          "name": "_applyPromo",
+          "line": 35,
+          "loc": 15,
+          "complexity": 7
+        },
+        {
+          "name": "_placeOrder",
+          "line": 51,
+          "loc": 21,
+          "complexity": 4
+        },
+        {
+          "name": "build",
+          "line": 285,
+          "loc": 13,
+          "complexity": 2
+        },
+        {
+          "name": "dispose",
+          "line": 30,
+          "loc": 4,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        3,
+        5,
+        9,
+        30,
+        22
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [],
+      "screens": [
+        1
+      ]
+    },
+    {
+      "id": 24,
+      "path": "lib/features/orders/data/orders_repository.dart",
+      "lang": "dart",
+      "role": "repository",
+      "module": "features/orders",
+      "loc": 57,
+      "complexity": 3,
+      "maxDepth": 2,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "OrderStatus",
+        "Order",
+        "OrdersRepository"
+      ],
+      "functions": [
+        {
+          "name": "watchStatus",
+          "line": 46,
+          "loc": 7,
+          "complexity": 2
+        },
+        {
+          "name": "fetchOrders",
+          "line": 39,
+          "loc": 5,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        1
+      ],
+      "importedBy": [
+        25
+      ],
+      "apis": [
+        12,
+        13,
+        14
+      ],
+      "screens": []
+    },
+    {
+      "id": 25,
+      "path": "lib/features/orders/presentation/orders_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/orders",
+      "loc": 61,
+      "complexity": 2,
+      "maxDepth": 4,
+      "fanIn": 1,
+      "fanOut": 3,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "OrdersScreen",
+        "_StatusChip"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 14,
+          "loc": 37,
+          "complexity": 2
+        },
+        {
+          "name": "build",
+          "line": 59,
+          "loc": 9,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        3,
+        30,
+        24
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [],
+      "screens": [
+        5
+      ]
+    },
+    {
+      "id": 26,
+      "path": "lib/features/profile/presentation/profile_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/profile",
+      "loc": 48,
+      "complexity": 4,
+      "maxDepth": 2,
+      "fanIn": 1,
+      "fanOut": 3,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "ProfileScreen"
+      ],
+      "functions": [
+        {
+          "name": "build",
+          "line": 13,
+          "loc": 38,
+          "complexity": 4
+        }
+      ],
+      "imports": [
+        3,
+        5,
+        30
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [],
+      "screens": [
+        8
+      ]
+    },
+    {
+      "id": 27,
+      "path": "lib/features/profile/presentation/settings_screen.dart",
+      "lang": "dart",
+      "role": "screen",
+      "module": "features/profile",
+      "loc": 80,
+      "complexity": 6,
+      "maxDepth": 4,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "SettingsScreen",
+        "_SettingsScreenState"
+      ],
+      "functions": [
+        {
+          "name": "initState",
+          "line": 24,
+          "loc": 10,
+          "complexity": 4
+        },
+        {
+          "name": "build",
+          "line": 42,
+          "loc": 47,
+          "complexity": 3
+        },
+        {
+          "name": "_save",
+          "line": 35,
+          "loc": 5,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        3
+      ],
+      "importedBy": [
+        29
+      ],
+      "apis": [
+        15
+      ],
+      "screens": [
+        9
+      ]
+    },
+    {
+      "id": 28,
+      "path": "lib/main.dart",
+      "lang": "dart",
+      "role": "entry",
+      "module": "(root)",
+      "loc": 4,
+      "complexity": 1,
+      "maxDepth": 0,
+      "fanIn": 0,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [],
+      "functions": [],
+      "imports": [
+        0
+      ],
+      "importedBy": [],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 29,
+      "path": "lib/router/app_router.dart",
+      "lang": "dart",
+      "role": "router",
+      "module": "router",
+      "loc": 79,
+      "complexity": 1,
+      "maxDepth": 0,
+      "fanIn": 1,
+      "fanOut": 12,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [],
+      "functions": [],
+      "imports": [
+        4,
+        7,
+        8,
+        12,
+        16,
+        18,
+        19,
+        23,
+        25,
+        26,
+        27,
+        30
+      ],
+      "importedBy": [
+        0
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 30,
+      "path": "lib/router/app_routes.dart",
+      "lang": "dart",
+      "role": "router",
+      "module": "router",
+      "loc": 15,
+      "complexity": 1,
+      "maxDepth": 1,
+      "fanIn": 11,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "AppRoute"
+      ],
+      "functions": [],
+      "imports": [],
+      "importedBy": [
+        4,
+        5,
+        7,
+        8,
+        12,
+        16,
+        18,
+        23,
+        25,
+        26,
+        29
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 31,
+      "path": "test/core/formatters_test.dart",
+      "lang": "dart",
+      "role": "test",
+      "module": "tests",
+      "loc": 25,
+      "complexity": 1,
+      "maxDepth": 3,
+      "fanIn": 0,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": true,
+      "isGenerated": false,
+      "types": [],
+      "functions": [
+        {
+          "name": "main",
+          "line": 5,
+          "loc": 23,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        3
+      ],
+      "importedBy": [],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 32,
+      "path": "test/features/auth/auth_controller_test.dart",
+      "lang": "dart",
+      "role": "test",
+      "module": "tests",
+      "loc": 34,
+      "complexity": 1,
+      "maxDepth": 2,
+      "fanIn": 0,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": true,
+      "isGenerated": false,
+      "types": [
+        "_MockAuthRepository"
+      ],
+      "functions": [
+        {
+          "name": "main",
+          "line": 10,
+          "loc": 28,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        5,
+        6
+      ],
+      "importedBy": [],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 33,
+      "path": "test/features/cart/cart_repository_test.dart",
+      "lang": "dart",
+      "role": "test",
+      "module": "tests",
+      "loc": 42,
+      "complexity": 1,
+      "maxDepth": 3,
+      "fanIn": 0,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": true,
+      "isGenerated": false,
+      "types": [
+        "_MockDio"
+      ],
+      "functions": [
+        {
+          "name": "main",
+          "line": 16,
+          "loc": 31,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        10,
+        11
+      ],
+      "importedBy": [],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 34,
+      "path": "test/features/catalog/product_card_test.dart",
+      "lang": "dart",
+      "role": "test",
+      "module": "tests",
+      "loc": 25,
+      "complexity": 1,
+      "maxDepth": 2,
+      "fanIn": 0,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": true,
+      "isGenerated": false,
+      "types": [],
+      "functions": [
+        {
+          "name": "main",
+          "line": 7,
+          "loc": 21,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        14,
+        21
+      ],
+      "importedBy": [],
+      "apis": [],
+      "screens": []
+    }
+  ],
+  "edges": [
+    [
+      0,
+      29
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      4,
+      30
+    ],
+    [
+      5,
+      30
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      6,
+      2
+    ],
+    [
+      7,
+      30
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      8,
+      30
+    ],
+    [
+      9,
+      14
+    ],
+    [
+      9,
+      10
+    ],
+    [
+      9,
+      11
+    ],
+    [
+      10,
+      14
+    ],
+    [
+      11,
+      1
+    ],
+    [
+      11,
+      2
+    ],
+    [
+      11,
+      22
+    ],
+    [
+      11,
+      10
+    ],
+    [
+      12,
+      3
+    ],
+    [
+      12,
+      30
+    ],
+    [
+      12,
+      9
+    ],
+    [
+      13,
+      14
+    ],
+    [
+      13,
+      15
+    ],
+    [
+      15,
+      1
+    ],
+    [
+      15,
+      2
+    ],
+    [
+      15,
+      14
+    ],
+    [
+      16,
+      3
+    ],
+    [
+      16,
+      9
+    ],
+    [
+      16,
+      30
+    ],
+    [
+      16,
+      13
+    ],
+    [
+      16,
+      20
+    ],
+    [
+      16,
+      21
+    ],
+    [
+      18,
+      3
+    ],
+    [
+      18,
+      9
+    ],
+    [
+      18,
+      30
+    ],
+    [
+      18,
+      13
+    ],
+    [
+      18,
+      17
+    ],
+    [
+      19,
+      3
+    ],
+    [
+      19,
+      13
+    ],
+    [
+      20,
+      13
+    ],
+    [
+      21,
+      3
+    ],
+    [
+      21,
+      14
+    ],
+    [
+      22,
+      1
+    ],
+    [
+      22,
+      2
+    ],
+    [
+      22,
+      11
+    ],
+    [
+      23,
+      3
+    ],
+    [
+      23,
+      5
+    ],
+    [
+      23,
+      9
+    ],
+    [
+      23,
+      30
+    ],
+    [
+      23,
+      22
+    ],
+    [
+      24,
+      1
+    ],
+    [
+      25,
+      3
+    ],
+    [
+      25,
+      30
+    ],
+    [
+      25,
+      24
+    ],
+    [
+      26,
+      3
+    ],
+    [
+      26,
+      5
+    ],
+    [
+      26,
+      30
+    ],
+    [
+      27,
+      3
+    ],
+    [
+      28,
+      0
+    ],
+    [
+      29,
+      4
+    ],
+    [
+      29,
+      7
+    ],
+    [
+      29,
+      8
+    ],
+    [
+      29,
+      12
+    ],
+    [
+      29,
+      16
+    ],
+    [
+      29,
+      18
+    ],
+    [
+      29,
+      19
+    ],
+    [
+      29,
+      23
+    ],
+    [
+      29,
+      25
+    ],
+    [
+      29,
+      26
+    ],
+    [
+      29,
+      27
+    ],
+    [
+      29,
+      30
+    ],
+    [
+      31,
+      3
+    ],
+    [
+      32,
+      5
+    ],
+    [
+      32,
+      6
+    ],
+    [
+      33,
+      10
+    ],
+    [
+      33,
+      11
+    ],
+    [
+      34,
+      14
+    ],
+    [
+      34,
+      21
+    ]
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "name": "(root)",
+      "files": 2,
+      "loc": 21,
+      "roles": {
+        "widget": 1,
+        "entry": 1
+      }
+    },
+    {
+      "id": 1,
+      "name": "core/network",
+      "files": 2,
+      "loc": 52,
+      "roles": {
+        "service": 2
+      }
+    },
+    {
+      "id": 2,
+      "name": "core/utils",
+      "files": 1,
+      "loc": 47,
+      "roles": {
+        "util": 1
+      }
+    },
+    {
+      "id": 3,
+      "name": "core/widgets",
+      "files": 1,
+      "loc": 23,
+      "roles": {
+        "widget": 1
+      }
+    },
+    {
+      "id": 4,
+      "name": "features/auth",
+      "files": 4,
+      "loc": 183,
+      "roles": {
+        "state": 1,
+        "repository": 1,
+        "screen": 2
+      }
+    },
+    {
+      "id": 5,
+      "name": "features/cart",
+      "files": 4,
+      "loc": 210,
+      "roles": {
+        "state": 1,
+        "other": 1,
+        "repository": 1,
+        "screen": 1
+      }
+    },
+    {
+      "id": 6,
+      "name": "features/catalog",
+      "files": 9,
+      "loc": 458,
+      "roles": {
+        "state": 1,
+        "other": 1,
+        "repository": 1,
+        "screen": 4,
+        "widget": 2
+      }
+    },
+    {
+      "id": 7,
+      "name": "features/checkout",
+      "files": 2,
+      "loc": 345,
+      "roles": {
+        "state": 1,
+        "screen": 1
+      }
+    },
+    {
+      "id": 8,
+      "name": "features/orders",
+      "files": 2,
+      "loc": 118,
+      "roles": {
+        "repository": 1,
+        "screen": 1
+      }
+    },
+    {
+      "id": 9,
+      "name": "features/profile",
+      "files": 2,
+      "loc": 128,
+      "roles": {
+        "screen": 2
+      }
+    },
+    {
+      "id": 10,
+      "name": "router",
+      "files": 2,
+      "loc": 94,
+      "roles": {
+        "router": 2
+      }
+    },
+    {
+      "id": 11,
+      "name": "tests",
+      "files": 4,
+      "loc": 126,
+      "roles": {
+        "test": 4
+      }
+    }
+  ],
+  "moduleEdges": [
+    [
+      0,
+      10,
+      1
+    ],
+    [
+      3,
+      10,
+      1
+    ],
+    [
+      4,
+      10,
+      3
+    ],
+    [
+      4,
+      1,
+      2
+    ],
+    [
+      5,
+      6,
+      2
+    ],
+    [
+      5,
+      1,
+      2
+    ],
+    [
+      5,
+      7,
+      1
+    ],
+    [
+      5,
+      2,
+      1
+    ],
+    [
+      5,
+      10,
+      1
+    ],
+    [
+      6,
+      1,
+      2
+    ],
+    [
+      6,
+      2,
+      4
+    ],
+    [
+      6,
+      5,
+      2
+    ],
+    [
+      6,
+      10,
+      2
+    ],
+    [
+      7,
+      1,
+      2
+    ],
+    [
+      7,
+      5,
+      2
+    ],
+    [
+      7,
+      2,
+      1
+    ],
+    [
+      7,
+      4,
+      1
+    ],
+    [
+      7,
+      10,
+      1
+    ],
+    [
+      8,
+      1,
+      1
+    ],
+    [
+      8,
+      2,
+      1
+    ],
+    [
+      8,
+      10,
+      1
+    ],
+    [
+      9,
+      2,
+      2
+    ],
+    [
+      9,
+      4,
+      1
+    ],
+    [
+      9,
+      10,
+      1
+    ],
+    [
+      10,
+      3,
+      1
+    ],
+    [
+      10,
+      4,
+      2
+    ],
+    [
+      10,
+      5,
+      1
+    ],
+    [
+      10,
+      6,
+      3
+    ],
+    [
+      10,
+      7,
+      1
+    ],
+    [
+      10,
+      8,
+      1
+    ],
+    [
+      10,
+      9,
+      2
+    ],
+    [
+      11,
+      2,
+      1
+    ],
+    [
+      11,
+      4,
+      2
+    ],
+    [
+      11,
+      5,
+      2
+    ],
+    [
+      11,
+      6,
+      2
+    ]
+  ],
+  "screens": [
+    {
+      "id": 0,
+      "name": "CartScreen",
+      "kind": "widget",
+      "file": 12,
+      "line": 9,
+      "routes": [
+        "/cart"
+      ],
+      "entry": false
+    },
+    {
+      "id": 1,
+      "name": "CheckoutScreen",
+      "kind": "widget",
+      "file": 23,
+      "line": 11,
+      "routes": [
+        "/checkout"
+      ],
+      "entry": false
+    },
+    {
+      "id": 2,
+      "name": "HomeScreen",
+      "kind": "widget",
+      "file": 16,
+      "line": 12,
+      "routes": [
+        "/"
+      ],
+      "entry": false
+    },
+    {
+      "id": 3,
+      "name": "ImageViewerScreen",
+      "kind": "widget",
+      "file": 17,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 4,
+      "name": "LoginScreen",
+      "kind": "widget",
+      "file": 7,
+      "line": 8,
+      "routes": [
+        "/login"
+      ],
+      "entry": false
+    },
+    {
+      "id": 5,
+      "name": "OrdersScreen",
+      "kind": "widget",
+      "file": 25,
+      "line": 10,
+      "routes": [
+        "/orders"
+      ],
+      "entry": false
+    },
+    {
+      "id": 6,
+      "name": "ProductDetailScreen",
+      "kind": "widget",
+      "file": 18,
+      "line": 11,
+      "routes": [
+        "/product/:id"
+      ],
+      "entry": false
+    },
+    {
+      "id": 7,
+      "name": "ProductReviewsScreen",
+      "kind": "widget",
+      "file": 19,
+      "line": 7,
+      "routes": [
+        "/product/:id/reviews"
+      ],
+      "entry": false
+    },
+    {
+      "id": 8,
+      "name": "ProfileScreen",
+      "kind": "widget",
+      "file": 26,
+      "line": 9,
+      "routes": [
+        "/profile"
+      ],
+      "entry": false
+    },
+    {
+      "id": 9,
+      "name": "SettingsScreen",
+      "kind": "widget",
+      "file": 27,
+      "line": 7,
+      "routes": [
+        "/settings"
+      ],
+      "entry": false
+    },
+    {
+      "id": 10,
+      "name": "SplashScreen",
+      "kind": "widget",
+      "file": 8,
+      "line": 7,
+      "routes": [
+        "/splash"
+      ],
+      "entry": true
+    }
+  ],
+  "routes": [
+    {
+      "path": "/splash",
+      "name": "splash",
+      "file": 29,
+      "line": 21,
+      "source": "go_router",
+      "screen": 10
+    },
+    {
+      "path": "/login",
+      "name": "login",
+      "file": 29,
+      "line": 26,
+      "source": "go_router",
+      "screen": 4
+    },
+    {
+      "path": "/",
+      "name": "home",
+      "file": 29,
+      "line": 31,
+      "source": "go_router",
+      "screen": 2
+    },
+    {
+      "path": "/product/:id",
+      "name": "product",
+      "file": 29,
+      "line": 36,
+      "source": "go_router",
+      "screen": 6
+    },
+    {
+      "path": "/product/:id/reviews",
+      "name": "reviews",
+      "file": 29,
+      "line": 43,
+      "source": "go_router",
+      "screen": 7
+    },
+    {
+      "path": "/cart",
+      "name": "cart",
+      "file": 29,
+      "line": 52,
+      "source": "go_router",
+      "screen": 0
+    },
+    {
+      "path": "/checkout",
+      "name": "checkout",
+      "file": 29,
+      "line": 57,
+      "source": "go_router",
+      "screen": 1
+    },
+    {
+      "path": "/orders",
+      "name": "orders",
+      "file": 29,
+      "line": 62,
+      "source": "go_router",
+      "screen": 5
+    },
+    {
+      "path": "/profile",
+      "name": "profile",
+      "file": 29,
+      "line": 70,
+      "source": "go_router",
+      "screen": 8
+    },
+    {
+      "path": "/settings",
+      "name": "settings",
+      "file": 29,
+      "line": 75,
+      "source": "go_router",
+      "screen": 9
+    }
+  ],
+  "nav": {
+    "nodes": [
+      {
+        "id": "screen:0",
+        "kind": "screen",
+        "label": "CartScreen",
+        "screen": 0,
+        "file": 12,
+        "route": "/cart"
+      },
+      {
+        "id": "source:AppScaffold",
+        "kind": "source",
+        "label": "AppScaffold",
+        "screen": null,
+        "file": 4,
+        "route": null
+      },
+      {
+        "id": "screen:4",
+        "kind": "screen",
+        "label": "LoginScreen",
+        "screen": 4,
+        "file": 7,
+        "route": "/login"
+      },
+      {
+        "id": "source:AuthController",
+        "kind": "source",
+        "label": "AuthController",
+        "screen": null,
+        "file": 5,
+        "route": null
+      },
+      {
+        "id": "screen:2",
+        "kind": "screen",
+        "label": "HomeScreen",
+        "screen": 2,
+        "file": 16,
+        "route": "/"
+      },
+      {
+        "id": "screen:10",
+        "kind": "screen",
+        "label": "SplashScreen",
+        "screen": 10,
+        "file": 8,
+        "route": "/splash"
+      },
+      {
+        "id": "screen:1",
+        "kind": "screen",
+        "label": "CheckoutScreen",
+        "screen": 1,
+        "file": 23,
+        "route": "/checkout"
+      },
+      {
+        "id": "screen:8",
+        "kind": "screen",
+        "label": "ProfileScreen",
+        "screen": 8,
+        "file": 26,
+        "route": "/profile"
+      },
+      {
+        "id": "screen:3",
+        "kind": "screen",
+        "label": "ImageViewerScreen",
+        "screen": 3,
+        "file": 17,
+        "route": null
+      },
+      {
+        "id": "screen:6",
+        "kind": "screen",
+        "label": "ProductDetailScreen",
+        "screen": 6,
+        "file": 18,
+        "route": "/product/:id"
+      },
+      {
+        "id": "screen:7",
+        "kind": "screen",
+        "label": "ProductReviewsScreen",
+        "screen": 7,
+        "file": 19,
+        "route": "/product/:id/reviews"
+      },
+      {
+        "id": "screen:5",
+        "kind": "screen",
+        "label": "OrdersScreen",
+        "screen": 5,
+        "file": 25,
+        "route": "/orders"
+      },
+      {
+        "id": "screen:9",
+        "kind": "screen",
+        "label": "SettingsScreen",
+        "screen": 9,
+        "file": 27,
+        "route": "/settings"
+      }
+    ],
+    "edges": [
+      {
+        "from": "source:AppScaffold",
+        "to": "screen:0",
+        "kind": "push",
+        "method": "push",
+        "file": 4,
+        "line": 21,
+        "via": "AppScaffold"
+      },
+      {
+        "from": "source:AuthController",
+        "to": "screen:4",
+        "kind": "go",
+        "method": "go",
+        "file": 5,
+        "line": 27,
+        "via": null
+      },
+      {
+        "from": "screen:4",
+        "to": "screen:2",
+        "kind": "go",
+        "method": "go",
+        "file": 7,
+        "line": 38,
+        "via": null
+      },
+      {
+        "from": "screen:10",
+        "to": "screen:2",
+        "kind": "go",
+        "method": "go",
+        "file": 8,
+        "line": 26,
+        "via": null
+      },
+      {
+        "from": "screen:10",
+        "to": "screen:4",
+        "kind": "go",
+        "method": "go",
+        "file": 8,
+        "line": 28,
+        "via": null
+      },
+      {
+        "from": "screen:0",
+        "to": "screen:2",
+        "kind": "go",
+        "method": "go",
+        "file": 12,
+        "line": 27,
+        "via": null
+      },
+      {
+        "from": "screen:0",
+        "to": "screen:1",
+        "kind": "push",
+        "method": "pushNamed",
+        "file": 12,
+        "line": 73,
+        "via": null
+      },
+      {
+        "from": "screen:2",
+        "to": "screen:8",
+        "kind": "push",
+        "method": "push",
+        "file": 16,
+        "line": 36,
+        "via": null
+      },
+      {
+        "from": "screen:2",
+        "to": "screen:0",
+        "kind": "push",
+        "method": "push",
+        "file": 16,
+        "line": 44,
+        "via": null
+      },
+      {
+        "from": "screen:6",
+        "to": "screen:3",
+        "kind": "push",
+        "method": "push",
+        "file": 18,
+        "line": 27,
+        "via": null
+      },
+      {
+        "from": "screen:6",
+        "to": "screen:7",
+        "kind": "push",
+        "method": "push",
+        "file": 18,
+        "line": 58,
+        "via": null
+      },
+      {
+        "from": "screen:6",
+        "to": "screen:0",
+        "kind": "push",
+        "method": "push",
+        "file": 18,
+        "line": 81,
+        "via": null
+      },
+      {
+        "from": "screen:2",
+        "to": "screen:6",
+        "kind": "push",
+        "method": "push",
+        "file": 21,
+        "line": 20,
+        "via": "ProductCard"
+      },
+      {
+        "from": "screen:1",
+        "to": "screen:5",
+        "kind": "go",
+        "method": "go",
+        "file": 23,
+        "line": 65,
+        "via": null
+      },
+      {
+        "from": "screen:1",
+        "to": "screen:4",
+        "kind": "push",
+        "method": "push",
+        "file": 23,
+        "line": 176,
+        "via": null
+      },
+      {
+        "from": "screen:5",
+        "to": "screen:2",
+        "kind": "go",
+        "method": "go",
+        "file": 25,
+        "line": 23,
+        "via": null
+      },
+      {
+        "from": "screen:8",
+        "to": "screen:5",
+        "kind": "push",
+        "method": "push",
+        "file": 26,
+        "line": 28,
+        "via": null
+      },
+      {
+        "from": "screen:8",
+        "to": "screen:9",
+        "kind": "push",
+        "method": "push",
+        "file": 26,
+        "line": 33,
+        "via": null
+      },
+      {
+        "from": "screen:8",
+        "to": "screen:4",
+        "kind": "go",
+        "method": "go",
+        "file": 26,
+        "line": 45,
+        "via": null
+      }
+    ],
+    "entries": [
+      "screen:10"
+    ]
+  },
+  "apis": [
+    {
+      "id": 0,
+      "method": "URL",
+      "url": "https://api.flutter-shop.dev/v1",
+      "resolved": true,
+      "client": "literal",
+      "file": 2,
+      "line": 4,
+      "usedBy": [
+        1,
+        5,
+        4,
+        8,
+        0,
+        2,
+        6,
+        7
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 1,
+      "method": "POST",
+      "url": "/auth/login",
+      "resolved": true,
+      "client": "dio",
+      "file": 6,
+      "line": 29,
+      "usedBy": [
+        4,
+        1,
+        8
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 2,
+      "method": "POST",
+      "url": "/auth/logout",
+      "resolved": true,
+      "client": "dio",
+      "file": 6,
+      "line": 41,
+      "usedBy": [
+        4,
+        1,
+        8
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 3,
+      "method": "GET",
+      "url": "/cart/items",
+      "resolved": true,
+      "client": "dio",
+      "file": 11,
+      "line": 18,
+      "usedBy": [
+        0,
+        2,
+        6,
+        1
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 4,
+      "method": "POST",
+      "url": "/cart/items",
+      "resolved": true,
+      "client": "dio",
+      "file": 11,
+      "line": 24,
+      "usedBy": [
+        0,
+        2,
+        6,
+        1
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 5,
+      "method": "PATCH",
+      "url": "/cart/items/{itemId}",
+      "resolved": false,
+      "client": "dio",
+      "file": 11,
+      "line": 29,
+      "usedBy": [
+        0,
+        2,
+        6,
+        1
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 6,
+      "method": "DELETE",
+      "url": "/cart/items/{itemId}",
+      "resolved": false,
+      "client": "dio",
+      "file": 11,
+      "line": 33,
+      "usedBy": [
+        0,
+        2,
+        6,
+        1
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 7,
+      "method": "GET",
+      "url": "/products",
+      "resolved": true,
+      "client": "dio",
+      "file": 15,
+      "line": 14,
+      "usedBy": [
+        2,
+        6,
+        7
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 8,
+      "method": "GET",
+      "url": "/products/{id}",
+      "resolved": false,
+      "client": "dio",
+      "file": 15,
+      "line": 26,
+      "usedBy": [
+        2,
+        6,
+        7
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 9,
+      "method": "GET",
+      "url": "/products/{id}/reviews",
+      "resolved": false,
+      "client": "dio",
+      "file": 15,
+      "line": 31,
+      "usedBy": [
+        2,
+        6,
+        7
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 10,
+      "method": "POST",
+      "url": "/checkout/quote",
+      "resolved": true,
+      "client": "dio",
+      "file": 22,
+      "line": 45,
+      "usedBy": [
+        1
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 11,
+      "method": "POST",
+      "url": "/checkout",
+      "resolved": true,
+      "client": "dio",
+      "file": 22,
+      "line": 62,
+      "usedBy": [
+        1
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 12,
+      "method": "GET",
+      "url": "/orders",
+      "resolved": true,
+      "client": "dio",
+      "file": 24,
+      "line": 40,
+      "usedBy": [
+        5
+      ],
+      "host": "api.flutter-shop.dev"
+    },
+    {
+      "id": 13,
+      "method": "FIRESTORE",
+      "url": "orders",
+      "resolved": true,
+      "client": "firestore",
+      "file": 24,
+      "line": 48,
+      "usedBy": [
+        5
+      ],
+      "host": "firebase"
+    },
+    {
+      "id": 14,
+      "method": "FIRESTORE",
+      "url": "orders",
+      "resolved": true,
+      "client": "firestore",
+      "file": 24,
+      "line": 65,
+      "usedBy": [
+        5
+      ],
+      "host": "firebase"
+    },
+    {
+      "id": 15,
+      "method": "URL",
+      "url": "https://flutter-shop.dev/privacy",
+      "resolved": true,
+      "client": "literal",
+      "file": 27,
+      "line": 10,
+      "usedBy": [
+        9
+      ],
+      "host": "flutter-shop.dev"
+    }
+  ],
+  "bases": [
+    {
+      "url": "https://api.flutter-shop.dev/v1",
+      "file": 1,
+      "line": 13
+    }
+  ],
+  "risks": {
+    "cycles": [
+      {
+        "size": 2,
+        "files": [
+          11,
+          22
+        ],
+        "examples": [
+          [
+            11,
+            22
+          ]
+        ]
+      }
+    ],
+    "moduleCycles": [
+      {
+        "modules": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    ],
+    "complex": [
+      {
+        "file": 23,
+        "score": 4.9,
+        "reasons": [
+          "build() has complexity 63"
+        ]
+      }
+    ],
+    "hotspots": [],
+    "untested": {
+      "byRole": [
+        {
+          "role": "screen",
+          "total": 11,
+          "tested": 0
+        },
+        {
+          "role": "state",
+          "total": 4,
+          "tested": 1
+        },
+        {
+          "role": "service",
+          "total": 2,
+          "tested": 0
+        },
+        {
+          "role": "repository",
+          "total": 4,
+          "tested": 2
+        },
+        {
+          "role": "router",
+          "total": 2,
+          "tested": 0
+        },
+        {
+          "role": "widget",
+          "total": 4,
+          "tested": 1
+        }
+      ],
+      "files": [
+        23,
+        7,
+        9,
+        27,
+        13,
+        22,
+        1,
+        15,
+        26,
+        8,
+        12,
+        18,
+        24,
+        16,
+        17,
+        25,
+        2,
+        19
+      ]
+    },
+    "godFiles": []
+  },
+  "warnings": [],
+  "aiContext": "# flutter_shop — codebase context\nStatic analysis by mobile-repo-map v0.1.0 on 2026-10-12. Heuristic and possibly incomplete; paths are relative to the repo root.\n\n## Project\n- Platforms: flutter\n- Stack: State management: Riverpod; Navigation: go_router, Navigator; Networking: dio; Storage: shared_preferences; Backend: Firebase\n- Size: 35 files (31 source, 4 test), 1,679 LOC, 12 modules, 11 screens, 10 routes, 19 navigation edges, 14 API endpoints\n- Health: 71/100 (B); penalties: Import cycles -3, Module cycles -2, Complexity -3, Test coverage -21\n- Entry files: lib/main.dart\n\n## Dependencies (5)\ncloud_firestore, dio, flutter_riverpod, go_router, shared_preferences\n\n## Modules (12)\n- features/catalog — 9 files, 458 LOC; roles: screen 4, widget 2, state 1, repository 1, other 1\n- features/checkout — 2 files, 345 LOC; roles: screen 1, state 1\n- features/cart — 4 files, 210 LOC; roles: screen 1, state 1, repository 1, other 1\n- features/auth — 4 files, 183 LOC; roles: screen 2, state 1, repository 1\n- features/profile — 2 files, 128 LOC; roles: screen 2\n- tests — 4 files, 126 LOC; roles: test 4\n- features/orders — 2 files, 118 LOC; roles: screen 1, repository 1\n- router — 2 files, 94 LOC; roles: router 2\n- core/network — 2 files, 52 LOC; roles: service 2\n- core/utils — 1 file, 47 LOC; roles: util 1\n- core/widgets — 1 file, 23 LOC; roles: widget 1\n- (root) — 2 files, 21 LOC; roles: entry 1, widget 1\n\n## Screens (11)\n- SplashScreen [widget, entry] routes: /splash — lib/features/auth/presentation/splash_screen.dart:7\n- CartScreen [widget] routes: /cart — lib/features/cart/presentation/cart_screen.dart:9\n- CheckoutScreen [widget] routes: /checkout — lib/features/checkout/presentation/checkout_screen.dart:11\n- HomeScreen [widget] routes: / — lib/features/catalog/presentation/home_screen.dart:12\n- ImageViewerScreen [widget] — lib/features/catalog/presentation/image_viewer_screen.dart:3\n- LoginScreen [widget] routes: /login — lib/features/auth/presentation/login_screen.dart:8\n- OrdersScreen [widget] routes: /orders — lib/features/orders/presentation/orders_screen.dart:10\n- ProductDetailScreen [widget] routes: /product/:id — lib/features/catalog/presentation/product_detail_screen.dart:11\n- ProductReviewsScreen [widget] routes: /product/:id/reviews — lib/features/catalog/presentation/product_reviews_screen.dart:7\n- ProfileScreen [widget] routes: /profile — lib/features/profile/presentation/profile_screen.dart:9\n- SettingsScreen [widget] routes: /settings — lib/features/profile/presentation/settings_screen.dart:7\n\n## Navigation (19 edges)\nEntry points: SplashScreen\n```text\nSplashScreen -> HomeScreen (go)\nSplashScreen -> LoginScreen (go)\nHomeScreen -> ProfileScreen (push)\nHomeScreen -> CartScreen (push)\nHomeScreen -> ProductDetailScreen (push)\nLoginScreen -> HomeScreen (go)\nProfileScreen -> OrdersScreen (push)\nProfileScreen -> SettingsScreen (push)\nProfileScreen -> LoginScreen (go)\nCartScreen -> HomeScreen (go)\nCartScreen -> CheckoutScreen (push)\nProductDetailScreen -> ImageViewerScreen (push)\nProductDetailScreen -> ProductReviewsScreen (push)\nProductDetailScreen -> CartScreen (push)\nOrdersScreen -> HomeScreen (go)\nCheckoutScreen -> OrdersScreen (go)\nCheckoutScreen -> LoginScreen (push)\nAppScaffold -> CartScreen (push)\nAuthController -> LoginScreen (go)\n```\n\n## API endpoints (14)\n2 plain URL literals not listed.\n```text\nBASE https://api.flutter-shop.dev/v1 (lib/core/network/api_client.dart:13)\nDELETE /cart/items/{itemId} (lib/features/cart/data/cart_repository.dart:33) used by CartScreen, CheckoutScreen, HomeScreen, ProductDetailScreen\nPATCH /cart/items/{itemId} (lib/features/cart/data/cart_repository.dart:29) used by CartScreen, CheckoutScreen, HomeScreen, ProductDetailScreen\nGET /products/{id} (lib/features/catalog/data/product_repository.dart:26) used by HomeScreen, ProductDetailScreen, ProductReviewsScreen\nGET /products/{id}/reviews (lib/features/catalog/data/product_repository.dart:31) used by HomeScreen, ProductDetailScreen, ProductReviewsScreen\nGET true (lib/features/cart/data/cart_repository.dart:18) used by CartScreen, CheckoutScreen, HomeScreen, ProductDetailScreen\nGET true (lib/features/catalog/data/product_repository.dart:14) used by HomeScreen, ProductDetailScreen, ProductReviewsScreen\nGET true (lib/features/orders/data/orders_repository.dart:40) used by OrdersScreen\nPOST true (lib/features/auth/data/auth_repository.dart:29) used by CheckoutScreen, LoginScreen, ProfileScreen\nPOST true (lib/features/auth/data/auth_repository.dart:41) used by CheckoutScreen, LoginScreen, ProfileScreen\nPOST true (lib/features/cart/data/cart_repository.dart:24) used by CartScreen, CheckoutScreen, HomeScreen, ProductDetailScreen\nPOST true (lib/features/checkout/application/checkout_service.dart:45) used by CheckoutScreen\nPOST true (lib/features/checkout/application/checkout_service.dart:62) used by CheckoutScreen\nFIRESTORE true (lib/features/orders/data/orders_repository.dart:48) used by OrdersScreen\nFIRESTORE true (lib/features/orders/data/orders_repository.dart:65) used by OrdersScreen\n```\n\n## Risks\n- Import cycles: 1 (largest 2 files)\n- Cycle: lib/features/cart/data/cart_repository.dart -> lib/features/checkout/application/checkout_service.dart -> lib/features/cart/data/cart_repository.dart\n- Module cycle: core/widgets <-> features/auth <-> features/cart <-> features/catalog <-> features/checkout <-> features/orders <-> features/profile <-> router\n- Complex: lib/features/checkout/presentation/checkout_screen.dart (score 4.9; build() has complexity 63)\n- Tested files by role: screen 0/11, widget 1/4, state 1/4, router 0/2, service 0/2, repository 2/4\n\n## Key files (largest / most connected, top 30)\n- lib/features/checkout/presentation/checkout_screen.dart [screen] 279 LOC, fan-in 1, fan-out 5, complexity 73, module module features/checkout; defines CheckoutScreen, _CheckoutScreenState, _SummaryRow\n- lib/router/app_router.dart [router] 79 LOC, fan-in 1, fan-out 12, complexity 1, module module router\n- lib/router/app_routes.dart [router] 15 LOC, fan-in 11, fan-out 0, complexity 1, module module router; defines AppRoute\n- lib/core/utils/formatters.dart [util] 47 LOC, fan-in 9, fan-out 0, complexity 9, module module core/utils; defines Formatters\n- lib/features/catalog/presentation/home_screen.dart [screen] 73 LOC, fan-in 1, fan-out 6, complexity 2, module module features/catalog; defines HomeScreen\n- lib/features/catalog/presentation/product_detail_screen.dart [screen] 87 LOC, fan-in 1, fan-out 5, complexity 3, module module features/catalog; defines ProductDetailScreen\n- lib/features/cart/application/cart_controller.dart [state] 55 LOC, fan-in 4, fan-out 3, complexity 10, module module features/cart; defines CartState, CartController\n- lib/features/checkout/application/checkout_service.dart [state] 66 LOC, fan-in 2, fan-out 3, complexity 5, module module features/checkout; defines PaymentMethod, DeliverySpeed, CheckoutQuote, CheckoutService\n- lib/features/catalog/application/catalog_providers.dart [state] 41 LOC, fan-in 4, fan-out 2, complexity 5, module module features/catalog; defines CatalogFilter, CatalogFilterNotifier\n- lib/core/network/api_client.dart [service] 40 LOC, fan-in 5, fan-out 1, complexity 4, module module core/network; defines _AuthInterceptor\n- lib/features/catalog/data/product.dart [other] 60 LOC, fan-in 5, fan-out 0, complexity 8, module module features/catalog; defines Product, Review\n- lib/features/cart/data/cart_repository.dart [repository] 34 LOC, fan-in 2, fan-out 4, complexity 1, module module features/cart; defines CartRepository\n- lib/features/cart/presentation/cart_screen.dart [screen] 75 LOC, fan-in 1, fan-out 3, complexity 3, module module features/cart; defines CartScreen\n- lib/features/orders/presentation/orders_screen.dart [screen] 61 LOC, fan-in 1, fan-out 3, complexity 2, module module features/orders; defines OrdersScreen, _StatusChip\n- lib/features/auth/application/auth_controller.dart [state] 27 LOC, fan-in 3, fan-out 2, complexity 3, module module features/auth; defines AuthController\n- lib/features/profile/presentation/profile_screen.dart [screen] 48 LOC, fan-in 1, fan-out 3, complexity 4, module module features/profile; defines ProfileScreen\n- lib/features/auth/presentation/login_screen.dart [screen] 69 LOC, fan-in 1, fan-out 2, complexity 11, module module features/auth; defines LoginScreen, _LoginScreenState\n- lib/features/profile/presentation/settings_screen.dart [screen] 80 LOC, fan-in 1, fan-out 1, complexity 6, module module features/profile; defines SettingsScreen, _SettingsScreenState\n- lib/core/network/api_config.dart [service] 12 LOC, fan-in 5, fan-out 0, complexity 1, module module core/network; defines ApiConfig\n- lib/features/catalog/data/product_repository.dart [repository] 32 LOC, fan-in 1, fan-out 3, complexity 4, module module features/catalog; defines ProductRepository\n- lib/features/catalog/presentation/widgets/product_card.dart [widget] 50 LOC, fan-in 1, fan-out 2, complexity 5, module module features/catalog; defines ProductCard\n- lib/features/auth/data/auth_repository.dart [repository] 46 LOC, fan-in 1, fan-out 2, complexity 2, module module features/auth; defines AuthUser, AuthRepository\n- lib/features/cart/data/cart_item.dart [other] 46 LOC, fan-in 2, fan-out 1, complexity 3, module module features/cart; defines CartItem\n- lib/features/orders/data/orders_repository.dart [repository] 57 LOC, fan-in 1, fan-out 1, complexity 3, module module features/orders; defines OrderStatus, Order, OrdersRepository\n- lib/features/catalog/presentation/product_reviews_screen.dart [screen] 31 LOC, fan-in 1, fan-out 2, complexity 1, module module features/catalog; defines ProductReviewsScreen\n- lib/features/catalog/presentation/widgets/filter_sheet.dart [widget] 52 LOC, fan-in 1, fan-out 1, complexity 3, module module features/catalog; defines FilterSheet\n- lib/features/auth/presentation/splash_screen.dart [screen] 41 LOC, fan-in 1, fan-out 1, complexity 3, module module features/auth; defines SplashScreen, _SplashScreenState\n- lib/core/widgets/app_scaffold.dart [widget] 23 LOC, fan-in 1, fan-out 1, complexity 1, module module core/widgets; defines AppScaffold\n- lib/app.dart [widget] 17 LOC, fan-in 1, fan-out 1, complexity 1, module module (root); defines ShopApp\n- lib/features/catalog/presentation/image_viewer_screen.dart [screen] 32 LOC, fan-in 1, fan-out 0, complexity 2, module module features/catalog; defines ImageViewerScreen, _ImageViewerScreenState\n"
+}

@@ -1,0 +1,2411 @@
+{
+  "tool": {
+    "name": "mobile-repo-map",
+    "version": "0.1.0"
+  },
+  "generatedAt": "2026-10-12T12:12:23.516Z",
+  "project": {
+    "name": "NotesApp",
+    "platforms": [
+      "ios"
+    ],
+    "stack": {
+      "stateManagement": [
+        "Combine",
+        "ObservableObject",
+        "@Observable"
+      ],
+      "navigation": [
+        "NavigationStack",
+        "UINavigationController"
+      ],
+      "networking": [
+        "URLSession",
+        "Alamofire"
+      ],
+      "storage": [
+        "UserDefaults"
+      ],
+      "backend": []
+    },
+    "dependencies": [
+      "Alamofire"
+    ],
+    "editorRoot": null,
+    "editor": null,
+    "hasCoverage": false
+  },
+  "stats": {
+    "files": 25,
+    "sourceFiles": 23,
+    "testFiles": 2,
+    "loc": 1190,
+    "screens": 13,
+    "routes": 0,
+    "navEdges": 11,
+    "apiEndpoints": 7,
+    "urls": 3,
+    "cycles": 0,
+    "avgComplexity": 7.1
+  },
+  "health": {
+    "score": 70,
+    "grade": "B",
+    "breakdown": [
+      {
+        "label": "Module cycles",
+        "penalty": 2,
+        "detail": "1 folder-level cycle"
+      },
+      {
+        "label": "Complexity",
+        "penalty": 7,
+        "detail": "2 of 23 files exceed size/complexity thresholds"
+      },
+      {
+        "label": "Test coverage",
+        "penalty": 21,
+        "detail": "3 of 18 screens/state/services/repositories have tests"
+      }
+    ]
+  },
+  "files": [
+    {
+      "id": 0,
+      "path": "NotesApp/Components/EmptyStateView.swift",
+      "lang": "swift",
+      "role": "widget",
+      "module": "NotesApp/Components",
+      "loc": 13,
+      "complexity": 1,
+      "maxDepth": 3,
+      "fanIn": 2,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "EmptyStateView"
+      ],
+      "functions": [
+        {
+          "name": "body",
+          "line": 8,
+          "loc": 7,
+          "complexity": 1
+        }
+      ],
+      "imports": [],
+      "importedBy": [
+        13,
+        17
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 1,
+      "path": "NotesApp/Components/NoteRow.swift",
+      "lang": "swift",
+      "role": "widget",
+      "module": "NotesApp/Components",
+      "loc": 36,
+      "complexity": 4,
+      "maxDepth": 7,
+      "fanIn": 1,
+      "fanOut": 3,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "NoteRow"
+      ],
+      "functions": [
+        {
+          "name": "body",
+          "line": 7,
+          "loc": 32,
+          "complexity": 4
+        }
+      ],
+      "imports": [
+        3,
+        11,
+        2
+      ],
+      "importedBy": [
+        17
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 2,
+      "path": "NotesApp/Components/TagChip.swift",
+      "lang": "swift",
+      "role": "widget",
+      "module": "NotesApp/Components",
+      "loc": 17,
+      "complexity": 1,
+      "maxDepth": 3,
+      "fanIn": 3,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "TagChip"
+      ],
+      "functions": [
+        {
+          "name": "tint",
+          "line": 6,
+          "loc": 5,
+          "complexity": 1
+        },
+        {
+          "name": "body",
+          "line": 12,
+          "loc": 8,
+          "complexity": 1
+        }
+      ],
+      "imports": [],
+      "importedBy": [
+        1,
+        11,
+        19
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 3,
+      "path": "NotesApp/Models/Note.swift",
+      "lang": "swift",
+      "role": "model",
+      "module": "NotesApp/Models",
+      "loc": 63,
+      "complexity": 3,
+      "maxDepth": 2,
+      "fanIn": 10,
+      "fanOut": 0,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "Note",
+        "RemoteNote"
+      ],
+      "functions": [
+        {
+          "name": "preview",
+          "line": 37,
+          "loc": 4,
+          "complexity": 3
+        },
+        {
+          "name": "init",
+          "line": 15,
+          "loc": 11,
+          "complexity": 1
+        },
+        {
+          "name": "init",
+          "line": 54,
+          "loc": 10,
+          "complexity": 1
+        },
+        {
+          "name": "asNote",
+          "line": 65,
+          "loc": 6,
+          "complexity": 1
+        }
+      ],
+      "imports": [],
+      "importedBy": [
+        1,
+        4,
+        5,
+        7,
+        11,
+        12,
+        13,
+        17,
+        20,
+        22,
+        24
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 4,
+      "path": "NotesApp/Networking/APIClient.swift",
+      "lang": "swift",
+      "role": "service",
+      "module": "NotesApp/Networking",
+      "loc": 82,
+      "complexity": 13,
+      "maxDepth": 4,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "APIConfig",
+        "Endpoint",
+        "APIError",
+        "APIClient",
+        "RealtimeClient"
+      ],
+      "functions": [
+        {
+          "name": "listen",
+          "line": 84,
+          "loc": 13,
+          "complexity": 4
+        },
+        {
+          "name": "validate",
+          "line": 61,
+          "loc": 4,
+          "complexity": 3
+        },
+        {
+          "name": "createNote",
+          "line": 41,
+          "loc": 9,
+          "complexity": 2
+        },
+        {
+          "name": "fetchTags",
+          "line": 51,
+          "loc": 9,
+          "complexity": 2
+        },
+        {
+          "name": "init",
+          "line": 24,
+          "loc": 8,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        3
+      ],
+      "importedBy": [
+        20
+      ],
+      "apis": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "screens": []
+    },
+    {
+      "id": 5,
+      "path": "NotesApp/Networking/SyncTransport.swift",
+      "lang": "swift",
+      "role": "service",
+      "module": "NotesApp/Networking",
+      "loc": 32,
+      "complexity": 1,
+      "maxDepth": 2,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "SyncPayload",
+        "SyncResponse",
+        "SyncTransport",
+        "AlamofireSyncTransport"
+      ],
+      "functions": [
+        {
+          "name": "exchange",
+          "line": 32,
+          "loc": 6,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        3
+      ],
+      "importedBy": [
+        22
+      ],
+      "apis": [
+        7
+      ],
+      "screens": []
+    },
+    {
+      "id": 6,
+      "path": "NotesApp/NotesApp.swift",
+      "lang": "swift",
+      "role": "entry",
+      "module": "NotesApp",
+      "loc": 13,
+      "complexity": 1,
+      "maxDepth": 3,
+      "fanIn": 0,
+      "fanOut": 3,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "NotesApp"
+      ],
+      "functions": [
+        {
+          "name": "body",
+          "line": 8,
+          "loc": 7,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        20,
+        21,
+        16
+      ],
+      "importedBy": [
+        23,
+        24
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 7,
+      "path": "NotesApp/Persistence/NotesRepository.swift",
+      "lang": "swift",
+      "role": "repository",
+      "module": "NotesApp/Persistence",
+      "loc": 35,
+      "complexity": 6,
+      "maxDepth": 3,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "NotesRepository"
+      ],
+      "functions": [
+        {
+          "name": "init",
+          "line": 10,
+          "loc": 10,
+          "complexity": 3
+        },
+        {
+          "name": "loadAll",
+          "line": 21,
+          "loc": 5,
+          "complexity": 2
+        },
+        {
+          "name": "saveAll",
+          "line": 27,
+          "loc": 8,
+          "complexity": 2
+        },
+        {
+          "name": "wipe",
+          "line": 36,
+          "loc": 5,
+          "complexity": 2
+        }
+      ],
+      "imports": [
+        3
+      ],
+      "importedBy": [
+        20,
+        23
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 8,
+      "path": "NotesApp/Scanner/ScanResultViewController.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Scanner",
+      "loc": 32,
+      "complexity": 2,
+      "maxDepth": 3,
+      "fanIn": 1,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "ScanResultViewController"
+      ],
+      "functions": [
+        {
+          "name": "viewDidLoad",
+          "line": 17,
+          "loc": 15,
+          "complexity": 2
+        },
+        {
+          "name": "init",
+          "line": 8,
+          "loc": 5,
+          "complexity": 1
+        },
+        {
+          "name": "init",
+          "line": 15,
+          "loc": 1,
+          "complexity": 1
+        },
+        {
+          "name": "save",
+          "line": 34,
+          "loc": 4,
+          "complexity": 1
+        }
+      ],
+      "imports": [],
+      "importedBy": [
+        9
+      ],
+      "apis": [],
+      "screens": [
+        9
+      ]
+    },
+    {
+      "id": 9,
+      "path": "NotesApp/Scanner/ScannerViewController.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Scanner",
+      "loc": 88,
+      "complexity": 5,
+      "maxDepth": 5,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "ScannerView",
+        "ScannerViewController"
+      ],
+      "functions": [
+        {
+          "name": "recognizeText",
+          "line": 71,
+          "loc": 17,
+          "complexity": 3
+        },
+        {
+          "name": "viewDidLoad",
+          "line": 30,
+          "loc": 24,
+          "complexity": 2
+        },
+        {
+          "name": "startScan",
+          "line": 57,
+          "loc": 9,
+          "complexity": 2
+        },
+        {
+          "name": "makeUIViewController",
+          "line": 10,
+          "loc": 3,
+          "complexity": 1
+        },
+        {
+          "name": "updateUIViewController",
+          "line": 14,
+          "loc": 1,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        8
+      ],
+      "importedBy": [
+        13
+      ],
+      "apis": [],
+      "screens": [
+        7,
+        8
+      ]
+    },
+    {
+      "id": 10,
+      "path": "NotesApp/Screens/AboutScreen.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Screens",
+      "loc": 25,
+      "complexity": 3,
+      "maxDepth": 4,
+      "fanIn": 1,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "AboutScreen"
+      ],
+      "functions": [
+        {
+          "name": "version",
+          "line": 4,
+          "loc": 6,
+          "complexity": 3
+        },
+        {
+          "name": "body",
+          "line": 11,
+          "loc": 16,
+          "complexity": 1
+        }
+      ],
+      "imports": [],
+      "importedBy": [
+        18
+      ],
+      "apis": [
+        8,
+        9
+      ],
+      "screens": [
+        0
+      ]
+    },
+    {
+      "id": 11,
+      "path": "NotesApp/Screens/NoteDetailScreen.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Screens",
+      "loc": 59,
+      "complexity": 5,
+      "maxDepth": 8,
+      "fanIn": 2,
+      "fanOut": 5,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "NoteDetailScreen"
+      ],
+      "functions": [
+        {
+          "name": "body",
+          "line": 18,
+          "loc": 45,
+          "complexity": 4
+        },
+        {
+          "name": "current",
+          "line": 14,
+          "loc": 3,
+          "complexity": 2
+        },
+        {
+          "name": "init",
+          "line": 9,
+          "loc": 4,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        20,
+        3,
+        2,
+        19,
+        12
+      ],
+      "importedBy": [
+        1,
+        13
+      ],
+      "apis": [],
+      "screens": [
+        1
+      ]
+    },
+    {
+      "id": 12,
+      "path": "NotesApp/Screens/NoteEditorScreen.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Screens",
+      "loc": 52,
+      "complexity": 10,
+      "maxDepth": 6,
+      "fanIn": 2,
+      "fanOut": 2,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "NoteEditorScreen"
+      ],
+      "functions": [
+        {
+          "name": "hasChanges",
+          "line": 17,
+          "loc": 3,
+          "complexity": 4
+        },
+        {
+          "name": "body",
+          "line": 21,
+          "loc": 25,
+          "complexity": 4
+        },
+        {
+          "name": "init",
+          "line": 11,
+          "loc": 5,
+          "complexity": 3
+        },
+        {
+          "name": "save",
+          "line": 47,
+          "loc": 10,
+          "complexity": 2
+        }
+      ],
+      "imports": [
+        20,
+        3
+      ],
+      "importedBy": [
+        11,
+        13
+      ],
+      "apis": [],
+      "screens": [
+        2
+      ]
+    },
+    {
+      "id": 13,
+      "path": "NotesApp/Screens/NotesListScreen.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Screens",
+      "loc": 75,
+      "complexity": 4,
+      "maxDepth": 11,
+      "fanIn": 1,
+      "fanOut": 6,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "NotesListScreen"
+      ],
+      "functions": [
+        {
+          "name": "body",
+          "line": 9,
+          "loc": 68,
+          "complexity": 4
+        }
+      ],
+      "imports": [
+        20,
+        3,
+        0,
+        11,
+        12,
+        9
+      ],
+      "importedBy": [
+        16
+      ],
+      "apis": [],
+      "screens": [
+        3
+      ]
+    },
+    {
+      "id": 14,
+      "path": "NotesApp/Screens/OnboardingScreen.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Screens",
+      "loc": 44,
+      "complexity": 3,
+      "maxDepth": 6,
+      "fanIn": 1,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "OnboardingScreen"
+      ],
+      "functions": [
+        {
+          "name": "body",
+          "line": 13,
+          "loc": 34,
+          "complexity": 3
+        }
+      ],
+      "imports": [],
+      "importedBy": [
+        16
+      ],
+      "apis": [],
+      "screens": [
+        4
+      ]
+    },
+    {
+      "id": 15,
+      "path": "NotesApp/Screens/PaywallScreen.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Screens",
+      "loc": 62,
+      "complexity": 5,
+      "maxDepth": 5,
+      "fanIn": 1,
+      "fanOut": 1,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "PaywallScreen",
+        "Plan"
+      ],
+      "functions": [
+        {
+          "name": "price",
+          "line": 13,
+          "loc": 6,
+          "complexity": 3
+        },
+        {
+          "name": "body",
+          "line": 21,
+          "loc": 39,
+          "complexity": 2
+        },
+        {
+          "name": "id",
+          "line": 11,
+          "loc": 1,
+          "complexity": 1
+        },
+        {
+          "name": "purchase",
+          "line": 65,
+          "loc": 6,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        21
+      ],
+      "importedBy": [
+        18
+      ],
+      "apis": [],
+      "screens": [
+        5
+      ]
+    },
+    {
+      "id": 16,
+      "path": "NotesApp/Screens/RootTabView.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Screens",
+      "loc": 29,
+      "complexity": 2,
+      "maxDepth": 4,
+      "fanIn": 1,
+      "fanOut": 6,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "RootTabView"
+      ],
+      "functions": [
+        {
+          "name": "body",
+          "line": 9,
+          "loc": 22,
+          "complexity": 2
+        }
+      ],
+      "imports": [
+        20,
+        21,
+        13,
+        17,
+        18,
+        14
+      ],
+      "importedBy": [
+        6
+      ],
+      "apis": [],
+      "screens": [
+        6
+      ]
+    },
+    {
+      "id": 17,
+      "path": "NotesApp/Screens/SearchScreen.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Screens",
+      "loc": 31,
+      "complexity": 3,
+      "maxDepth": 6,
+      "fanIn": 1,
+      "fanOut": 4,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "SearchScreen"
+      ],
+      "functions": [
+        {
+          "name": "body",
+          "line": 9,
+          "loc": 25,
+          "complexity": 3
+        },
+        {
+          "name": "results",
+          "line": 7,
+          "loc": 1,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        20,
+        3,
+        0,
+        1
+      ],
+      "importedBy": [
+        16
+      ],
+      "apis": [],
+      "screens": [
+        10
+      ]
+    },
+    {
+      "id": 18,
+      "path": "NotesApp/Screens/SettingsScreen.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Screens",
+      "loc": 48,
+      "complexity": 3,
+      "maxDepth": 8,
+      "fanIn": 1,
+      "fanOut": 4,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "SettingsScreen"
+      ],
+      "functions": [
+        {
+          "name": "body",
+          "line": 8,
+          "loc": 42,
+          "complexity": 3
+        }
+      ],
+      "imports": [
+        21,
+        20,
+        10,
+        15
+      ],
+      "importedBy": [
+        16
+      ],
+      "apis": [],
+      "screens": [
+        11
+      ]
+    },
+    {
+      "id": 19,
+      "path": "NotesApp/Screens/TagPickerScreen.swift",
+      "lang": "swift",
+      "role": "screen",
+      "module": "NotesApp/Screens",
+      "loc": 47,
+      "complexity": 4,
+      "maxDepth": 8,
+      "fanIn": 1,
+      "fanOut": 2,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "TagPickerScreen"
+      ],
+      "functions": [
+        {
+          "name": "body",
+          "line": 8,
+          "loc": 35,
+          "complexity": 3
+        },
+        {
+          "name": "addTag",
+          "line": 44,
+          "loc": 6,
+          "complexity": 2
+        }
+      ],
+      "imports": [
+        20,
+        2
+      ],
+      "importedBy": [
+        11
+      ],
+      "apis": [],
+      "screens": [
+        12
+      ]
+    },
+    {
+      "id": 20,
+      "path": "NotesApp/State/NotesStore.swift",
+      "lang": "swift",
+      "role": "state",
+      "module": "NotesApp/State",
+      "loc": 102,
+      "complexity": 15,
+      "maxDepth": 4,
+      "fanIn": 8,
+      "fanOut": 4,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "NotesStore"
+      ],
+      "functions": [
+        {
+          "name": "search",
+          "line": 60,
+          "loc": 9,
+          "complexity": 4
+        },
+        {
+          "name": "apply",
+          "line": 92,
+          "loc": 11,
+          "complexity": 4
+        },
+        {
+          "name": "sync",
+          "line": 79,
+          "loc": 12,
+          "complexity": 3
+        },
+        {
+          "name": "init",
+          "line": 16,
+          "loc": 7,
+          "complexity": 2
+        },
+        {
+          "name": "create",
+          "line": 32,
+          "loc": 6,
+          "complexity": 2
+        }
+      ],
+      "imports": [
+        3,
+        7,
+        4,
+        22
+      ],
+      "importedBy": [
+        6,
+        11,
+        12,
+        13,
+        16,
+        17,
+        18,
+        19,
+        23
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 21,
+      "path": "NotesApp/State/SettingsModel.swift",
+      "lang": "swift",
+      "role": "state",
+      "module": "NotesApp/State",
+      "loc": 30,
+      "complexity": 5,
+      "maxDepth": 3,
+      "fanIn": 4,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "SettingsModel",
+        "SortOrder",
+        "Keys"
+      ],
+      "functions": [
+        {
+          "name": "init",
+          "line": 23,
+          "loc": 6,
+          "complexity": 4
+        },
+        {
+          "name": "id",
+          "line": 8,
+          "loc": 1,
+          "complexity": 1
+        },
+        {
+          "name": "sortOrder",
+          "line": 11,
+          "loc": 3,
+          "complexity": 1
+        },
+        {
+          "name": "syncOnLaunch",
+          "line": 14,
+          "loc": 3,
+          "complexity": 1
+        },
+        {
+          "name": "isPro",
+          "line": 17,
+          "loc": 3,
+          "complexity": 1
+        }
+      ],
+      "imports": [],
+      "importedBy": [
+        6,
+        15,
+        16,
+        18
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 22,
+      "path": "NotesApp/Sync/SyncEngine.swift",
+      "lang": "swift",
+      "role": "service",
+      "module": "NotesApp/Sync",
+      "loc": 175,
+      "complexity": 65,
+      "maxDepth": 6,
+      "fanIn": 1,
+      "fanOut": 2,
+      "tested": true,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": false,
+      "isGenerated": false,
+      "types": [
+        "SyncConflictPolicy",
+        "SyncConflict",
+        "Resolution",
+        "SyncPlan",
+        "SyncError",
+        "SyncEngine"
+      ],
+      "functions": [
+        {
+          "name": "plan",
+          "line": 74,
+          "loc": 62,
+          "complexity": 24
+        },
+        {
+          "name": "resolve",
+          "line": 149,
+          "loc": 37,
+          "complexity": 17
+        },
+        {
+          "name": "mergeBodies",
+          "line": 189,
+          "loc": 19,
+          "complexity": 9
+        },
+        {
+          "name": "isEmpty",
+          "line": 28,
+          "loc": 3,
+          "complexity": 4
+        },
+        {
+          "name": "run",
+          "line": 56,
+          "loc": 15,
+          "complexity": 4
+        }
+      ],
+      "imports": [
+        3,
+        5
+      ],
+      "importedBy": [
+        20,
+        23,
+        24
+      ],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 23,
+      "path": "NotesAppTests/NotesStoreTests.swift",
+      "lang": "swift",
+      "role": "test",
+      "module": "tests",
+      "loc": 47,
+      "complexity": 1,
+      "maxDepth": 2,
+      "fanIn": 0,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": true,
+      "isGenerated": false,
+      "types": [
+        "NotesStoreTests"
+      ],
+      "functions": [
+        {
+          "name": "setUp",
+          "line": 9,
+          "loc": 7,
+          "complexity": 1
+        },
+        {
+          "name": "tearDown",
+          "line": 17,
+          "loc": 3,
+          "complexity": 1
+        },
+        {
+          "name": "testCreateInsertsAtTopAndPersists",
+          "line": 21,
+          "loc": 7,
+          "complexity": 1
+        },
+        {
+          "name": "testEmptyTitleBecomesUntitled",
+          "line": 30,
+          "loc": 4,
+          "complexity": 1
+        },
+        {
+          "name": "testTogglePinMovesNoteToPinnedSection",
+          "line": 35,
+          "loc": 6,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        6,
+        20,
+        7,
+        22
+      ],
+      "importedBy": [],
+      "apis": [],
+      "screens": []
+    },
+    {
+      "id": 24,
+      "path": "NotesAppTests/SyncEngineTests.swift",
+      "lang": "swift",
+      "role": "test",
+      "module": "tests",
+      "loc": 57,
+      "complexity": 1,
+      "maxDepth": 2,
+      "fanIn": 0,
+      "fanOut": 0,
+      "tested": false,
+      "coverage": null,
+      "churn": 0,
+      "hotspot": 0,
+      "isTest": true,
+      "isGenerated": false,
+      "types": [
+        "SyncEngineTests"
+      ],
+      "functions": [
+        {
+          "name": "note",
+          "line": 7,
+          "loc": 3,
+          "complexity": 1
+        },
+        {
+          "name": "testCleanNoteNotInFeedIsLeftAlone",
+          "line": 11,
+          "loc": 5,
+          "complexity": 1
+        },
+        {
+          "name": "testNewLocalNoteIsUploaded",
+          "line": 17,
+          "loc": 6,
+          "complexity": 1
+        },
+        {
+          "name": "testRemoteDeletionRemovesCleanLocalNote",
+          "line": 24,
+          "loc": 7,
+          "complexity": 1
+        },
+        {
+          "name": "testLastWriterWinsPrefersNewerRemote",
+          "line": 32,
+          "loc": 10,
+          "complexity": 1
+        }
+      ],
+      "imports": [
+        6,
+        3,
+        22
+      ],
+      "importedBy": [],
+      "apis": [],
+      "screens": []
+    }
+  ],
+  "edges": [
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      11
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      6,
+      20
+    ],
+    [
+      6,
+      21
+    ],
+    [
+      6,
+      16
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      9,
+      8
+    ],
+    [
+      11,
+      20
+    ],
+    [
+      11,
+      3
+    ],
+    [
+      11,
+      2
+    ],
+    [
+      11,
+      19
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      12,
+      20
+    ],
+    [
+      12,
+      3
+    ],
+    [
+      13,
+      20
+    ],
+    [
+      13,
+      3
+    ],
+    [
+      13,
+      0
+    ],
+    [
+      13,
+      11
+    ],
+    [
+      13,
+      12
+    ],
+    [
+      13,
+      9
+    ],
+    [
+      15,
+      21
+    ],
+    [
+      16,
+      20
+    ],
+    [
+      16,
+      21
+    ],
+    [
+      16,
+      13
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      16,
+      18
+    ],
+    [
+      16,
+      14
+    ],
+    [
+      17,
+      20
+    ],
+    [
+      17,
+      3
+    ],
+    [
+      17,
+      0
+    ],
+    [
+      17,
+      1
+    ],
+    [
+      18,
+      21
+    ],
+    [
+      18,
+      20
+    ],
+    [
+      18,
+      10
+    ],
+    [
+      18,
+      15
+    ],
+    [
+      19,
+      20
+    ],
+    [
+      19,
+      2
+    ],
+    [
+      20,
+      3
+    ],
+    [
+      20,
+      7
+    ],
+    [
+      20,
+      4
+    ],
+    [
+      20,
+      22
+    ],
+    [
+      22,
+      3
+    ],
+    [
+      22,
+      5
+    ],
+    [
+      23,
+      6
+    ],
+    [
+      23,
+      20
+    ],
+    [
+      23,
+      7
+    ],
+    [
+      23,
+      22
+    ],
+    [
+      24,
+      6
+    ],
+    [
+      24,
+      3
+    ],
+    [
+      24,
+      22
+    ]
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "name": "NotesApp/Components",
+      "files": 3,
+      "loc": 66,
+      "roles": {
+        "widget": 3
+      }
+    },
+    {
+      "id": 1,
+      "name": "NotesApp/Models",
+      "files": 1,
+      "loc": 63,
+      "roles": {
+        "model": 1
+      }
+    },
+    {
+      "id": 2,
+      "name": "NotesApp/Networking",
+      "files": 2,
+      "loc": 114,
+      "roles": {
+        "service": 2
+      }
+    },
+    {
+      "id": 3,
+      "name": "NotesApp",
+      "files": 1,
+      "loc": 13,
+      "roles": {
+        "entry": 1
+      }
+    },
+    {
+      "id": 4,
+      "name": "NotesApp/Persistence",
+      "files": 1,
+      "loc": 35,
+      "roles": {
+        "repository": 1
+      }
+    },
+    {
+      "id": 5,
+      "name": "NotesApp/Scanner",
+      "files": 2,
+      "loc": 120,
+      "roles": {
+        "screen": 2
+      }
+    },
+    {
+      "id": 6,
+      "name": "NotesApp/Screens",
+      "files": 10,
+      "loc": 472,
+      "roles": {
+        "screen": 10
+      }
+    },
+    {
+      "id": 7,
+      "name": "NotesApp/State",
+      "files": 2,
+      "loc": 132,
+      "roles": {
+        "state": 2
+      }
+    },
+    {
+      "id": 8,
+      "name": "NotesApp/Sync",
+      "files": 1,
+      "loc": 175,
+      "roles": {
+        "service": 1
+      }
+    },
+    {
+      "id": 9,
+      "name": "tests",
+      "files": 2,
+      "loc": 104,
+      "roles": {
+        "test": 2
+      }
+    }
+  ],
+  "moduleEdges": [
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      6,
+      1
+    ],
+    [
+      2,
+      1,
+      2
+    ],
+    [
+      3,
+      7,
+      2
+    ],
+    [
+      3,
+      6,
+      1
+    ],
+    [
+      4,
+      1,
+      1
+    ],
+    [
+      6,
+      7,
+      10
+    ],
+    [
+      6,
+      1,
+      4
+    ],
+    [
+      6,
+      0,
+      5
+    ],
+    [
+      6,
+      5,
+      1
+    ],
+    [
+      7,
+      1,
+      1
+    ],
+    [
+      7,
+      4,
+      1
+    ],
+    [
+      7,
+      2,
+      1
+    ],
+    [
+      7,
+      8,
+      1
+    ],
+    [
+      8,
+      1,
+      1
+    ],
+    [
+      8,
+      2,
+      1
+    ],
+    [
+      9,
+      3,
+      2
+    ],
+    [
+      9,
+      7,
+      1
+    ],
+    [
+      9,
+      4,
+      1
+    ],
+    [
+      9,
+      8,
+      2
+    ],
+    [
+      9,
+      1,
+      1
+    ]
+  ],
+  "screens": [
+    {
+      "id": 0,
+      "name": "AboutScreen",
+      "kind": "swiftui",
+      "file": 10,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 1,
+      "name": "NoteDetailScreen",
+      "kind": "swiftui",
+      "file": 11,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 2,
+      "name": "NoteEditorScreen",
+      "kind": "swiftui",
+      "file": 12,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 3,
+      "name": "NotesListScreen",
+      "kind": "swiftui",
+      "file": 13,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 4,
+      "name": "OnboardingScreen",
+      "kind": "swiftui",
+      "file": 14,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 5,
+      "name": "PaywallScreen",
+      "kind": "swiftui",
+      "file": 15,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 6,
+      "name": "RootTabView",
+      "kind": "swiftui",
+      "file": 16,
+      "line": 3,
+      "routes": [],
+      "entry": true
+    },
+    {
+      "id": 7,
+      "name": "ScannerView",
+      "kind": "swiftui",
+      "file": 9,
+      "line": 7,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 8,
+      "name": "ScannerViewController",
+      "kind": "uikit",
+      "file": 9,
+      "line": 17,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 9,
+      "name": "ScanResultViewController",
+      "kind": "uikit",
+      "file": 8,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 10,
+      "name": "SearchScreen",
+      "kind": "swiftui",
+      "file": 17,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 11,
+      "name": "SettingsScreen",
+      "kind": "swiftui",
+      "file": 18,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    },
+    {
+      "id": 12,
+      "name": "TagPickerScreen",
+      "kind": "swiftui",
+      "file": 19,
+      "line": 3,
+      "routes": [],
+      "entry": false
+    }
+  ],
+  "routes": [],
+  "nav": {
+    "nodes": [
+      {
+        "id": "screen:1",
+        "kind": "screen",
+        "label": "NoteDetailScreen",
+        "screen": 1,
+        "file": 11,
+        "route": null
+      },
+      {
+        "id": "screen:10",
+        "kind": "screen",
+        "label": "SearchScreen",
+        "screen": 10,
+        "file": 17,
+        "route": null
+      },
+      {
+        "id": "screen:8",
+        "kind": "screen",
+        "label": "ScannerViewController",
+        "screen": 8,
+        "file": 9,
+        "route": null
+      },
+      {
+        "id": "screen:7",
+        "kind": "screen",
+        "label": "ScannerView",
+        "screen": 7,
+        "file": 9,
+        "route": null
+      },
+      {
+        "id": "screen:9",
+        "kind": "screen",
+        "label": "ScanResultViewController",
+        "screen": 9,
+        "file": 8,
+        "route": null
+      },
+      {
+        "id": "screen:12",
+        "kind": "screen",
+        "label": "TagPickerScreen",
+        "screen": 12,
+        "file": 19,
+        "route": null
+      },
+      {
+        "id": "screen:2",
+        "kind": "screen",
+        "label": "NoteEditorScreen",
+        "screen": 2,
+        "file": 12,
+        "route": null
+      },
+      {
+        "id": "screen:3",
+        "kind": "screen",
+        "label": "NotesListScreen",
+        "screen": 3,
+        "file": 13,
+        "route": null
+      },
+      {
+        "id": "screen:4",
+        "kind": "screen",
+        "label": "OnboardingScreen",
+        "screen": 4,
+        "file": 14,
+        "route": null
+      },
+      {
+        "id": "screen:6",
+        "kind": "screen",
+        "label": "RootTabView",
+        "screen": 6,
+        "file": 16,
+        "route": null
+      },
+      {
+        "id": "screen:0",
+        "kind": "screen",
+        "label": "AboutScreen",
+        "screen": 0,
+        "file": 10,
+        "route": null
+      },
+      {
+        "id": "screen:11",
+        "kind": "screen",
+        "label": "SettingsScreen",
+        "screen": 11,
+        "file": 18,
+        "route": null
+      },
+      {
+        "id": "screen:5",
+        "kind": "screen",
+        "label": "PaywallScreen",
+        "screen": 5,
+        "file": 15,
+        "route": null
+      }
+    ],
+    "edges": [
+      {
+        "from": "screen:10",
+        "to": "screen:1",
+        "kind": "push",
+        "method": "NavigationLink",
+        "file": 1,
+        "line": 8,
+        "via": "NoteRow"
+      },
+      {
+        "from": "screen:7",
+        "to": "screen:8",
+        "kind": "push",
+        "method": "UINavigationController",
+        "file": 9,
+        "line": 11,
+        "via": null
+      },
+      {
+        "from": "screen:8",
+        "to": "screen:9",
+        "kind": "push",
+        "method": "pushViewController",
+        "file": 9,
+        "line": 68,
+        "via": null
+      },
+      {
+        "from": "screen:1",
+        "to": "screen:12",
+        "kind": "push",
+        "method": "NavigationLink",
+        "file": 11,
+        "line": 35,
+        "via": null
+      },
+      {
+        "from": "screen:1",
+        "to": "screen:2",
+        "kind": "modal",
+        "method": "sheet",
+        "file": 11,
+        "line": 57,
+        "via": null
+      },
+      {
+        "from": "screen:3",
+        "to": "screen:1",
+        "kind": "push",
+        "method": "navigationDestination",
+        "file": 13,
+        "line": 52,
+        "via": null
+      },
+      {
+        "from": "screen:3",
+        "to": "screen:2",
+        "kind": "modal",
+        "method": "sheet",
+        "file": 13,
+        "line": 65,
+        "via": null
+      },
+      {
+        "from": "screen:3",
+        "to": "screen:7",
+        "kind": "modal",
+        "method": "sheet",
+        "file": 13,
+        "line": 68,
+        "via": null
+      },
+      {
+        "from": "screen:6",
+        "to": "screen:4",
+        "kind": "modal",
+        "method": "fullScreenCover",
+        "file": 16,
+        "line": 18,
+        "via": null
+      },
+      {
+        "from": "screen:11",
+        "to": "screen:0",
+        "kind": "push",
+        "method": "NavigationLink",
+        "file": 18,
+        "line": 41,
+        "via": null
+      },
+      {
+        "from": "screen:11",
+        "to": "screen:5",
+        "kind": "modal",
+        "method": "fullScreenCover",
+        "file": 18,
+        "line": 47,
+        "via": null
+      }
+    ],
+    "entries": [
+      "screen:6"
+    ]
+  },
+  "apis": [
+    {
+      "id": 0,
+      "method": "POST",
+      "url": "https://api.notesapp.dev/notes",
+      "resolved": true,
+      "client": "URLSession",
+      "file": 4,
+      "line": 42,
+      "usedBy": [
+        1,
+        2,
+        3,
+        6,
+        10,
+        11,
+        12
+      ],
+      "host": "api.notesapp.dev"
+    },
+    {
+      "id": 1,
+      "method": "GET",
+      "url": "{url}",
+      "resolved": false,
+      "client": "URLSession",
+      "file": 4,
+      "line": 53,
+      "usedBy": [
+        1,
+        2,
+        3,
+        6,
+        10,
+        11,
+        12
+      ],
+      "host": "api.notesapp.dev"
+    },
+    {
+      "id": 2,
+      "method": "WS",
+      "url": "wss://realtime.notesapp.dev/socket",
+      "resolved": true,
+      "client": "URLSession",
+      "file": 4,
+      "line": 73,
+      "usedBy": [
+        1,
+        2,
+        3,
+        6,
+        10,
+        11,
+        12
+      ],
+      "host": "realtime.notesapp.dev"
+    },
+    {
+      "id": 3,
+      "method": "URL",
+      "url": "https://api.notesapp.dev/v1/notes",
+      "resolved": true,
+      "client": "literal",
+      "file": 4,
+      "line": 35,
+      "usedBy": [
+        1,
+        2,
+        3,
+        6,
+        10,
+        11,
+        12
+      ],
+      "host": "api.notesapp.dev"
+    },
+    {
+      "id": 4,
+      "method": "API",
+      "url": "/v1/notes",
+      "resolved": true,
+      "client": "Endpoint.notes",
+      "file": 4,
+      "line": null,
+      "usedBy": [
+        1,
+        2,
+        3,
+        6,
+        10,
+        11,
+        12
+      ],
+      "host": "api.notesapp.dev"
+    },
+    {
+      "id": 5,
+      "method": "API",
+      "url": "/v1/sync",
+      "resolved": true,
+      "client": "Endpoint.sync",
+      "file": 4,
+      "line": null,
+      "usedBy": [
+        1,
+        2,
+        3,
+        6,
+        10,
+        11,
+        12
+      ],
+      "host": "api.notesapp.dev"
+    },
+    {
+      "id": 6,
+      "method": "API",
+      "url": "/v1/tags",
+      "resolved": true,
+      "client": "Endpoint.tags",
+      "file": 4,
+      "line": null,
+      "usedBy": [
+        1,
+        2,
+        3,
+        6,
+        10,
+        11,
+        12
+      ],
+      "host": "api.notesapp.dev"
+    },
+    {
+      "id": 7,
+      "method": "POST",
+      "url": "https://api.notesapp.dev/v1/sync",
+      "resolved": true,
+      "client": "Alamofire",
+      "file": 5,
+      "line": 33,
+      "usedBy": [
+        1,
+        2,
+        3,
+        6,
+        10,
+        11,
+        12
+      ],
+      "host": "api.notesapp.dev"
+    },
+    {
+      "id": 8,
+      "method": "URL",
+      "url": "https://notesapp.dev",
+      "resolved": true,
+      "client": "literal",
+      "file": 10,
+      "line": 17,
+      "usedBy": [
+        11,
+        0
+      ],
+      "host": "notesapp.dev"
+    },
+    {
+      "id": 9,
+      "method": "URL",
+      "url": "https://notesapp.dev/privacy",
+      "resolved": true,
+      "client": "literal",
+      "file": 10,
+      "line": 18,
+      "usedBy": [
+        11,
+        0
+      ],
+      "host": "notesapp.dev"
+    }
+  ],
+  "bases": [
+    {
+      "url": "https://api.notesapp.dev",
+      "file": 4,
+      "line": 4
+    }
+  ],
+  "risks": {
+    "cycles": [],
+    "moduleCycles": [
+      {
+        "modules": [
+          0,
+          6
+        ]
+      }
+    ],
+    "complex": [
+      {
+        "file": 22,
+        "score": 2.9,
+        "reasons": [
+          "plan() has complexity 24"
+        ]
+      },
+      {
+        "file": 13,
+        "score": 1.8,
+        "reasons": [
+          "nesting depth 11"
+        ]
+      }
+    ],
+    "hotspots": [],
+    "untested": {
+      "byRole": [
+        {
+          "role": "screen",
+          "total": 12,
+          "tested": 0
+        },
+        {
+          "role": "state",
+          "total": 2,
+          "tested": 1
+        },
+        {
+          "role": "service",
+          "total": 3,
+          "tested": 1
+        },
+        {
+          "role": "repository",
+          "total": 1,
+          "tested": 1
+        },
+        {
+          "role": "model",
+          "total": 1,
+          "tested": 1
+        },
+        {
+          "role": "widget",
+          "total": 3,
+          "tested": 0
+        }
+      ],
+      "files": [
+        4,
+        12,
+        9,
+        11,
+        15,
+        21,
+        13,
+        19,
+        10,
+        14,
+        17,
+        18,
+        8,
+        16,
+        5
+      ]
+    },
+    "godFiles": []
+  },
+  "warnings": [],
+  "aiContext": "# NotesApp — codebase context\nStatic analysis by mobile-repo-map v0.1.0 on 2026-10-12. Heuristic and possibly incomplete; paths are relative to the repo root.\n\n## Project\n- Platforms: ios\n- Stack: State management: Combine, ObservableObject, @Observable; Navigation: NavigationStack, UINavigationController; Networking: URLSession, Alamofire; Storage: UserDefaults\n- Size: 25 files (23 source, 2 test), 1,190 LOC, 10 modules, 13 screens, 0 routes, 11 navigation edges, 7 API endpoints\n- Health: 70/100 (B); penalties: Module cycles -2, Complexity -7, Test coverage -21\n- Entry files: NotesApp/NotesApp.swift\n\n## Dependencies (1)\nAlamofire\n\n## Modules (10)\n- NotesApp/Screens — 10 files, 472 LOC; roles: screen 10\n- NotesApp/Sync — 1 file, 175 LOC; roles: service 1\n- NotesApp/State — 2 files, 132 LOC; roles: state 2\n- NotesApp/Scanner — 2 files, 120 LOC; roles: screen 2\n- NotesApp/Networking — 2 files, 114 LOC; roles: service 2\n- tests — 2 files, 104 LOC; roles: test 2\n- NotesApp/Components — 3 files, 66 LOC; roles: widget 3\n- NotesApp/Models — 1 file, 63 LOC; roles: model 1\n- NotesApp/Persistence — 1 file, 35 LOC; roles: repository 1\n- NotesApp — 1 file, 13 LOC; roles: entry 1\n\n## Screens (13)\n- RootTabView [swiftui, entry] — NotesApp/Screens/RootTabView.swift:3\n- AboutScreen [swiftui] — NotesApp/Screens/AboutScreen.swift:3\n- NoteDetailScreen [swiftui] — NotesApp/Screens/NoteDetailScreen.swift:3\n- NoteEditorScreen [swiftui] — NotesApp/Screens/NoteEditorScreen.swift:3\n- NotesListScreen [swiftui] — NotesApp/Screens/NotesListScreen.swift:3\n- OnboardingScreen [swiftui] — NotesApp/Screens/OnboardingScreen.swift:3\n- PaywallScreen [swiftui] — NotesApp/Screens/PaywallScreen.swift:3\n- ScannerView [swiftui] — NotesApp/Scanner/ScannerViewController.swift:7\n- ScannerViewController [uikit] — NotesApp/Scanner/ScannerViewController.swift:17\n- ScanResultViewController [uikit] — NotesApp/Scanner/ScanResultViewController.swift:3\n- SearchScreen [swiftui] — NotesApp/Screens/SearchScreen.swift:3\n- SettingsScreen [swiftui] — NotesApp/Screens/SettingsScreen.swift:3\n- TagPickerScreen [swiftui] — NotesApp/Screens/TagPickerScreen.swift:3\n\n## Navigation (11 edges)\nEntry points: RootTabView\n```text\nRootTabView -> OnboardingScreen (modal)\nSearchScreen -> NoteDetailScreen (push)\nNoteDetailScreen -> TagPickerScreen (push)\nNoteDetailScreen -> NoteEditorScreen (modal)\nScannerView -> ScannerViewController (push)\nScannerViewController -> ScanResultViewController (push)\nNotesListScreen -> NoteDetailScreen (push)\nNotesListScreen -> NoteEditorScreen (modal)\nNotesListScreen -> ScannerView (modal)\nSettingsScreen -> AboutScreen (push)\nSettingsScreen -> PaywallScreen (modal)\n```\n\n## API endpoints (7)\n3 plain URL literals not listed.\n```text\nBASE https://api.notesapp.dev (NotesApp/Networking/APIClient.swift:4)\nAPI true (NotesApp/Networking/APIClient.swift) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nAPI true (NotesApp/Networking/APIClient.swift) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nAPI true (NotesApp/Networking/APIClient.swift) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nPOST true (NotesApp/Networking/APIClient.swift:42) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nPOST true (NotesApp/Networking/SyncTransport.swift:33) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nGET {url} (NotesApp/Networking/APIClient.swift:53) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\nWS true (NotesApp/Networking/APIClient.swift:73) used by NoteDetailScreen, NoteEditorScreen, NotesListScreen, RootTabView, SearchScreen, SettingsScreen, TagPickerScreen\n```\n\n## Risks\n- Import cycles: none\n- Module cycle: NotesApp/Components <-> NotesApp/Screens\n- Complex: NotesApp/Sync/SyncEngine.swift (score 2.9; plan() has complexity 24)\n- Complex: NotesApp/Screens/NotesListScreen.swift (score 1.8; nesting depth 11)\n- Tested files by role: screen 0/12, widget 0/3, state 1/2, service 1/3, repository 1/1, model 1/1\n\n## Key files (largest / most connected, top 23)\n- NotesApp/State/NotesStore.swift [state] 102 LOC, fan-in 8, fan-out 4, complexity 15, module module NotesApp/State; defines NotesStore\n- NotesApp/Sync/SyncEngine.swift [service] 175 LOC, fan-in 1, fan-out 2, complexity 65, module module NotesApp/Sync; defines SyncConflictPolicy, SyncConflict, Resolution, SyncPlan, …\n- NotesApp/Models/Note.swift [model] 63 LOC, fan-in 10, fan-out 0, complexity 3, module module NotesApp/Models; defines Note, RemoteNote\n- NotesApp/Screens/NotesListScreen.swift [screen] 75 LOC, fan-in 1, fan-out 6, complexity 4, module module NotesApp/Screens; defines NotesListScreen\n- NotesApp/Screens/NoteDetailScreen.swift [screen] 59 LOC, fan-in 2, fan-out 5, complexity 5, module module NotesApp/Screens; defines NoteDetailScreen\n- NotesApp/Screens/RootTabView.swift [screen] 29 LOC, fan-in 1, fan-out 6, complexity 2, module module NotesApp/Screens; defines RootTabView\n- NotesApp/Screens/SettingsScreen.swift [screen] 48 LOC, fan-in 1, fan-out 4, complexity 3, module module NotesApp/Screens; defines SettingsScreen\n- NotesApp/Scanner/ScannerViewController.swift [screen] 88 LOC, fan-in 1, fan-out 1, complexity 5, module module NotesApp/Scanner; defines ScannerView, ScannerViewController\n- NotesApp/Networking/APIClient.swift [service] 82 LOC, fan-in 1, fan-out 1, complexity 13, module module NotesApp/Networking; defines APIConfig, Endpoint, APIError, APIClient, …\n- NotesApp/Screens/NoteEditorScreen.swift [screen] 52 LOC, fan-in 2, fan-out 2, complexity 10, module module NotesApp/Screens; defines NoteEditorScreen\n- NotesApp/Screens/SearchScreen.swift [screen] 31 LOC, fan-in 1, fan-out 4, complexity 3, module module NotesApp/Screens; defines SearchScreen\n- NotesApp/Components/NoteRow.swift [widget] 36 LOC, fan-in 1, fan-out 3, complexity 4, module module NotesApp/Components; defines NoteRow\n- NotesApp/Screens/PaywallScreen.swift [screen] 62 LOC, fan-in 1, fan-out 1, complexity 5, module module NotesApp/Screens; defines PaywallScreen, Plan\n- NotesApp/Screens/TagPickerScreen.swift [screen] 47 LOC, fan-in 1, fan-out 2, complexity 4, module module NotesApp/Screens; defines TagPickerScreen\n- NotesApp/State/SettingsModel.swift [state] 30 LOC, fan-in 4, fan-out 0, complexity 5, module module NotesApp/State; defines SettingsModel, SortOrder, Keys\n- NotesApp/Persistence/NotesRepository.swift [repository] 35 LOC, fan-in 1, fan-out 1, complexity 6, module module NotesApp/Persistence; defines NotesRepository\n- NotesApp/Networking/SyncTransport.swift [service] 32 LOC, fan-in 1, fan-out 1, complexity 1, module module NotesApp/Networking; defines SyncPayload, SyncResponse, SyncTransport, AlamofireSyncTransport\n- NotesApp/Components/TagChip.swift [widget] 17 LOC, fan-in 3, fan-out 0, complexity 1, module module NotesApp/Components; defines TagChip\n- NotesApp/Screens/OnboardingScreen.swift [screen] 44 LOC, fan-in 1, fan-out 0, complexity 3, module module NotesApp/Screens; defines OnboardingScreen\n- NotesApp/NotesApp.swift [entry] 13 LOC, fan-in 0, fan-out 3, complexity 1, module module NotesApp; defines NotesApp\n- NotesApp/Scanner/ScanResultViewController.swift [screen] 32 LOC, fan-in 1, fan-out 0, complexity 2, module module NotesApp/Scanner; defines ScanResultViewController\n- NotesApp/Components/EmptyStateView.swift [widget] 13 LOC, fan-in 2, fan-out 0, complexity 1, module module NotesApp/Components; defines EmptyStateView\n- NotesApp/Screens/AboutScreen.swift [screen] 25 LOC, fan-in 1, fan-out 0, complexity 3, module module NotesApp/Screens; defines AboutScreen\n"
+}

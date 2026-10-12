@@ -1,0 +1,53 @@
+{
+  "name": "mobile-repo-map",
+  "version": "0.1.0",
+  "description": "Point it at any Flutter or iOS repo and get an interactive map of how the app works: screens, navigation, API calls, architecture and risks.",
+  "type": "module",
+  "bin": {
+    "mobile-repo-map": "bin/mobile-repo-map.js"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "demo": "node bin/mobile-repo-map.js examples/flutter_shop --out docs/demo/flutter_shop --editor none --no-git -q && node bin/mobile-repo-map.js examples/swiftui_notes --out docs/demo/swiftui_notes --editor none --no-git -q"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "keywords": [
+    "flutter",
+    "dart",
+    "ios",
+    "swift",
+    "swiftui",
+    "uikit",
+    "architecture",
+    "codebase-visualization",
+    "static-analysis",
+    "navigation",
+    "dependency-graph",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ananya-kaul/mobile-repo-map.git"
+  },
+  "homepage": "https://github.com/ananya-kaul/mobile-repo-map#readme",
+  "bugs": {
+    "url": "https://github.com/ananya-kaul/mobile-repo-map/issues"
+  },
+  "license": "MIT",
+  "author": "ananya-kaul",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0"
+  }
+}

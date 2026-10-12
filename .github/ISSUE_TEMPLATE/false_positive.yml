@@ -1,0 +1,106 @@
+name: Wrong or missed detection
+description: A screen, route, navigation edge, API call, cycle or role that was detected wrongly or missed.
+title: "[Detection]: "
+labels: ["detection"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        MobileRepoMap is heuristic, so these reports are the main way it improves. The most useful thing you can include is a **minimal code snippet**: the smallest Dart or Swift that still shows the problem.
+
+        Please remove proprietary code, API keys and internal URLs before posting. Renaming classes and endpoints is fine as long as the shape of the code stays the same.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What went wrong?
+      options:
+        - Missed something that exists (false negative)
+        - Reported something that does not exist (false positive)
+        - Right thing, attributed to the wrong screen or file
+        - Wrong role or classification (e.g. a widget shown as a screen)
+        - Constant or URL not resolved, or resolved wrongly
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of the report?
+      options:
+        - Navigation (screens, routes, navigation edges)
+        - APIs (network calls, endpoints)
+        - Architecture (dependency graph, roles)
+        - Risks (cycles, complexity, hotspots, untested files, god files)
+        - Overview (stack detection, health score)
+        - ARCHITECTURE.md or report.json only
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language and UI framework
+      options:
+        - Dart / Flutter
+        - Swift / SwiftUI
+        - Swift / UIKit
+        - Storyboard
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: snippet
+    attributes:
+      label: Minimal code snippet
+      description: |
+        The smallest code that reproduces the problem. If it spans files (for example a constant defined in one file and used in another), include each file with its path. Use code fences, e.g. ```dart or ```swift.
+      placeholder: |
+        // lib/router.dart
+        ```dart
+        GoRoute(path: AppRoute.cart.path, builder: (_, __) => const CartScreen()),
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What the report shows
+      description: What MobileRepoMap reported (or that it reported nothing). A screenshot or the relevant part of report.json is welcome.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: For example, "an edge from HomeScreen to CartScreen" or "a GET call to /users attributed to ProfileScreen".
+    validations:
+      required: true
+
+  - type: input
+    id: libraries
+    attributes:
+      label: Libraries and versions involved
+      description: The router, networking or state management package in play, if any.
+      placeholder: go_router 14.x, dio 5.x
+
+  - type: input
+    id: version
+    attributes:
+      label: mobile-repo-map version
+      description: Output of `npx mobile-repo-map --version`
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: The snippet is minimal and contains no proprietary code, secrets or internal URLs.
+          required: true

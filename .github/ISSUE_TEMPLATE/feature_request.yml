@@ -1,0 +1,49 @@
+name: Feature request
+description: Suggest a new pattern, library, report view or CLI option.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check the **Roadmap** and **Limitations** sections of the README first, and add a reaction to an existing issue if your idea is already there.
+
+        If something existing is detected wrongly, use the **Wrong or missed detection** template instead.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the situation, not the solution. For example, "When I onboard onto an app that uses beamer, I can't see its routes."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like to happen?
+      description: How it could look in the report, the CLI, ARCHITECTURE.md or report.json.
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example code
+      description: For new patterns or libraries, a minimal Dart or Swift snippet that should be detected. Use code fences.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you have considered
+
+  - type: dropdown
+    id: contribute
+    attributes:
+      label: Would you be willing to contribute this?
+      options:
+        - Yes, I can open a PR
+        - Maybe, with some guidance
+        - No
+    validations:
+      required: true
