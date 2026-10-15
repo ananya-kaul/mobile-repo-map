@@ -1,6 +1,6 @@
 {
   "name": "mobile-repo-map",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Point it at any Flutter or iOS repo and get an interactive map of how the app works: screens, navigation, API calls, architecture and risks.",
   "type": "module",
   "bin": {

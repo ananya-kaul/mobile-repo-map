@@ -5,7 +5,8 @@
 **Point it at any Flutter or iOS repo and get an interactive map of how the app works.**
 
 Screens, navigation, API calls, architecture and risks, read straight from the source.<br>
-No build. No compile. No API key. Nothing leaves your machine.
+Analysis runs locally. No build, compiler, or API key needed.<br>
+Optional cloud questions send selected code to your configured provider; see [privacy details](#ask-ai-optional).
 
 [![CI](https://github.com/ananya-kaul/mobile-repo-map/actions/workflows/ci.yml/badge.svg)](https://github.com/ananya-kaul/mobile-repo-map/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -18,13 +19,13 @@ npx mobile-repo-map .
 
 [Quick start](#quick-start) · [What you get](#what-you-get) · [Use in CI](#use-in-ci) · [Ask AI](#ask-ai-optional) · [CLI](#cli-reference) · [How it works](#how-it-works) · [Live demo report](https://ananya-kaul.github.io/mobile-repo-map/demo/flutter_shop/)
 
-<img src="docs/screenshot.png" alt="MobileRepoMap navigation map for a Flutter app" width="900">
+<a href="https://raw.githubusercontent.com/ananya-kaul/mobile-repo-map/main/docs/screenshot.png"><img src="https://raw.githubusercontent.com/ananya-kaul/mobile-repo-map/main/docs/screenshot.png" alt="MobileRepoMap navigation map for a Flutter app" width="900"></a>
 
 <table>
   <tr>
-    <td><img src="docs/screenshots/overview.png" alt="Overview tab" width="290"></td>
-    <td><img src="docs/screenshots/architecture.png" alt="Architecture graph" width="290"></td>
-    <td><img src="docs/screenshots/risks.png" alt="Risks tab" width="290"></td>
+    <td><a href="https://raw.githubusercontent.com/ananya-kaul/mobile-repo-map/main/docs/screenshots/overview.png"><img src="https://raw.githubusercontent.com/ananya-kaul/mobile-repo-map/main/docs/screenshots/overview.png" alt="Overview tab" width="290"></a></td>
+    <td><a href="https://raw.githubusercontent.com/ananya-kaul/mobile-repo-map/main/docs/screenshots/architecture.png"><img src="https://raw.githubusercontent.com/ananya-kaul/mobile-repo-map/main/docs/screenshots/architecture.png" alt="Architecture graph" width="290"></a></td>
+    <td><a href="https://raw.githubusercontent.com/ananya-kaul/mobile-repo-map/main/docs/screenshots/risks.png"><img src="https://raw.githubusercontent.com/ananya-kaul/mobile-repo-map/main/docs/screenshots/risks.png" alt="Risks tab" width="290"></a></td>
   </tr>
   <tr>
     <td align="center"><sub>Overview &amp; health score</sub></td>
@@ -34,6 +35,10 @@ npx mobile-repo-map .
 </table>
 
 </div>
+
+## Try the live demos
+
+Open the [Flutter shop report](https://ananya-kaul.github.io/mobile-repo-map/demo/flutter_shop/) or the [SwiftUI notes report](https://ananya-kaul.github.io/mobile-repo-map/demo/swiftui_notes/) in your browser. These reports use bundled example apps; no installation or repository upload is needed. Click any screenshot above to open it at full size.
 
 ## Quick start
 
